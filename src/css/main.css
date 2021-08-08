@@ -1,32 +1,122 @@
-/*
-  You can use import statements to include partials:
- */
-@import 'imports/reset.css';
+@import "tailwindcss/base";
+@import "tailwindcss/components";
+@import "tailwindcss/utilities";
 
-/*
-  Or add your statements here:
- */
-body {
-  font-size: calc(10px + 1vmin);
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans',
-    'Droid Sans', 'Helvetica Neue', sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+:root {
+  /* Colors: */
+  --white: #FFFFFF;
+  --black: #000000;
+  --neutral500: #EFEFEF;
+  --unnamed-color-c1c2c4: #C1C2C4;
+  --unnamed-color-83898c: #83898C;
+  --unnamed-color-6c6c6c: #6C6C6C;
+  --unnamed-color-4a4a4a: #4A4A4A;
+  --unnamed-color-33a7a7: #33A7A7;
+  --purple500: #894893;
+  --unnamed-color-57355e: #57355E;
 
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  background-color: #282c34;
-  color: white;
+  /* Font/text values */
+  --unnamed-font-family-freightsans-pro: FreightSans Pro;
+  --unnamed-font-family-courier: Courier;
+  --unnamed-font-style-normal: normal;
+  --unnamed-font-weight-600: 600px;
+  --unnamed-font-weight-normal: normal;
+  --unnamed-font-size-12: 12px;
+  --unnamed-font-size-14: 14px;
+  --unnamed-font-size-16: 16px;
+  --unnamed-font-size-18: 18px;
+  --unnamed-font-size-20: 20px;
+  --unnamed-font-size-28: 28px;
+  --unnamed-character-spacing-0: 0px;
+  --unnamed-line-spacing-15: 15px;
+  --unnamed-line-spacing-17: 17px;
+  --unnamed-line-spacing-18: 18px;
+  --unnamed-line-spacing-20: 20px;
+  --unnamed-line-spacing-24: 24px;
+  --unnamed-line-spacing-27: 27px;
+  --unnamed-line-spacing-37: 37px;
 }
 
-a {
-  color: pink;
-  text-decoration: none;
+/* Character Styles */
+.unnamed-character-style-1 {
+  font-family: var(--unnamed-font-family-courier);
+  font-style: var(--unnamed-font-style-normal);
+  font-weight: var(--unnamed-font-weight-normal);
+  font-size: var(--unnamed-font-size-14);
+  line-height: var(--unnamed-line-spacing-17);
+  letter-spacing: var(--unnamed-character-spacing-0);
+  color: var(--neutral500);
 }
 
-.content {
-  padding: 0 32px;
+.unnamed-character-style-2 {
+  font-family: var(--unnamed-font-family-freightsans-pro);
+  font-style: var(--unnamed-font-style-normal);
+  font-weight: var(--unnamed-font-weight-600);
+  font-size: var(--unnamed-font-size-18);
+  line-height: var(--unnamed-line-spacing-24);
+  letter-spacing: var(--unnamed-character-spacing-0);
+  color: var(--unnamed-color-33a7a7);
+}
+.unnamed-character-style-3 {
+  font-family: var(--unnamed-font-family-freightsans-pro);
+  font-style: var(--unnamed-font-style-normal);
+  font-weight: var(--unnamed-font-weight-600);
+  font-size: var(--unnamed-font-size-28);
+  line-height: var(--unnamed-line-spacing-37);
+  letter-spacing: var(--unnamed-character-spacing-0);
+  color: var(--unnamed-color-4a4a4a);
+}
+
+.unnamed-character-style-4 {
+  font-family: var(--unnamed-font-family-freightsans-pro);
+  font-style: var(--unnamed-font-style-normal);
+  font-weight: var(--unnamed-font-weight-600);
+  font-size: var(--unnamed-font-size-20);
+  line-height: var(--unnamed-line-spacing-27);
+  letter-spacing: var(--unnamed-character-spacing-0);
+  color: var(--unnamed-color-4a4a4a);
+}
+
+.unnamed-character-style-5 {
+  font-family: var(--unnamed-font-family-freightsans-pro);
+  font-style: var(--unnamed-font-style-normal);
+  font-weight: var(--unnamed-font-weight-normal);
+  font-size: var(--unnamed-font-size-18);
+  line-height: var(--unnamed-line-spacing-24);
+  letter-spacing: var(--unnamed-character-spacing-0);
+  color: var(--unnamed-color-4a4a4a);
+}
+
+.unnamed-character-style-6 {
+  font-family: var(--unnamed-font-family-freightsans-pro);
+  font-style: var(--unnamed-font-style-normal);
+  font-weight: var(--unnamed-font-weight-600);
+  font-size: var(--unnamed-font-size-16);
+  line-height: var(--unnamed-line-spacing-20);
+  letter-spacing: var(--unnamed-character-spacing-0);
+  color: var(--black);
+}
+
+.unnamed-character-style-7 {
+  font-family: var(--unnamed-font-family-freightsans-pro);
+  font-style: var(--unnamed-font-style-normal);
+  font-weight: var(--unnamed-font-weight-normal);
+  font-size: var(--unnamed-font-size-14);
+  line-height: var(--unnamed-line-spacing-18);
+  letter-spacing: var(--unnamed-character-spacing-0);
+  color: var(--unnamed-color-4a4a4a);
+}
+
+.unnamed-character-style-8 {
+  font-family: var(--unnamed-font-family-freightsans-pro);
+  font-style: var(--unnamed-font-style-normal);
+  font-weight: var(--unnamed-font-weight-normal);
+  font-size: var(--unnamed-font-size-12);
+  line-height: var(--unnamed-line-spacing-15);
+  letter-spacing: var(--unnamed-character-spacing-0);
+  color: var(--unnamed-color-83898c);
+}
+
+html, body {
+  background: var(--neutral500) 0% 0% no-repeat padding-box;
 }
