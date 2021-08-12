@@ -11,9 +11,9 @@ I recently migrated a fairly large project from using Styled Components to Emoti
 
 Firstly, you will need to install Emotion. For my examples I’ll be using `yarn`.
 
-```
+{{< highlight bash >}}
 yarn add @emotion/styled @emotion/react
-```
+{{< /highlight >}}
 
 If you’re using `babel`, you’ll need to [install the Emotion plugin](https://emotion.sh/docs/babel) as well.
 
@@ -21,7 +21,7 @@ If you’re using `babel`, you’ll need to [install the Emotion plugin](https:/
 
  In a lot of projects using Styled Components, you will likely have a lot of code that is similar to the following:
 
-```javascript
+ {{< highlight jsx >}}
 import styled from ‘styled-components’;
 
 const Container = styled.div`
@@ -31,7 +31,7 @@ const Container = styled.div`
 export function App({ children }) {
 	return <Container>{children}</Container>;
 }
-```
+{{< /highlight >}}
 
 The APIs for Emotion and Styled Components for the `styled` export are very similar, and in most cases 100% compatible. So we can use the following find and replace to handle (hopefully) the majority of cases. 
 
@@ -63,32 +63,32 @@ I had a few instances of components that used the `attrs()` method to set attrib
 
 #### Before
 
-```
+{{< highlight jsx >}}
 const NotAButton = styled.div.attrs({
 	role: ‘button’,
 })`
 	cursor: pointer;
 `
-```
+{{< /highlight >}}
 
 Emotion does not have this method on a Styled Component instance, so we need to replace it. [The recommended way](https://github.com/emotion-js/emotion/issues/821) to do this is via `defaultProps`. 
 
 #### After
 
-```
+{{< highlight jsx >}}
 const NotAButton = styled.div`
 	cursor: pointer;
 `
 NotAButton.defaultProps = {
 	role: ‘button’,
 };
-```
+{{< /highlight >}}
 
 #### Alternatively 
 
 The other way would be to use `@emotion/react` instead. Note here I’m making `role` a changeable property whereas in the initial implementation it was locked. 
 
-```
+{{< highlight jsx >}}
 /** @jsx jsx */
 import { jsx, css } from ‘@emotion/react’;
 
@@ -99,7 +99,7 @@ const styles = css`
 function NotAButton({ role = ‘button’, …props}) {
 	return <div css={styles} role={role} {…props} />;
 }
-```
+{{< /highlight >}}
 
 ### createGlobalStyle
 
@@ -107,7 +107,7 @@ If you’re using `createGlobalStyle`, Emotion has a very similar pattern using 
 
 #### Before
 
-```
+{{< highlight jsx >}}
 import { createGlobalStyle } from ‘styled-components’;
 
 const BodyColor = createGlobalStyle`
@@ -122,11 +122,11 @@ export function App({ children }) {
 		</>
 	);
 }
-```
+{{< /highlight >}}
 
 #### After
 
-```
+{{< highlight jsx >}}
 import { Global, css } from ‘@emotion/react’;
 
 const bodyColor = css`
@@ -141,7 +141,7 @@ export function App({ children }) {
 		</>
 	);
 }
-```
+{{< /highlight >}}
 
 Finally, do a search for `styled-components` in your project, you will find any remaining files that need to be updated to use Emotion. You should be able to follow the above steps for the rest of your project. 
 
@@ -149,9 +149,9 @@ Finally, do a search for `styled-components` in your project, you will find any 
 
 If you’re not using Styled Components at all anymore, you should remove it from your project to reduce your bundle size and complexity. 
 
-```
+{{< highlight bash >}}
 yarn remove styled-components
-```
+{{< /highlight >}}
 
 Again, if you’re using babel, you will need to remove the Styled Components plugin. After all is said and done you should have successfully migrated to Emotion! If you ran into any situations that I didn’t cover, let me know. 
 
