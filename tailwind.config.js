@@ -27,6 +27,8 @@ module.exports = {
       },
 
       red: {
+        DEFAULT: '#DD7373',
+        
         100: '#F7DEDE',
         300: '#E79C9C',
         500: '#DD7373',
@@ -34,6 +36,8 @@ module.exports = {
       },
 
       yellow: {
+        DEFAULT: '#EAD94C',
+        
         100: '#F8F3DD',
         300: '#F0E57F',
         500: '#EAD94C',
@@ -41,6 +45,8 @@ module.exports = {
       },
 
       blue: {
+        DEFAULT: '#5BC0EB',
+        
         100: '#DAF1FB',
         300: '#92D5F2',
         500: '#5BC0EB',
@@ -49,6 +55,8 @@ module.exports = {
       },
 
       gray: {
+        DEFAULT: '#83898C',
+
         100: '#EFEFEF',
         300: '#C1C2C4',
         500: '#83898C',
