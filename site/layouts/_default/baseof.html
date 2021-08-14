@@ -11,13 +11,18 @@
   {{ with $stylesheet.css }}
     <link href="{{ relURL . }}" rel="stylesheet">
   {{ end }}
+    <link href="/fonts.css" rel="stylesheet">
 </head>
 
-<body>
+<body class='font-sans'>
 
   {{ block "header" . }}{{ partial "header" . }}{{end}}
 
-  {{ block "main" . }}{{end}}
+  <div class='flex pt-20 mx-32'>
+    {{ block "main" . }}{{end}}
+
+    {{ block "sidebar" . }}{{ partial "sidebar" . }}{{end}}
+  </div>
 
   {{ block "footer" . }}{{ partial "footer" . }}{{end}}
 

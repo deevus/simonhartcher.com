@@ -1,19 +1,15 @@
 {{ define "main" }} {{ $section := .Site.GetPage "section" .Section }}
 
-<div class='grid grid-cols-12 pt-24'>
-  <div class='col-span-1'></div>
-
-  <article class="prose-sm col-span-10">
-    <main>
-      <h2>
-        {{ .Title }}
-        <small class='block'>{{ .Description }}</small>
-      </h2>
+<article class="prose-sm">
+  <main>
+    <h2>
+      {{ .Title }}
+      <small class='block'>{{ .Description }}</small>
+    </h2>
 
 
-      {{- .Content -}}
-    </main>
-  </article>
-</div>
+    {{- .Content -}}
+  </main>
+</article>
 
 {{ end }}

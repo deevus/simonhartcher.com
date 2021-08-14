@@ -1,0 +1,21 @@
+<section class='sticky top-24 self-start pl-8'>
+    <div class='w-72 rounded border border-gray-300 p-5'>
+      <div class='flex justify-between items-center mb-2'>
+          <h1 class='font-bold'>
+              Latest articles
+          </h1>
+          <a class='text-sm text-teal' href='/posts'>More articles &gt;</a>
+      </div>
+
+      <div>
+        {{ range first 6 (where .Site.Pages "Type" "posts") }}
+          <a class='block text-sm text-gray-900 mb-2' href='/posts/{{ .Slug }}'>
+            {{ .Title }}
+            <span class='block text-xs text-gray'>
+              {{ .Date.Format "January 02, 2006" }}
+            </span>
+          </a>
+        {{ end }}
+      </div>
+    </div>
+</section>
