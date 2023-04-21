@@ -21,12 +21,18 @@ import 'styles/prism-theme.css'
 
 import { bootstrap } from '@/lib/bootstrap-client'
 import {
+  analyticsConfig,
   fathomConfig,
   fathomId,
   isServer,
   posthogConfig,
   posthogId
 } from '@/lib/config'
+
+import Analytics from 'analytics'
+import googleTagManager from '@analytics/google-tag-manager'
+
+const analytics = Analytics(analyticsConfig)
 
 if (!isServer) {
   bootstrap()
@@ -37,6 +43,8 @@ export default function App({ Component, pageProps }: AppProps) {
 
   React.useEffect(() => {
     function onRouteChangeComplete() {
+      analytics.page()
+
       if (fathomId) {
         Fathom.trackPageview()
       }

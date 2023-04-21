@@ -25,11 +25,13 @@
     "test:prettier": "prettier '**/*.{js,jsx,ts,tsx}' --check"
   },
   "dependencies": {
+    "@analytics/google-tag-manager": "^0.5.3",
     "@fisch0920/use-dark-mode": "^2.4.0",
     "@keyvhq/core": "^1.6.9",
     "@keyvhq/redis": "^1.6.10",
     "@react-icons/all-files": "^4.1.0",
     "@vercel/og": "^0.0.19",
+    "analytics": "^0.8.1",
     "classnames": "^2.3.1",
     "date-fns": "^2.28.0",
     "expiry-map": "^2.0.0",
