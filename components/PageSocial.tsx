@@ -80,7 +80,7 @@ export const PageSocial: React.FC = () => {
           key={action.name}
           title={action.title}
           target='_blank'
-          rel='noopener noreferrer'
+          rel='noopener noreferrer me'
         >
           <div className={styles.actionBg}>
             <div className={styles.actionBgPane} />
