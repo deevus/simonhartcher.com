@@ -4,6 +4,8 @@ import type { AppProps } from 'next/app'
 import { useRouter } from 'next/router'
 
 import * as Fathom from 'fathom-client'
+import Analytics from 'analytics'
+
 // used for rendering equations (optional)
 import 'katex/dist/katex.min.css'
 import posthog from 'posthog-js'
@@ -28,9 +30,6 @@ import {
   posthogConfig,
   posthogId
 } from '@/lib/config'
-
-import Analytics from 'analytics'
-import googleTagManager from '@analytics/google-tag-manager'
 
 const analytics = Analytics(analyticsConfig)
 
