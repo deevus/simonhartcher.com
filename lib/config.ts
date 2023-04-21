@@ -7,7 +7,7 @@
 import { parsePageId } from 'notion-utils'
 import { PostHogConfig } from 'posthog-js'
 
-import googleTagManager from '@analytics/google-tag-manager'
+import googleAnalytics from '@analytics/google-analytics'
 
 import { getEnv, getSiteConfig } from './get-config-value'
 import { NavigationLink } from './site-config'
@@ -169,11 +169,13 @@ export const analyticsConfig = {
   plugins: [],
 }
 
-const gtmContainerId = isDev ? null : process.env.NEXT_PUBLIC_GTM_CONTAINER_ID
+const googleAnalyticsId = isDev ? null : process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS_ID
 
-if (gtmContainerId) {
-  analyticsConfig.plugins.push(googleTagManager({
-    containerId: gtmContainerId
+if (googleAnalyticsId) {
+  analyticsConfig.plugins.push(googleAnalytics({
+    measurementIds: [
+      googleAnalyticsId,
+    ]
   }))
 }
 

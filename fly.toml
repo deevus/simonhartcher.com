@@ -23,4 +23,4 @@ primary_region = "syd"
     grace_period = "5s"
 
 [build.args]
-  NEXT_PUBLIC_GTM_CONTAINER_ID="G-V93V2LBLYK"
+  NEXT_PUBLIC_GOOGLE_ANALYTICS_ID="G-M5R396MEP8"
