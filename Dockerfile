@@ -14,6 +14,8 @@ ENV NEXT_TELEMETRY_DISABLED 1
 # Add `ARG` instructions below if you need `NEXT_PUBLIC_` variables
 # then put the value on your fly.toml
 ARG NEXT_PUBLIC_GTM_CONTAINER_ID
+ARG REDIS_HOST
+ARG REDIS_PASSWORD
 
 RUN yarn build
 
