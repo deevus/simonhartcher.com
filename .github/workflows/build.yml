@@ -17,4 +17,4 @@ jobs:
       - name: build
           env:
             NEXT_PUBLIC_GTM_CONTAINER_ID: G-V93V2LBLYK
-        run: yarn build
+          run: yarn build
