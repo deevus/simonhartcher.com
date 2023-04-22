@@ -5,6 +5,10 @@ on: [push, pull_request]
 jobs:
   Build:
     runs-on: ubuntu-latest
+
+    services:
+      image: redis
+
     steps:
       - uses: actions/checkout@v3
 
@@ -17,4 +21,6 @@ jobs:
       - name: build
         env:
           NEXT_PUBLIC_GTM_CONTAINER_ID: G-V93V2LBLYK
+          REDIS_HOST: redis
+          REDIS_PASSWORD:
         run: yarn build
