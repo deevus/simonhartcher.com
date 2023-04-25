@@ -1,8 +1,9 @@
+import got from 'got'
+import lqip from 'lqip-modern'
 import { ExtendedRecordMap, PreviewImage, PreviewImageMap } from 'notion-types'
 import { getPageImageUrls, normalizeUrl } from 'notion-utils'
 import pMap from 'p-map'
 import pMemoize from 'p-memoize'
-import imageSize from 'image-size'
 
 import { defaultPageCover, defaultPageIcon } from './config'
 import { db } from './db'
@@ -48,12 +49,14 @@ async function createPreviewImage(
       console.warn(`redis error get "${cacheKey}"`, err.message)
     }
 
-    const { height, width } = imageSize(url)
+    const { body } = await got(url, { responseType: 'buffer' })
+    const result = await lqip(body)
+    console.log('lqip', { ...result.metadata, url, cacheKey })
 
     const previewImage = {
-      originalWidth: width,
-      originalHeight: height,
-      dataURIBase64: undefined,
+      originalWidth: result.metadata.originalWidth,
+      originalHeight: result.metadata.originalHeight,
+      dataURIBase64: result.metadata.dataURIBase64
     }
 
     try {
