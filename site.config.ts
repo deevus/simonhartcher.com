@@ -20,7 +20,7 @@ export default siteConfig({
   twitter: 'deevus',
   github: 'deevus',
   linkedin: 'deevus',
-  // mastodon: '#', // optional mastodon profile URL, provides link verification
+  mastodon: 'https://mastodon.gamedev.place/@deevus', // optional mastodon profile URL, provides link verification
   // newsletter: '#', // optional newsletter URL
   // youtube: '#', // optional youtube channel name or `channel/UCGbXXXXXXXXXXXXXXXXXXXXXX`
 
