@@ -39,7 +39,7 @@
     "got": "^12.0.3",
     "isomorphic-unfetch": "^3.1.0",
     "lqip-modern": "^1.2.0",
-    "next": "^12.3.1",
+    "next": "13",
     "notion-client": "^6.15.6",
     "notion-types": "^6.15.6",
     "notion-utils": "^6.15.6",
@@ -74,5 +74,8 @@
     "cacheable-request": {
       "keyv": "npm:@keyvhq/core@~1.6.6"
     }
+  },
+  "resolutions": {
+    "sharp": "^0.32.0"
   }
 }
