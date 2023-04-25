@@ -24,3 +24,7 @@ primary_region = "syd"
 
 [build.args]
   NEXT_PUBLIC_GOOGLE_ANALYTICS_ID="G-M5R396MEP8"
+
+[mounts]
+  source="simonhartcher_com_image_cache"
+  destination="/app/.next/cache"
