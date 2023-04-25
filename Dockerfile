@@ -17,6 +17,7 @@ ARG NEXT_PUBLIC_GOOGLE_ANALYTICS_ID
 ARG REDIS_HOST
 ARG REDIS_PASSWORD
 
+RUN yarn add sharp
 RUN yarn build
 
 # If using npm comment out above and use below instead
