@@ -1,3 +1,4 @@
+import React from 'react';
 import Image from 'next/image';
 import { parse } from 'node-html-parser';
 import parseSrcset from 'parse-srcset';
