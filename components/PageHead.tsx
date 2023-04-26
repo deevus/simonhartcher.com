@@ -3,7 +3,7 @@ import Head from 'next/head'
 
 import * as config from '@/lib/config'
 import * as types from '@/lib/types'
-import { getSocialImageUrl, getSocialImageUrlWithNextImage } from '@/lib/get-social-image-url'
+import { getSocialImageUrlWithNextImage } from '@/lib/get-social-image-url'
 
 export const PageHead: React.FC<
   types.PageProps & {
