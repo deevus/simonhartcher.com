@@ -137,6 +137,7 @@ export const FooterImpl: React.FC = () => {
           </a>
         )}
       </div>
+      <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7902686358110976" crossOrigin="anonymous"></script>
     </footer>
   )
 }
