@@ -25,6 +25,11 @@ module.exports = withBundleAnalyzer({
         source: '/bio',
         destination: '/about',
         permanent: false,
+      },
+      {
+        source: '/modern-approach-to-legacy-web-applications-1-add-js-bundling-to-an-existing-mvc-project',
+        destination: '/how-to-add-java-script-bundling-to-an-existing-mvc-project',
+        permanent: true,
       }
     ]
   },
