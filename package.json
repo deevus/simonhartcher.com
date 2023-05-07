@@ -27,6 +27,7 @@
   "dependencies": {
     "@analytics/google-analytics": "^1.0.5",
     "@fisch0920/use-dark-mode": "^2.4.0",
+    "@giscus/react": "^2.2.8",
     "@keyvhq/core": "^1.6.9",
     "@keyvhq/redis": "^1.6.10",
     "@react-icons/all-files": "^4.1.0",
