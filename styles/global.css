@@ -62,6 +62,13 @@ body {
 }
 
 giscus-widget {
-  width: var(--notion-max-width);
+  max-width: var(--notion-max-width);
   padding-bottom: 24px;
+}
+
+@media screen and (max-width: 720px) {
+  giscus-widget {
+    padding-left: 2vw;
+    padding-right: 2vw;
+  }
 }
