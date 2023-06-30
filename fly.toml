@@ -21,7 +21,7 @@ primary_region = "syd"
   grace_period = "5s"
   method = "GET"
   path = "/"
-  protocol = "https"
+  protocol = "http"
 
 [checks]
   [checks.alive]
