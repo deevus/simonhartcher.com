@@ -27,8 +27,6 @@ import {
   fathomConfig,
   fathomId,
   isServer,
-  posthogConfig,
-  posthogId
 } from '@/lib/config'
 
 const analytics = Analytics(analyticsConfig)
@@ -47,18 +45,10 @@ export default function App({ Component, pageProps }: AppProps) {
       if (fathomId) {
         Fathom.trackPageview()
       }
-
-      if (posthogId) {
-        posthog.capture('$pageview')
-      }
     }
 
     if (fathomId) {
       Fathom.load(fathomId, fathomConfig)
-    }
-
-    if (posthogId) {
-      posthog.init(posthogId, posthogConfig)
     }
 
     router.events.on('routeChangeComplete', onRouteChangeComplete)
