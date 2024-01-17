@@ -33,7 +33,7 @@
     "@react-icons/all-files": "^4.1.0",
     "@vercel/og": "^0.0.19",
     "analytics": "^0.8.1",
-    "analytics-plugin-posthog": "^0.0.2",
+    "analytics-plugin-posthog": "^0.0.3",
     "classnames": "^2.3.1",
     "date-fns": "^2.28.0",
     "expiry-map": "^2.0.0",
