@@ -7,9 +7,6 @@ WORKDIR /app
 COPY . .
 RUN pnpm install --frozen-lockfile
 
-FROM base AS prod-deps
-RUN --mount=type=cache,id=pnpm,target=/pnpm/store pnpm install --prod --frozen-lockfile --shamefully-hoist
-
 FROM base AS build
 
 ENV NEXT_TELEMETRY_DISABLED 1
@@ -22,14 +19,14 @@ RUN --mount=type=cache,id=pnpm,target=/pnpm/store pnpm install --frozen-lockfile
 RUN pnpm run build
 
 FROM base
-COPY --from=prod-deps /app/node_modules /app/node_modules
-COPY --from=build /app/.next /app/.next
-
-ENV NODE_ENV production
-ENV NEXT_TELEMETRY_DISABLED 1
 
 RUN addgroup --system --gid 1001 nodejs
 RUN adduser --system --uid 1001 nextjs
+
+COPY --from=build --chown=nextjs:nodejs /app /app
+
+ENV NODE_ENV production
+ENV NEXT_TELEMETRY_DISABLED 1
 
 USER nextjs
 
