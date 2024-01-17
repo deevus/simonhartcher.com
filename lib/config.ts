@@ -5,7 +5,6 @@
  * for optional depenencies.
  */
 import { parsePageId } from 'notion-utils'
-import { PostHogConfig } from 'posthog-js'
 
 import googleAnalytics from '@analytics/google-analytics'
 
@@ -17,6 +16,7 @@ import {
   PageUrlOverridesMap,
   Site
 } from './types'
+import posthogPlugin from 'analytics-plugin-posthog'
 
 export const rootNotionPageId: string = parsePageId(
   getSiteConfig('rootNotionPageId'),
@@ -186,9 +186,11 @@ export const fathomConfig = fathomId
     }
   : undefined
 
-export const posthogId = process.env.NEXT_PUBLIC_POSTHOG_ID
-export const posthogConfig: Partial<PostHogConfig> = {
-  api_host: 'https://app.posthog.com'
+export const posthogId = isDev ? null : process.env.NEXT_PUBLIC_POSTHOG_ID
+if (posthogId) {
+  analyticsConfig.plugins.push(posthogPlugin({
+    token: posthogId,
+  }));
 }
 
 function cleanPageUrlMap(

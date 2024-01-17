@@ -32,6 +32,7 @@ primary_region = "syd"
 
 [build.args]
   NEXT_PUBLIC_GOOGLE_ANALYTICS_ID="G-M5R396MEP8"
+  NEXT_PUBLIC_POSTHOG_ID="phc_gzmQetR04l175u1OwF6SEb0kLGQusXUIBGjTTcSyV2j"
 
 [mounts]
   source="simonhartcher_com_image_cache"

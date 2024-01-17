@@ -813,6 +813,13 @@ ajv@^6.10.0, ajv@^6.12.4, ajv@^6.12.5:
     json-schema-traverse "^0.4.1"
     uri-js "^4.2.2"
 
+analytics-plugin-posthog@^0.0.2:
+  version "0.0.2"
+  resolved "https://registry.yarnpkg.com/analytics-plugin-posthog/-/analytics-plugin-posthog-0.0.2.tgz#cc92d18bef6c022151d07ed509e1b080ba7d0a24"
+  integrity sha512-bH930FBcHMHuYfbp0RGGm+HbXhTm8jQ7IgGdKWJ5o5zer9EgEDYSAt3I1Lcnv8MKk3rkQWt3bCJnXg4uTDdU1Q==
+  dependencies:
+    posthog-js "^1.100.0"
+
 analytics-utils@^1.0.10:
   version "1.0.10"
   resolved "https://registry.yarnpkg.com/analytics-utils/-/analytics-utils-1.0.10.tgz#e44078176c67005e5b11aae1dc538202744a5ca5"
@@ -3003,6 +3010,13 @@ postcss@8.4.14:
     nanoid "^3.3.4"
     picocolors "^1.0.0"
     source-map-js "^1.0.2"
+
+posthog-js@^1.100.0:
+  version "1.100.0"
+  resolved "https://registry.yarnpkg.com/posthog-js/-/posthog-js-1.100.0.tgz#687b9a6e4ed226aa6572f4040b418ea0c8b3d353"
+  integrity sha512-r2XZEiHQ9mBK7D1G9k57I8uYZ2kZTAJ0OCX6K/OOdCWN8jKPhw3h5F9No5weilP6eVAn+hrsy7NvPV7SCX7gMg==
+  dependencies:
+    fflate "^0.4.1"
 
 posthog-js@^1.20.2:
   version "1.36.1"
