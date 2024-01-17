@@ -1,0 +1,33 @@
+{
+  "presets": ["next/babel"],
+  "plugins": [
+    ["prismjs", {
+        "languages": [
+          "markup-templating",
+          "markup",
+          "bash",
+          "c",
+          "cpp",
+          "csharp",
+          "docker",
+          "js-templates",
+          "diff",
+          "git",
+          "html",
+          "yaml",
+          "wasm",
+          "sql",
+          "swift",
+          "markdown",
+          "scss",
+          "rust",
+          "python",
+          "typescript",
+          "gdscript"
+        ],
+        "plugins": ["line-numbers"],
+        "theme": "coy",
+        "css": true
+    }]
+  ]
+}
