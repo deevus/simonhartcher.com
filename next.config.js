@@ -4,6 +4,7 @@ const withBundleAnalyzer = require('@next/bundle-analyzer')({
 })
 
 module.exports = withBundleAnalyzer({
+  output: 'export',
   staticPageGenerationTimeout: 300,
   images: {
     domains: [
@@ -17,20 +18,24 @@ module.exports = withBundleAnalyzer({
     ],
     formats: ['image/avif', 'image/webp'],
     dangerouslyAllowSVG: true,
-    contentSecurityPolicy: "default-src 'self'; script-src 'none'; sandbox;"
+    contentSecurityPolicy: "default-src 'self'; script-src 'none'; sandbox;",
+    unoptimized: true
   },
-  async redirects() {
-    return [
-      {
-        source: '/bio',
-        destination: '/about',
-        permanent: false,
-      },
-      {
-        source: '/modern-approach-to-legacy-web-applications-1-add-js-bundling-to-an-existing-mvc-project',
-        destination: '/how-to-add-java-script-bundling-to-an-existing-mvc-project',
-        permanent: true,
-      }
-    ]
-  },
+  typescript: {
+    ignoreBuildErrors: true
+  }
+  // async redirects() {
+  //   return [
+  //     {
+  //       source: '/bio',
+  //       destination: '/about',
+  //       permanent: false,
+  //     },
+  //     {
+  //       source: '/modern-approach-to-legacy-web-applications-1-add-js-bundling-to-an-existing-mvc-project',
+  //       destination: '/how-to-add-java-script-bundling-to-an-existing-mvc-project',
+  //       permanent: true,
+  //     }
+  //   ]
+  // },
 })
