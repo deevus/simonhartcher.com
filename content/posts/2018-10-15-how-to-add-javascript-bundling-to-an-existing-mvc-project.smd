@@ -40,7 +40,7 @@ With that out of the way, let’s move onto…
 ## Bundling
 
 
-Many modern web applications tend to be very heavily focused on JavaScript. JavaScript is rendering all the HTML, CSS and talking to APIs. However, there are many browsers[1](about:blank#fn1) that do not understand keywords like `import` and `require` (the method in which dependencies are referenced in JavaScript). Thus a browser specific solution had to be developed.
+Many modern web applications tend to be very heavily focused on JavaScript. JavaScript is rendering all the HTML, CSS and talking to APIs. However, there are many browsers[1][1] that do not understand keywords like `import` and `require` (the method in which dependencies are referenced in JavaScript). Thus a browser specific solution had to be developed.
 
 
 Bundling helps organise your project so that all the dependencies and code are “bundled” together. You don’t need to have a unique set of `<script>` tags for every page: The bundle is your entire application.
@@ -522,5 +522,5 @@ So at this stage we have removed the need for including Bootstrap and jQuery on 
 
 ---
 
-1. [All major browsers now support ](https://developers.google.com/web/fundamentals/primers/modules)[`import`](https://developers.google.com/web/fundamentals/primers/modules). I originally implied that no browsers support `import`. Thanks to [Wael Kdouh](https://twitter.com/waelkdouh/status/1052412616675491841) for pointing this out![↩](about:blank#fnref1)
+1. [All major browsers now support ](https://developers.google.com/web/fundamentals/primers/modules)[`import`](https://developers.google.com/web/fundamentals/primers/modules). I originally implied that no browsers support `import`. Thanks to [Wael Kdouh](https://twitter.com/waelkdouh/status/1052412616675491841) for pointing this out![↩][1]
 

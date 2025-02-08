@@ -10,6 +10,7 @@ import CONFIG from "./config";
 
 const notion = new Client({ auth: process.env.NOTION_TOKEN });
 const databaseId = process.env.NOTION_DATABASE_ID!;
+
 const n2md = new NotionToMarkdown({
   notionClient: notion,
 });
@@ -98,7 +99,9 @@ try {
     n2md.setCustomTransformer("image", pageImageTransformer);
 
     const mdBlocks = await n2md.pageToMarkdown(page.id);
-    const content = n2md.toMarkdownString(mdBlocks);
+
+    var content = n2md.toMarkdownString(mdBlocks).parent;
+    content = content.replace(/\(about:blank\#(fn|fnref)([0-9]+)\)/gm, "[$2]");
 
     const mdContent = `---
 .date = "${pageDate}",
@@ -110,7 +113,7 @@ try {
 ---
 
 ${cover ?? ""}
-${content.parent}
+${content}
 `;
 
     fs.writeFileSync(filePath, mdContent);
