@@ -3,7 +3,19 @@ import moment from "moment";
 import fs from "fs";
 import path from "path";
 import { NotionToMarkdown } from "notion-to-md";
-import { ImageBlockObjectResponse } from "@notionhq/client/build/src/api-endpoints";
+import {
+  CheckboxPropertyItemObjectResponse,
+  DatePropertyItemObjectResponse,
+  Heading1BlockObjectResponse,
+  ImageBlockObjectResponse,
+  MultiSelectPropertyItemObjectResponse,
+  PageObjectResponse,
+  ParagraphBlockObjectResponse,
+  PropertyItemObjectResponse,
+  RichTextItemResponse,
+  RichTextPropertyItemObjectResponse,
+  TitlePropertyItemObjectResponse,
+} from "@notionhq/client/build/src/api-endpoints";
 import { partial } from "ramda";
 import { ListBlockChildrenResponseResult } from "notion-to-md/build/types";
 
@@ -84,31 +96,6 @@ const CONFIG = {
   defaultAuthor: "Simon Hartcher",
 };
 
-// clear existing posts
-try {
-  if (fs.existsSync(CONFIG.postsDir)) {
-    const files = fs.readdirSync(CONFIG.postsDir);
-    for (const file of files) {
-      fs.unlinkSync(path.join(CONFIG.postsDir, file));
-    }
-  } else {
-    fs.mkdirSync(CONFIG.postsDir);
-  }
-} catch (error) {
-  console.error("Error clearing posts directory:", error);
-  process.exit(1);
-}
-
-// make sure assets directory exists
-try {
-  if (!fs.existsSync(CONFIG.assetsDir)) {
-    fs.mkdirSync(CONFIG.assetsDir);
-  }
-} catch (error) {
-  console.error("Error creating assets directory:", error);
-  process.exit(1);
-}
-
 const curTime = moment(Date.now());
 const today = curTime.format("YYYY-MM-DD");
 const startDay = moment(curTime)
@@ -130,19 +117,24 @@ function formatStr(str: string): string {
   return str;
 }
 
-const PROPERTIES = {
-  DATE: "Published",
-  TITLE: "Name",
-  DESCRIPTION: "Description",
-  IMAGE: "img",
-  IMAGE_DESC: "imgDesc",
-  TAGS: "Tags",
-  AUTHOR: "Author",
-  TWEET: "Tweet",
-  SLUG: "Slug",
-  FEATURED: "Featured",
-  PUBLIC: "Public",
-} as const;
+interface Properties {
+  Date: DatePropertyItemObjectResponse;
+  Published: DatePropertyItemObjectResponse;
+  Name: {
+    title: RichTextItemResponse[];
+  };
+  Description: ParagraphBlockObjectResponse["paragraph"];
+  Tags: MultiSelectPropertyItemObjectResponse;
+  Author: RichTextPropertyItemObjectResponse;
+  Tweet: RichTextPropertyItemObjectResponse;
+  Slug: RichTextPropertyItemObjectResponse;
+  Featured: CheckboxPropertyItemObjectResponse;
+  Public: CheckboxPropertyItemObjectResponse;
+}
+
+type PageObjectResponseWithProperties = PageObjectResponse & {
+  properties: Properties;
+};
 
 function setMdImg(img: string, txt: string): string {
   let desc = txt ? `<small>${txt}</small>\n\n` : "";
@@ -153,17 +145,10 @@ try {
   const response = await notion.databases.query({
     database_id: databaseId,
     filter: {
-      and: [
-        {
-          property: PROPERTIES.DATE,
-          date: {
-            before: today,
-          },
-        },
-      ],
+      and: [],
       sorts: [
         {
-          property: PROPERTIES.DATE,
+          property: "Published",
           direction: "ascending",
         },
       ],
@@ -177,47 +162,35 @@ try {
 
   console.log(`Number of pages: ${response.results.length}`);
 
-  for (const page of response.results) {
+  for (const page of response.results as PageObjectResponseWithProperties[]) {
     console.log("Processing page...");
 
-    const isPublic = page.properties[PROPERTIES.PUBLIC].checkbox;
+    const isPublic = page.properties.Public.checkbox;
     if (!isPublic) {
       console.log("Page is not public");
       continue;
     }
 
     const cover = page.cover?.external?.url || page.cover?.file.url;
-    const props = page.properties;
+    const props = page.properties as Properties;
 
-    const title = props[PROPERTIES.TITLE]?.title[0].plain_text;
+    const title = props.Name.title[0].plain_text;
     console.log(`Title: ${title}`);
 
     const author =
-      props[PROPERTIES.AUTHOR].rich_text[0]?.plain_text ?? CONFIG.defaultAuthor;
+      props.Author.rich_text[0]?.plain_text ?? CONFIG.defaultAuthor;
 
     const description =
-      props[PROPERTIES.DESCRIPTION]?.rich_text
-        .map((item) => item.plain_text)
-        .join("") || "";
-    const img =
-      props[PROPERTIES.IMAGE]?.files[0]?.file?.url ||
-      props[PROPERTIES.IMAGE]?.files[0]?.external?.url ||
+      props.Description?.rich_text.map((item) => item.plain_text).join("") ||
       "";
-    const imgDesc =
-      props[PROPERTIES.IMAGE_DESC]?.rich_text[0]?.plain_text || "";
     const targetStr = formatStr(description);
-    const tag =
-      (props[PROPERTIES.TAGS].multi_select &&
-        props[PROPERTIES.TAGS].multi_select[0]?.name) ||
-      props[PROPERTIES.TAGS].select?.name;
+    const tag = props.Tags.multi_select && props.Tags.multi_select[0]?.name;
+
     console.log(`Tag: ${tag || "No tag"}`);
 
     const oneImg = cover ? `![](${cover})` : "";
-    const mdImg = img ? setMdImg(img, imgDesc) : "";
 
-    const pageDate = moment(props[PROPERTIES.DATE].date.start).format(
-      "YYYY-MM-DD",
-    );
+    const pageDate = moment(props.Published.date!.start).format("YYYY-MM-DD");
     const postName = `${pageDate}-${title.toLowerCase().replace(/[^a-z0-9]+/g, "-")}`;
     const fileName = `${postName}.smd`;
     const filePath = path.join(CONFIG.postsDir, fileName);
