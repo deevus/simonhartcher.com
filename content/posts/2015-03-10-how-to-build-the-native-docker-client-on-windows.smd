@@ -2,11 +2,12 @@
 .date = "2015-03-10",
 .title = "How To Build The Native Docker Client On Windows",
 .description = "",
-.tags = [""],
+.tags = [],
 .author = "Simon Hartcher",
 .layout = "post.shtml",
 ---
 
+[]($image.asset("cover.png"))
 
 # Requisites
 

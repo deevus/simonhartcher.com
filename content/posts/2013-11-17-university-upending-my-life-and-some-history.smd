@@ -2,11 +2,12 @@
 .date = "2013-11-17",
 .title = "University (Upending My Life) and Some History",
 .description = "A change of scenery and means",
-.tags = [""],
+.tags = [],
 .author = "Simon Hartcher",
 .layout = "post.shtml",
 ---
 
+[]($image.asset("cover.png"))
 
 ## When it started 
 

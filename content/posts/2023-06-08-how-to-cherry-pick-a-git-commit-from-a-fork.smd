@@ -2,11 +2,12 @@
 .date = "2023-06-08",
 .title = "How to Cherry-Pick a Git Commit from a Fork",
 .description = "",
-.tags = ["Git"],
+.tags = ["Git", "GitHub", "Cherry-Pick", "Software Development", "Terminal", "Forks"],
 .author = "Simon Hartcher",
 .layout = "post.shtml",
 ---
 
+[]($image.asset("cover.jpg"))
 
 ## **Introduction**
 

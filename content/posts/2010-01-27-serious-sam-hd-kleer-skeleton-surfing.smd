@@ -2,11 +2,12 @@
 .date = "2010-01-27",
 .title = "Serious Sam HD – Kleer Skeleton Surfing",
 .description = "",
-.tags = [""],
+.tags = [],
 .author = "Simon Hartcher",
 .layout = "post.shtml",
 ---
 
+[]($image.asset("cover.png"))
 
 Something funny I discovered while playing Serious Sam HD: The First Encounter. A bit of a bug I guess.
 

@@ -2,11 +2,12 @@
 .date = "2023-04-23",
 .title = "Get 3D look rotations in 2D with Godot 4",
 .description = "",
-.tags = ["Godot"],
+.tags = ["Godot", "Game Development", "Shaders", "Arkon"],
 .author = "Simon Hartcher",
 .layout = "post.shtml",
 ---
 
+[]($image.asset("cover.jpg"))
 
 While working on a digital conversion of the card game called [Arkon](http://arkongame.com/), I needed a way to be able to animate the flip of a card from facedown to faceup and vice-versa. 
 

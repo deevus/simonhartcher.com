@@ -2,11 +2,12 @@
 .date = "2015-09-28",
 .title = "Getting Started With Meteor and React",
 .description = "Now with more ES6",
-.tags = [""],
+.tags = [],
 .author = "Simon Hartcher",
 .layout = "post.shtml",
 ---
 
+[]($image.asset("cover.jpg"))
 
 This article is an extension of [Getting started with Meteor and React](http://sergiotapia.me/2015/09/18/react-and-meteor-match-made-in-heaven/), except that I’ve modified the code to work with ES6.
 

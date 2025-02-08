@@ -2,11 +2,12 @@
 .date = "2023-06-08",
 .title = "React Behavioural Props",
 .description = "",
-.tags = ["React.js"],
+.tags = ["React.js", "Web Dev", "Software Development", "Tips"],
 .author = "Simon Hartcher",
 .layout = "post.shtml",
 ---
 
+[]($image.asset("cover.jpg"))
 
 # Introduction
 

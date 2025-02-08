@@ -2,11 +2,12 @@
 .date = "2012-07-05",
 .title = "Update All Hg Repositories Using Powershell",
 .description = "",
-.tags = [""],
+.tags = [],
 .author = "Simon Hartcher",
 .layout = "post.shtml",
 ---
 
+[]($image.asset("cover.jpg"))
 
 # Developer Morning Ritual
 
