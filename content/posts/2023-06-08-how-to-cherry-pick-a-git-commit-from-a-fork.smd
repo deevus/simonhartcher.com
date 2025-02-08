@@ -1,0 +1,85 @@
+---
+.date = "2023-06-08",
+.title = "How to Cherry-Pick a Git Commit from a Fork",
+.description = "",
+.tags = ["Git"],
+.author = "Simon Hartcher",
+.layout = "post.shtml",
+---
+
+
+## **Introduction**
+
+
+When working with Git, there are times when you might want to include specific changes or commits made in a different repository, or even a fork of the same repository. This is where the **`cherry-pick`** command comes into play.
+
+
+Cherry-picking in Git means to choose a commit from one branch and apply it onto another. This ensures that you get only the changes you want without merging a whole branch. 
+
+
+### Note
+
+
+In the following steps, we will be using a GitHub-hosted repository as an example. However, these steps will work with any Git repository, regardless of where it is hosted. You can even add another Git repository on your filesystem as a remote if you need to. 
+
+
+## **Steps to Cherry-Pick a Git Commit from a Fork**
+
+
+Here's a step-by-step guide on how to cherry-pick a commit from a fork:
+
+
+### **Step 1: Get the Address of the Fork**
+
+
+The first thing you need is the URL of the fork. This should follow the format: **`https://github.com/{username}/{repo-name}`**
+
+
+### **Step 2: Add the Fork as a Remote**
+
+
+Next, you need to add the fork as a new remote to your local Git repository. You can do this using the **`git remote add`** command followed by a name for the remote (usually the username of the owner of the fork), and then the URL of the fork:
+
+
+```bash
+git remote add {username} https://github.com/{username}/{repo-name}
+```
+
+
+This creates a new remote, pointing to the forked repository.
+
+
+### **Step 3: Fetch the Remote**
+
+
+Now, fetch all the branches and commits from the new remote with **`git fetch`**:
+
+
+```bash
+git fetch {username}
+```
+
+
+This will fetch all the updates from the forked repository.
+
+
+### **Step 4: Cherry-Pick the Commit(s)**
+
+
+Finally, you're ready to cherry-pick the commit(s). You will need the hash of the specific commit you want to cherry-pick. Then, use the **`git cherry-pick`** command:
+
+
+```bash
+git cherry-pick {commit_hash}
+```
+
+
+This command will apply the changes from the specific commit to your current branch.
+
+
+## **Conclusion**
+
+
+There you have it - cherry-picking a commit from a fork! It's a simple yet powerful way to pull in changes from a forked repository without merging whole branches. Remember to replace **`{username}`**, **`{repo-name}`**, and **`{commit_hash}`** with the actual username, repository name, and the hash of the commit you want to cherry-pick, respectively. Happy cherry-picking!
+
+

@@ -1,0 +1,194 @@
+---
+.date = "2023-06-08",
+.title = "React Behavioural Props",
+.description = "",
+.tags = ["React.js"],
+.author = "Simon Hartcher",
+.layout = "post.shtml",
+---
+
+
+# Introduction
+
+
+In any software team, having a set of coding conventions is key to help every team member work cohesively and collaboratively on a software project. Over the last 8-9 years of using React on the frontend, one thing that I have _endured_ is that there is no agreed upon standard for how to write and organise React components (and hooks).
+
+
+It seems that every software developer has their own opinion on the subject, and I’ve definitely been guilty of taking a haphazard approach myself. How you organise your file and folder structure is outside what I’ll be covering in this article. Instead I will be focusing on a framework that I have devised over the last 6 years working at [Bonjoro](https://www.bonjoro.com/) that I currently call “Behavioural Props”.
+
+
+# What are Behavioural Props?
+
+
+The aim of Behavioural Props is to build presentational React components in such a way that it makes components easy to reason about what it will look like when you render it to a page.
+
+
+The idea of Behavioural Props is simple: the properties of your presentational components should only indicate _how the component will behave_ when the property is set. Let’s start with a simple example, a button.
+
+
+Take a look at this code example. If you’re familiar with React + TypeScript, this is a very simple component. 
+
+
+```typescript
+import React, { useMemo } from 'react';
+
+export enum ButtonVariant {
+	Default = 'default',
+	Primary = 'primary',
+	Secondary = 'secondary',
+}
+
+export interface ButtonProps {
+	variant?: ButtonVariant;
+	loading?: boolean;
+	children: React.ReactNode;
+	onClick?(): void;
+}
+
+export function Button({ variant = ButtonVariant.Default, loading = false, children, onClick }: ButtonProps) {
+	const buttonStyle = useMemo(() => {
+		switch (variant) {
+			case ButtonVariant.Default:
+				return {
+					backgroundColor: 'grey',
+				};
+			case ButtonVariant.Primary:
+				return {
+					backgroundColor: 'blue',
+				};
+			case ButtonVariant.Secondary:
+				return {
+					backgroundColor: 'green',
+				};
+			default:
+				return {};
+		}
+	}, [variant]);
+
+	return (
+		<button style={buttonStyle} onClick={onClick}>
+			{loading && (
+				Loading…
+			)}
+
+			{!loading && children}
+		</button>
+	);
+}
+
+```
+
+
+So what does this button component do? Let’s list it out:
+
+- Multiple variants via the `variant` prop
+- A loading state via the `loading` prop
+- A click handler via the `onClick` prop
+- What to render inside the button via the `children` prop
+
+## How is this any different to any components I’ve written or used before?
+
+
+To begin, let's discuss the `loading` prop. The way it works is simple: when `loading = true`, the button displays the text "Loading...". Otherwise, it renders the `children` prop instead.
+
+
+This is at the core of Behavioural Props. You, the programmer of the business logic, are _instructing_ the component to behave as if it is `loading`. These kind of properties are _instructions_. That is important.
+
+
+**Compose your properties so that they are instruct the component on how to look and feel.**
+
+
+A common pattern you may have seen may call this property `isLoading`. To me, this is a mistake! It is more like a question. It is akin to Will Ferrell’s character in Anchor Man asking: “I’m Ron Burgundy?”. “Is loading?”. It doesn’t make sense.
+
+
+[video](https://www.youtube.com/watch?v=X3zfP14pLxc)
+
+
+## You’re the boss, man!
+
+
+When using a behavioural style, **you’re the boss**. You’re not confused about what you want the component to do. You’re in command. This button, it’s loading! This is a primary button!
+
+
+This translates well for anyone using your component. Let's say you're building a library, whether it's internal only or public on npm. Your users will thank you (probably not literally) for writing props that are obviously clear in how they function.
+
+
+# **Another Example: A Card Component**
+
+
+After establishing the groundwork with a simple button component, let's delve into a more complex component - a card component, which is usually used for presenting interconnected pieces of information. Here's a possible implementation using behavioural props:
+
+
+```typescript
+import React, { useMemo } from 'react';
+
+export enum CardVariant {
+  Default = 'default',
+  Highlighted = 'highlighted',
+}
+
+export interface CardProps {
+  variant?: CardVariant;
+  title: React.ReactNode;
+  children: React.ReactNode;
+  footer?: React.ReactNode;
+}
+
+export function Card({ variant = CardVariant.Default, title, children, footer }: CardProps) {
+  const cardStyle = useMemo(() => {
+    switch (variant) {
+      case CardVariant.Default:
+        return {
+          borderColor: 'grey',
+        };
+      case CardVariant.Highlighted:
+        return {
+          borderColor: 'gold',
+        };
+      default:
+        return {};
+    }
+  }, [variant]);
+
+  return (
+    <div style={cardStyle}>
+      <h2>{title}</h2>
+      {children}
+      {footer && (
+        <div>
+          {footer}
+        </div>
+      )}
+    </div>
+  );
+}
+```
+
+
+Here, our Card component has **`variant`**, **`title`**, **`children`**, and **`footer`** props. This approach provides users with a simple, intuitive API. They don't have to guess or remember the purpose of each prop; the names make it clear.
+
+
+## **More than just looks: Making Behaviour Paramount**
+
+
+Although behavioural props indeed help dictate how a component will look, their primary purpose is to make components more predictable and clear in their function. This increased clarity and predictability in turn makes components easier to maintain, more intuitive to use, and more consistent across a codebase.
+
+
+Behavioural props define more than just the outward appearance of a component. They also govern its interactivity, response to user actions, and more. Emphasising these aspects through behavioural props encourages transparency, making components easier to understand for every developer involved. 
+
+
+In essence, behavioural props bridge understanding gaps, opening up avenues for better team cooperation and cohesive development practices. They're more than just a coding convention; they're a catalyst for effective collaboration.
+
+
+# **Conclusion**
+
+
+Behavioural props may seem like a minor shift in how we approach building React components, but they have the potential to bring about substantial improvements in code clarity, maintainability, and collaboration. The underlying principle of behavioural props is straightforward yet impactful: convert your props into instructions, not inquiries. Embracing this mindset can result in more intuitive, user-friendly components, and a smoother development process.
+
+
+The next time you're conceptualising a React component, consider how you could incorporate behavioural props to enhance its predictability and intuitiveness. Always remember: **you're the boss**. It's your role to define the behaviour of the component, not to question it. Be clear, decisive, and directive in your coding.
+
+
+In my experience at [**Bonjoro**](https://www.bonjoro.com/), the application of behavioural props has significantly bolstered our team's productivity and collaboration. I firmly believe it holds the potential to bring about the same transformative change in your team. Give it a go and feel free to share your experiences in the comments section below!
+
+

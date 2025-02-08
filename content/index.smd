@@ -1,0 +1,10 @@
+---
+.title = "Simon Hartcher's Blog",
+.date = "2024-01-29",
+.author = "Simon Hartcher",
+.draft = false,
+.tags = ["blog", "home"],
+.layout = "index.shtml"
+---
+
+Hello, world!

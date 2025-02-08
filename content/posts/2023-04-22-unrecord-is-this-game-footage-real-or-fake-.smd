@@ -1,0 +1,111 @@
+---
+.date = "2023-04-22",
+.title = "UNRECORD: Is this game footage real or fake? ",
+.description = "UNRECORD is causing a stir on social media",
+.tags = ["Gaming"],
+.author = "Simon Hartcher",
+.layout = "post.shtml",
+---
+
+
+First things first, if you haven’t seen the footage in question, watch the video in the following tweet:
+
+
+[embed](https://twitter.com/esankiy/status/1648717946477314048?s=61&t=vNQpPAmHrjS7yYnGGfsEeA)
+
+
+As announced by [Alexandre Spindler](https://twitter.com/esankiy) 2 days ago (at time of writing) in the above tweet, the game is called UNRECORD and is described as a “bodycam FPS”. 
+
+
+When I first watched the video I was blown away by what I was seeing. As for if I thought that the footage was faked or not, I wasn’t sure. There are a few things which to me seemed “telling” that the video might be fake. 
+
+
+# Why does it look real?
+
+
+## The natural camera movement
+
+
+The biggest aspect that makes the trailer look real to me is the way that the body camera jostles and moves as the player traverses the world. It really does give the impression that this is a real camera on a real person’s chest. It pivots and wobbles in a way which a camera in a game typically does not. 
+
+
+## “Low quality” camera look
+
+
+Camera technology has come a long way, but it still isn’t able to handle every situation perfectly. The footage in the trailer instantly gave me the impression that the camera was a GoPro mounted on the player’s chest. 
+
+
+[]($image.asset("e878cd1a-05b5-4654-875a-137643defa07.jpg"))
+
+
+Adjustable field of view (FOV) is standard in modern video games. Games on consoles generally default to an FOV of 60. PC players can often increase the FOV up to 90 or above depending on the game. The higher the FOV the more of the scene the player can see at once, however it also causes distortion at the edges, making objects look larger than if they were centred. 
+
+
+By using a high FOV and a vignette, UNRECORD gives the impression of using a fish-eye camera lens. It doesn’t look too high, however you can see in the image above that the book case appears bent vertically. 
+
+
+## Camera Overexposure
+
+
+Right at the start of the trailer, the player is outside an abandoned looking building. The skybox is completely washed out. You can see the same effect on a real video recorded on a cloudy day. 
+
+
+[]($image.asset("fc2747d7-b68e-48e8-87c2-2108ce5e1141.png"))
+
+
+When you compare that with the trailer footage, it is quite similar, and it’s not something you see done well in most video games. UNRECORD absolutely nails this effect. 
+
+
+[]($image.asset("0f703cf2-2588-49d3-a335-bef65ce18b4a.png"))
+
+
+# The truth comes out
+
+
+A couple of days following the release of the trailer on Twitter, Alexandre posted another tweet that confirms that the footage is not fake. 
+
+
+[embed](https://twitter.com/esankiy/status/1649104852704690178?ref_src=twsrc%5Etfw%7Ctwcamp%5Etweetembed%7Ctwterm%5E1649104852704690178%7Ctwgr%5Ecb0ee5c5ac228cc483ccacd4f4d43bb7daabefc4%7Ctwcon%5Es1_&ref_url=https%3A%2F%2Fwww.windowscentral.com%2Fgaming%2Fpc-gaming%2Funrecord-the-game-that-looked-too-real-to-be-true-until-now)
+
+
+I don’t know if Alexandre knew that the trailer would be so divisive. If it was me, it would bring me great joy to be able to set the RECORD straight (I’m sorry). 
+
+
+As far as I know, Alexandre is the sole programmer on this project right now, and has used off-the-shelf assets to produce the trailer for UNRECORD. For example, the abandoned building from the trailer is a [premium asset on the Unreal Marketplace](https://www.unrealengine.com/marketplace/en-US/product/modular-abandoned-building-01). 
+
+
+[embed](https://twitter.com/Daahrien/status/1649116356237819904?s=20)
+
+
+# Will it be fun to play?
+
+
+As cool as this trailer is and how excited many people are about this game, it begs the question: will UNRECORD by fun to play? Watching a video of someone playing a game is one thing. Will a camera system this unique translate to a palatable gameplay experience? I’m not so sure. 
+
+
+Part of what makes good FPS games fun is how good the gunplay feels. It’s how the player’s input translates to what is happening in the game. Player’s want instant gratification when they fire a weapon, and the game mechanics need to function in a way that doesn’t feel too random. 
+
+
+The camera system in UNRECORD might present a bit of a challenge in this aspect. It was difficult to tell from the trailer how aiming is going to work. There is no crosshair or indication of where your shot will land apart from aiming the pistol in the general direction of the enemy. 
+
+
+This might prove to be frustrating for players who are used to the precise nature of FPS games they have played for 100’s or 1000’s of hours. 
+
+
+# Conclusion
+
+
+It will be very interesting to see how UNRECORD performs once it hits early access or release [on Steam](https://store.steampowered.com/app/2381520/Unrecord/). I’ll be following along with keen interest, and I won’t be surprised if other copy-cat games pop up in the next few weeks and months. 
+
+
+I really love that there are indie game developers out there pushing the boundaries. As consumers we find ourselves asking the question “is this real?”, I think the fact that one person working on a project (leveraging the mountain of work done with Unreal 5 of course) can have thousands of people asking this question is amazing. Give me more of this please. 
+
+
+# Links
+
+- Wishlist UNRECORD on Steam: [https://store.steampowered.com/app/2381520/Unrecord/](https://store.steampowered.com/app/2381520/Unrecord/)
+- Follow Alexandre on Twitter: [https://twitter.com/esankiy](https://twitter.com/esankiy)
+- Follow UNRECORD on Twitter: [https://twitter.com/unrecordgame](https://twitter.com/unrecordgame)
+- Follow Drama Game Studio on Twitter: [https://twitter.com/dramagamestudio](https://twitter.com/dramagamestudio)
+- Check out the Drama Game Studio website: [https://studiosdrama.com/](https://studiosdrama.com/)
+

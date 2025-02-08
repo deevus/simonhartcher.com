@@ -1,0 +1,17 @@
+.{
+    .name = "simonhartcher.com",
+    .version = "0.0.0",
+    .dependencies = .{
+        .zine = .{
+            .path = "../zine",
+        },
+    },
+    .paths = .{
+        "build.zig",
+        "build.zig.zon",
+        "src",
+        // For example...
+        //"LICENSE",
+        //"README.md",
+    },
+}

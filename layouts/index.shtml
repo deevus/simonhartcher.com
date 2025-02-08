@@ -1,0 +1,14 @@
+<extend template="base.shtml">
+<title id="title" :text="$page.title"></title>
+<head id="head">
+</head>
+
+<div id="content">
+    <div :loop="$page.subpages()">
+        <div>
+            <a :text="$loop.it.title" href="$loop.it.link()"></a>
+        </div>
+    </div>
+
+    <div id="page" :html="$page.content()"></div>
+</div>

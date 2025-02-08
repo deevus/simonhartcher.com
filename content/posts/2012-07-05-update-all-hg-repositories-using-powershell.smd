@@ -1,0 +1,77 @@
+---
+.date = "2012-07-05",
+.title = "Update All Hg Repositories Using Powershell",
+.description = "",
+.tags = [""],
+.author = "Simon Hartcher",
+.layout = "post.shtml",
+---
+
+
+# Developer Morning Ritual
+
+
+As part of my morning ritual I need to update all of my source control repositories so that I have the latest code to start the day. For the record, I’m using Mercurial (hg).
+
+
+For the longest time I was going through each repository using _TortoiseHg Workbench_ and doing a manual `hg pull` using the GUI. The amount of repositories has gotten to a ridiculous number so I decided I would automate the process.
+
+
+# Yay, Powershell!
+
+
+[]($image.asset("175c0cce-267d-4fe4-98f0-2ea3b86eef11.jpg"))
+
+
+Given that I am working on Windows I decided to use [Powershell](http://en.wikipedia.org/wiki/Windows_PowerShell), which I feel is very powerful and exactly what we (Windows developers) needed in a command line.
+
+
+# Teh Codez
+
+
+```powershell
+Cls
+Write-Host "Searching for repositories to update..."
+Write-Host
+
+$dirs = Get-ChildItem | where {$_.PsIsContainer} | where { Get-ChildItem $_ -filter ".hg" }
+
+foreach ($dir in $dirs)
+{
+    Start-Job -Name HgUpdate$dir -ArgumentList @($dir.FullName) -ScriptBlock {
+        pushd $args[0]
+        hg pull --update
+    } | Out-Null
+    "Created job for repository: " + $dir
+}
+
+Cls
+Write-Host "Waiting for jobs to complete..."
+Wait-Job HgUpdate* | Out-Null
+
+Cls
+Receive-Job HgUpdate*
+Write-Host
+Write-Host "All jobs completed."
+Write-Host "Press any key to continue..."
+$host.UI.RawUI.ReadKey("NoEcho,IncludeKeyDown") | Out-Null
+```
+
+
+There’s not a lot going on here:
+
+1. Get all the directories in the same directory as the script that contain Hg repositories
+2. Start a job to update each repository with a unique name (HgUpdate plus the name of the directory)
+3. Wait for all the jobs to complete
+4. Print the result of all the jobs to the screen
+5. Wait for user input
+
+The cool thing happening in this script is that all the repositories will be pulled asyncronously using the [`Start-Job`](http://technet.microsoft.com/en-us/library/hh849698.aspx) command. This way we don’t have to wait for one to finish before the next one can start. The result is a morning filled with the latest codez for no effort :)
+
+
+# What About Git?
+
+
+Using minimal changes you should be able to get this script working with Git. I haven’t provided a Git version because I don’t need it, and you smart developers should be able to make the changes yourself. Changing the `-filter` to look for a Git repository and the `hg pull –update` line to get the latest Git changes should do it. If you do it, let me know!
+
+

@@ -1,0 +1,189 @@
+---
+.date = "2023-04-23",
+.title = "Get 3D look rotations in 2D with Godot 4",
+.description = "",
+.tags = ["Godot"],
+.author = "Simon Hartcher",
+.layout = "post.shtml",
+---
+
+
+While working on a digital conversion of the card game called [Arkon](http://arkongame.com/), I needed a way to be able to animate the flip of a card from facedown to faceup and vice-versa. 
+
+
+# What is Arkon?
+
+
+I don’t have a great elevator pitch just yet, so here is a quote from Board Game Geek
+
+> Arkon is a fast paced strategy card game, played from one central deck of 52 cards. Players must win clans, either through a bidding process, that functions like an silent auction, or through using their cards as actions, to take other players clans. The first player to get each of the four clans, or four of one type of clan out into play, wins. — [boardgamegeek.com](https://boardgamegeek.com/boardgame/234221/arkon)
+
+# Attempt #1: Scale the X axis
+
+
+For my naive first attempt I used an `AnimationPlayer` node to animate the `scale.x` property of the `TextureRect`. 
+
+
+[]($image.asset("d1bcba42-ff18-4537-b1fd-0bd838c0b429.png"))
+
+
+The flip animation works as follows:
+
+- Start by setting the scale property to (1, 1)
+- At 0.1 seconds, set the scale property to (0.01, 1)
+- Also at 0.1 seconds, call the `toggle_face_up` function which will switch the `texture` property between two `Texture2D` values
+- At 0.2 seconds, set the scale property back to (1, 1)
+
+The result of which looks like this:
+
+
+[]($image.asset("fc8b06b3-353a-444d-b8d1-64cb0b04bf26.gif"))
+
+
+It looks okay, I guess. However, it doesn’t look quite right. From the perspective of the player, as the card “rotates” (since this is just a scale in the x axis), it should scale up in the y axis on one side, and down on the other. This is because as the card is flipped, one side is getting closer to you and the other is getting further away. If you’re not sure what I mean with this, it will soon become clear.
+
+
+As far as I can tell, there’s only one way to do per pixel scale and rotations.
+
+
+# Attempt #2: Use a Shader
+
+
+After a bit of searching on [Godot Shaders](https://godotshaders.com/) and a few false starts, I found [this bad boy](https://godotshaders.com/shader/2d-perspective/) called 2D-perspective. The description is simply as follows: 
+
+> This shader “fakes” a 3D-camera perspective on CanvasItems.
+
+Here is the shader in it’s entirety:
+
+
+```glsl
+// Hey this is Hei! This shader "fakes" a 3D-camera perspective on CanvasItems.
+// License: MIT
+
+shader_type canvas_item;
+
+// Camera FOV
+uniform float fov : hint_range(1, 179) = 90;
+uniform bool cull_back = true;
+uniform float y_rot : hint_range(-180, 180) = 0.0;
+uniform float x_rot : hint_range(-180, 180) = 0.0;
+// At 0, the image retains its size when unrotated.
+// At 1, the image is resized so that it can do a full
+// rotation without clipping inside its rect.
+uniform float inset : hint_range(0, 1) = 0.0;
+// Consider changing this to a uniform and changing it from code
+
+varying flat vec2 o;
+varying vec3 p;
+
+const float PI = 3.14159;
+
+// Creates rotation matrix
+void vertex(){
+	float sin_b = sin(y_rot / 180.0 * PI);
+	float cos_b = cos(y_rot / 180.0 * PI);
+	float sin_c = sin(x_rot / 180.0 * PI);
+	float cos_c = cos(x_rot / 180.0 * PI);
+	
+	mat3 inv_rot_mat;
+	inv_rot_mat[0][0] = cos_b;
+	inv_rot_mat[0][1] = 0.0;
+	inv_rot_mat[0][2] = -sin_b;
+	
+	inv_rot_mat[1][0] = sin_b * sin_c;
+	inv_rot_mat[1][1] = cos_c;
+	inv_rot_mat[1][2] = cos_b * sin_c;
+	
+	inv_rot_mat[2][0] = sin_b * cos_c;
+	inv_rot_mat[2][1] = -sin_c;
+	inv_rot_mat[2][2] = cos_b * cos_c;
+	
+	
+	float t = tan(fov / 360.0 * PI);
+	p = inv_rot_mat * vec3((UV - 0.5), 0.5 / t);
+	float v = (0.5 / t) + 0.5;
+	p.xy *= v * inv_rot_mat[2].z;
+	o = v * inv_rot_mat[2].xy;
+
+	VERTEX += (UV - 0.5) / TEXTURE_PIXEL_SIZE * t * (1.0 - inset);
+}
+
+void fragment(){
+	if (cull_back && p.z <= 0.0) discard;
+	vec2 uv = (p.xy / p.z).xy - o;
+    COLOR = texture(TEXTURE, uv + 0.5);
+	COLOR.a *= step(max(abs(uv.x), abs(uv.y)), 0.5);
+}
+```
+
+
+This shader has several parameters:
+
+- `fov`: Change the field of view of the rotation. Default is 90 degrees.
+- `cull_back`: When you’re looking at the back of the texture, should it still render? By default it will not render. When this is enabled, if you’re looking at the back of the card, you won’t be able to see anything.
+- `y_rot`: Sets the rotation on the y axis. **This is what we want!**
+- `x_rot`: Sets the rotation on the x axis.
+- `inset`: If set to `1.0`, the texture will be scaled down to fit inside it’s rect so that the rotation won’t clip outside of it. At `0.0`, it won’t be scaled at all.
+
+This shader is under the MIT license which is very permissive. So that means you can use it in a released game, which is awesome 👍
+
+
+For the card flip animation, I had to make a small adjustment to the shader, so that the texture is not mirrored when `y_rot` is greater than 90 degrees. Without this change, the texture will appear backwards. 
+
+
+```glsl
+if (y_rot > 90.0) {
+	COLOR = texture(TEXTURE, vec2(-uv.x + 0.5, uv.y + 0.5));
+	COLOR.a *= step(max(abs(uv.x), abs(uv.y)), 0.5);
+} else {
+	COLOR = texture(TEXTURE, uv + 0.5);
+	COLOR.a *= step(max(abs(uv.x), abs(uv.y)), 0.5);
+}
+```
+
+
+When the Y rotation is greater than 90 degrees, it will use the negative X coordinate from the UV to mirror the texture so that it appears the correct way. 
+
+
+Here is the final animation:
+
+
+[]($image.asset("d1c92e85-8bd8-4bb3-a6b3-84881757947a.gif"))
+
+
+The only parameters I changed from their default values were as follows:
+
+- `fov` is set to 60. You can play with this value to get the best look for your situation.
+- `cull_back` is set to `false`, since I want to see the back. You might usually want this on since the back of the texture will be rendered backwards, but we fixed that above.
+- `y_rotation` is set in the `AnimationPlayer`, from left to right the values for each key are 0, 90 and 180:
+
+[]($image.asset("80648cc2-da9c-47c0-9818-13b18d49cf90.png"))
+
+
+Finally, here is the GDScript for the Art node:
+
+
+```scala
+@tool
+extends TextureRect
+
+@export var front_art: Texture2D 
+@export var back_art: Texture2D
+
+@export var face_up: bool = true:
+	set(value):
+		face_up = value
+		texture = front_art if face_up else back_art
+
+@export var y_rotation: float = 0.0:
+	set(value):
+		material.set_shader_parameter('y_rot', value)
+	get:
+		return material.get_shader_parameter('y_rot')
+
+func toggle_face_up():
+	Utils.print_ts('toggling face up to %s' % not face_up)
+	face_up = not face_up
+```
+
+
