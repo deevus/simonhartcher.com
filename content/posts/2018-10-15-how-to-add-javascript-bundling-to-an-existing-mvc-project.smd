@@ -77,7 +77,7 @@ To follow on, download [the source code for this tutorial](https://github.com/de
 Once you have unzipped the project we need to run a few commands to get it up and running. If you’re using vscode, you can do all this from inside the editor.
 
 
-```shell
+```bash
 # download package dependencies required to run the project
 dotnet restore
 # build the project
@@ -289,7 +289,7 @@ At this stage this should be pretty relatable to whatever project you’re worki
 We need to create a `package.json` file as it is required to organise our JavaScript dependencies and initiate the webpack build.
 
 
-```shell
+```bash
 # creates package.json with default values
 yarn init -y
 ```
@@ -298,7 +298,7 @@ yarn init -y
 Next let’s install `laravel-mix` and the dependencies from `_Layout.cshtml`
 
 
-```shell
+```bash
 # add laravel-mix as a dev dependency
 # cross-env will be used in package.json later
 yarn add -D laravel-mix cross-env
@@ -342,7 +342,7 @@ mix.setPublicPath("wwwroot/");
 I mentioned `src/js/app.js` in `webpack.mix.js` above but we need to create it
 
 
-```shell
+```bash
 # create the src/js directory
 mkdir -p src/js
 ```
@@ -482,7 +482,7 @@ Head back to the browser, and now we can see that our console error is gone! How
 Install `expose-loader` with `yarn`
 
 
-```shell
+```bash
 yarn add -D expose-loader
 ```
 

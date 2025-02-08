@@ -43,7 +43,7 @@ NB. Using `$env` in Powershell only lasts for the Powershell session. It would b
 Lets change directories to the GOPATH before we mangle it later.
 
 
-```powershell
+```
 cd $env:GOPATH
 ```
 
@@ -57,7 +57,7 @@ From the command line you need to run `go get github.com/docker/docker` which wi
 There are also a couple of other environment variables required for compiling docker:
 
 
-```powershell
+```
 $env:DOCKER_CLIENTONLY=1
 
 # This is the mangling of the GOPATH that I was talking about
@@ -77,7 +77,7 @@ For this step you’ll need a copy of Bash. If you use GitHub for Windows, you c
 Then run the following:
 
 
-```powershell
+```
 # You should be at the GOPATH directory at this point
 cd src\github.com\docker\docker
 bash .\project\make\.go-autogen
@@ -87,7 +87,7 @@ bash .\project\make\.go-autogen
 # Finally, Compile Docker
 
 
-```powershell
+```
 # You're already at GOPATH\src\github.com\docker\docker
 # But we need to go deeper!
 cd docker

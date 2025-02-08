@@ -30,7 +30,7 @@ Given that I am working on Windows I decided to use [Powershell](http://en.wikip
 # Teh Codez
 
 
-```powershell
+```
 Cls
 Write-Host "Searching for repositories to update..."
 Write-Host

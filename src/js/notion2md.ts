@@ -7,6 +7,7 @@ import { converge, partial } from "ramda";
 import { imageTransformer, processImageBlock } from "./lib/images";
 import { PageObjectResponseWithProperties } from "./lib/types";
 import CONFIG from "./config";
+import { codeTransformer } from "./lib/transformers";
 
 const notion = new Client({ auth: process.env.NOTION_TOKEN });
 const databaseId = process.env.NOTION_DATABASE_ID!;
@@ -14,6 +15,7 @@ const databaseId = process.env.NOTION_DATABASE_ID!;
 const n2md = new NotionToMarkdown({
   notionClient: notion,
 });
+n2md.setCustomTransformer("code", codeTransformer);
 
 const curTime = moment(Date.now());
 const today = curTime.format("YYYY-MM-DD");

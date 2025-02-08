@@ -57,7 +57,7 @@ After a bit of searching on [Godot Shaders](https://godotshaders.com/) and a few
 Here is the shader in it’s entirety:
 
 
-```glsl
+```
 // Hey this is Hei! This shader "fakes" a 3D-camera perspective on CanvasItems.
 // License: MIT
 
@@ -132,7 +132,7 @@ This shader is under the MIT license which is very permissive. So that means you
 For the card flip animation, I had to make a small adjustment to the shader, so that the texture is not mirrored when `y_rot` is greater than 90 degrees. Without this change, the texture will appear backwards. 
 
 
-```glsl
+```
 if (y_rot > 90.0) {
 	COLOR = texture(TEXTURE, vec2(-uv.x + 0.5, uv.y + 0.5));
 	COLOR.a *= step(max(abs(uv.x), abs(uv.y)), 0.5);
@@ -164,7 +164,7 @@ The only parameters I changed from their default values were as follows:
 Finally, here is the GDScript for the Art node:
 
 
-```scala
+```
 @tool
 extends TextureRect
 

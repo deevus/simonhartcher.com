@@ -32,7 +32,7 @@ Considering the application we are working on will be displaying a lot of images
 After some searching I discovered that using the [Binding.Converter](http://msdn.microsoft.com/en-us/library/system.windows.data.binding.converter.aspx) attribute I could pass the value of the Source attribute to a Converter and then back again. To create a converter you create a class that implements [IValueConverter](http://msdn.microsoft.com/en-us/library/system.windows.data.ivalueconverter.aspx) requires that you implement two methods:
 
 
-```c#
+```c-sharp
 public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
 public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
 ```
@@ -41,7 +41,7 @@ public object ConvertBack(object value, Type targetType, object parameter, Cultu
 **Convert** will be used to convert the data you pass to it into the desired format to display on the form. **ConvertBack** is the reverse, where any changes the user makes to the data displayed on the form may need to be converted back to a format that you require for processing (eg. to send to a database). Here is an example as provided on msdn: > The following example shows the implementation of a date converter that converts the date value passed in so that it only shows the year, the month, and the day. When implementing the IValueConverter interface, it is a good practice to decorate the implementation with a [ValueConversionAttribute](http://msdn.microsoft.com/en-us/library/system.windows.data.valueconversionattribute.aspx) to indicate to development tools the data types involved in the conversion, as in the following example:
 
 
-```c#
+```c-sharp
 [ValueConversion(typeof(DateTime), typeof(String))]
 public class DateConverter : IValueConverter
 {
@@ -71,7 +71,7 @@ As you can see, in Convert _value_ is cast to a DateTime object and then returne
 So, onto the specific problem of caching an image on the local machine. I start with an empty class called _ImageCacher_ implementing stub methods from IValueConverter. As we are grabbing the web address from a database, we are not interested in sending the local address back to the database, so we can simply complete ConvertBack returning a null value.
 
 
-```c#
+```c-sharp
 //Not needed – return null
 public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
 {
@@ -83,7 +83,7 @@ public object ConvertBack(object value, Type targetType, object parameter, Cultu
 We then add the ValueConversionAttribute to indicate to development tools the data types involved in the conversion. This is not compulsory, but I think it also makes understanding what the converter is doing easier in a single glance. Our goal is to grab the string from the Source attribute and then pass one back with the updated image location (after we save it locally). So in this case, we are converting from a string to a string.
 
 
-```c#
+```c-sharp
 [ValueConversion(typeof(string), typeof(string))]
 class ImageCacher : IValueConverter
 {
@@ -104,7 +104,7 @@ Here we use the Environment class to return the path to the Application Data fol
 First thing in Convert is to check to see if our directory already exists, and create it if it doesn’t.
 
 
-```c#
+```c-sharp
 public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
 {
     //Check to see if the directory in AppData has been created
@@ -119,7 +119,7 @@ public object Convert(object value, Type targetType, object parameter, CultureIn
 Since we are working with a web address, we will create a Uri from our string. Once we have that, we can use the Segments property of the Uri class to grab the name of the image in the web address, and we’ll use that to define the local path where the image will be stored (or is already stored, if it has been downloaded before).
 
 
-```c#
+```c-sharp
 //Cast the string into a Uri so we can access the image name without regex
 var uri = new Uri((String)value);
 //The full path of the image on the local computer
@@ -130,7 +130,7 @@ var localFile = String.Format(“{0}{1}”, AppDataDirectory, uri.Segments[uri.S
 Next, we check to see if the image has been stored locally already, and if not, we fetch it using a HttpWebRequest and grab the response using HttpWebResponse.
 
 
-```c#
+```c-sharp
 if (!File.Exists(localFile))
 {
     var request = HttpWebRequest.Create(uri);
@@ -141,7 +141,7 @@ if (!File.Exists(localFile))
 Because we used the HttpWebResponse class, we can check the ContentType of the response to make sure that we are in fact fetching an image. If it isn’t, we throw an exception.
 
 
-```c#
+```c-sharp
 //check the content type to assert that the file in the uri is an image
 if (!response.ContentType.StartsWith(“image”))
 {
@@ -153,7 +153,7 @@ if (!response.ContentType.StartsWith(“image”))
 Now that we have asserted that the response is actually an image, we can load it from GetResponseStream into the Image class (System.Drawing) and then save it to the path we defined earlier.
 
 
-```c#
+```c-sharp
     //load the image from the stream
     var image = Image.FromStream(response.GetResponseStream());
     //save it
@@ -165,7 +165,7 @@ Now that we have asserted that the response is actually an image, we can load it
 Finally, return the path to the local file.
 
 
-```c#
+```c-sharp
     return localFile;
 }
 ```
@@ -189,7 +189,7 @@ Then in XAML, reference our converter using an xmlns tag and add our converter i
 Then we add the Converter attribute to the Binding of our original Image control.
 
 
-```c#
+```c-sharp
 <Image Source=”{Binding ImageAddress, Converter={StaticResource imageCacher}}“/>
 ```
 

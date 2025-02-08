@@ -15,7 +15,7 @@ There are many guides out there on how to delete branches from your local git re
 This assumes that you have installed `git-up`. This is only tested using [PyGitUp](https://github.com/msiemens/PyGitUp), and not the original [git-up](https://github.com/aanand/git-up/) so your mileage may vary.
 
 
-```shell
+```bash
 git up | tail -n+2 | grep "error: remote branch doesn't exist" | awk -F' ' '{print $1}' | xargs -n 1 git branch -d
 ```
 
