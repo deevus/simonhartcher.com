@@ -2,7 +2,7 @@
   "scripts": {
     "sync": "bun src/js/notion2md.ts",
     "ci": "npm run ci-mise",
-    "ci-mise": "curl https://mise.run | sh && mise install zig@latest && mise reshim",
+    "ci-mise": "curl https://mise.run | sh && mise install zig@master && mise activate && mise reshim",
     "postci": "npm run build",
     "build": "zig build"
   },
