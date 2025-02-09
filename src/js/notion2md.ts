@@ -9,8 +9,8 @@ import { PageObjectResponseWithProperties } from "./lib/types";
 import CONFIG from "./config";
 import { codeTransformer } from "./lib/transformers";
 
-const notion = new Client({ auth: process.env.NOTION_TOKEN });
-const databaseId = process.env.NOTION_DATABASE_ID!;
+const notion = new Client({ auth: CONFIG.notion.authToken, });
+const databaseId = CONFIG.notion.databaseId;
 
 const n2md = new NotionToMarkdown({
   notionClient: notion,
