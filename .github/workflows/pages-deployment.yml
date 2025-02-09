@@ -23,6 +23,11 @@ jobs:
       - name: Install Zig
         run: mise use bun zig@$(mise ls-remote zig | grep master)
 
+      - name: Zig Action Cache
+        uses: Hanaasagi/zig-action-cache@v1
+        with:
+          cache-directories: ".zig-cache"
+
       - name: Build
         run: zig build
 
