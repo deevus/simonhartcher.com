@@ -13,6 +13,7 @@ const languageMap: Record<string, string> = {
 };
 
 const unsupportedLanguages = [
+  "plain text",
   "plaintext",
   "text",
   "powershell",

@@ -21,7 +21,7 @@ Powershell is what you would call the successor of Command Prompt but more is ak
 The first thing we want to do is form our SQL query which will be the data that we will email to our client. To do that in Powershell we are going to need a connection string. A handy little tool that I use to grab a connection string is the Data Link Properties file. You can just create a new file somewhere called:
 
 
-```text
+```
 Test.udl
 ```
 
@@ -50,7 +50,7 @@ Once you have completed all of the above, click Ok. You will get a warning about
 Now that the file (Test.udl) is saved if you open it in your favourite text editor you will see something like this (I have removed my server password for obvious reasons):
 
 
-```text
+```
 [oledb]
 ; Everything after this line is an OLE DB initstring
 Provider=SQLOLEDB.1;Password=*******;Persist Security Info=True;User ID=sa;Initial Catalog=AdventureWorks;Data Source=DEEVUS-PC\SQLEXPRESS
@@ -60,7 +60,7 @@ Provider=SQLOLEDB.1;Password=*******;Persist Security Info=True;User ID=sa;Initi
 All we actually need is the text on line 3 excluding the first segment `Provider=SQLOLEDB.1;` which gives us our working connection string!
 
 
-```text
+```
 "Password=*******;Persist Security Info=True;User ID=sa;Initial Catalog=AdventureWorks;Data Source=DEEVUS-PC\SQLEXPRESS"
 ```
 

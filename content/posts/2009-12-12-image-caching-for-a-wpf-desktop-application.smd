@@ -93,7 +93,7 @@ class ImageCacher : IValueConverter
 Let us define where our images will be saved.
 
 
-```text
+```
 static private readonly string AppDataDirectory = String.Format(“{0}/ImageCacher/”, Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData));
 ```
 

@@ -18,7 +18,7 @@ There’s no extra configuration as the `react` plugin transpiles ES6 out of the
 ### lib/methods.js
 
 
-```text
+```
 registerComponent = (component) => window[component.name] = component;
 ```
 
