@@ -5,6 +5,7 @@ set -e
 
 echo "Installing zvm"
 curl https://raw.githubusercontent.com/tristanisham/zvm/master/install.sh | bash
+source /opt/buildhome/.bashrc
 
 # Install Zig
 echo "Installing Zig"
