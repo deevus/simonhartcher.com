@@ -1,0 +1,29 @@
+name: Deploy to Cloudflare Pages
+
+on:
+  push:
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: jdx/mise-action@v2
+        with:
+          experimental: true # [default: false] enable experimental features
+          log_level: debug # [default: info] log level
+          tool_versions: |
+            bun stable
+            zig master
+
+      - name: Build
+        run: zig build
+
+      - name: Publish
+        uses: cloudflare/pages-action@v1
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          projectName: simonhartcher-com
+          directory: zig-out
+          gitHubToken: ${{ secrets.GITHUB_TOKEN }}
