@@ -7,7 +7,7 @@
 .layout = "post.shtml",
 ---
 
-[]($image.asset("cover.png"))
+[]($image.asset("cover-large.webp"))
 
 Something funny I discovered while playing Serious Sam HD: The First Encounter. A bit of a bug I guess.
 

@@ -7,7 +7,7 @@
 .layout = "post.shtml",
 ---
 
-[]($image.asset("cover.jpg"))
+[]($image.asset("cover-large.webp"))
 
 This article is an extension of [Getting started with Meteor and React](http://sergiotapia.me/2015/09/18/react-and-meteor-match-made-in-heaven/), except that I’ve modified the code to work with ES6.
 

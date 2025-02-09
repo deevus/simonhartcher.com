@@ -7,7 +7,7 @@
 .layout = "post.shtml",
 ---
 
-[]($image.asset("cover.jpg"))
+[]($image.asset("cover-large.webp"))
 
 WPF is a great technology and in my opinion is miles better than WinForms. Unfortunately, like any technology there are always going to be shortfalls that you have to work around yourself. My company is presently developing a WPF Desktop Application that fetches images from a web server. One of the shortfalls of WPF is that client side caching is not implemented, but you can do it yourself using custom bindings.
 

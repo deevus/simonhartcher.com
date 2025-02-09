@@ -7,7 +7,7 @@
 .layout = "post.shtml",
 ---
 
-[]($image.asset("cover.png"))
+[]($image.asset("cover-large.webp"))
 
 # Requisites
 
@@ -98,7 +98,7 @@ go build -v
 You should then have a nice new `docker.exe` file in the current directory. You can add this directory to your `PATH` or alternatively run `shim ./docker.exe` if you have shim from scoop installed (`scoop install shim`).
 
 
-[]($image.asset("ac86256d-7540-426d-a103-698c5b1654ac.png"))
+[]($image.asset("ac86256d-7540-426d-a103-698c5b1654ac-large.webp"))
 
 
 Silvrback blog image

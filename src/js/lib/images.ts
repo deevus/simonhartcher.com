@@ -104,9 +104,9 @@ export async function processImageBlock(
     }
   }
 
-  await resizeImage(imageFilePath, options.assetPath);
+  const results = await resizeImage(imageFilePath, options.assetPath);
 
-  return `[]($image.asset("${imageFilename}"))`;
+  return `[]($image.asset("${results.large}"))`;
 }
 
 export const imageTransformer = async (
@@ -136,12 +136,11 @@ async function resizeImage(
 
     for (const sizeName in imageSizes) {
       const size = imageSizes[sizeName];
-      const outputFilePath = path.join(
-        outputDir,
-        `${inputFileBaseName}-${sizeName}.webp`,
-      ); // Save as WebP
+      const fileName = `${inputFileBaseName}-${sizeName}.webp`;
 
-      results[sizeName] = outputFilePath;
+      const outputFilePath = path.join(outputDir, fileName); // Save as WebP
+
+      results[sizeName] = fileName;
 
       // Skip if file already exists
       if (fs.existsSync(outputFilePath)) {
@@ -149,21 +148,24 @@ async function resizeImage(
         continue;
       }
 
+      const image = sharp(inputImagePath, {
+        animated: true,
+      }).webp({ quality: 80 });
+
       if (size) {
         // Resize the image
-        await sharp(inputImagePath)
+        image
           .resize(size.width, size.height, {
             fit: sharp.fit.inside, // Maintain aspect ratio, fit within bounds
             withoutEnlargement: true, // Prevent upscaling smaller images
           })
-          .webp({ quality: 80 }) // Convert to WebP, adjust quality as needed
           .toFile(outputFilePath);
 
         console.log(`Resized to ${sizeName}: ${outputFilePath}`);
       } else {
-        // Copy the original image (for the "original" size)
-        fs.copyFileSync(inputImagePath, outputFilePath);
-        console.log(`Copied original to: ${outputFilePath}`);
+        // For the "original" size
+        image.toFile(outputFilePath);
+        console.log(`Output original size to: ${outputFilePath}`);
       }
     }
   } catch (error) {

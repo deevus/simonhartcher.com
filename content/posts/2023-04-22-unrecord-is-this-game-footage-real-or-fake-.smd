@@ -7,7 +7,7 @@
 .layout = "post.shtml",
 ---
 
-[]($image.asset("cover.jpg"))
+[]($image.asset("cover-large.webp"))
 
 First things first, if you haven’t seen the footage in question, watch the video in the following tweet:
 
@@ -36,7 +36,7 @@ The biggest aspect that makes the trailer look real to me is the way that the bo
 Camera technology has come a long way, but it still isn’t able to handle every situation perfectly. The footage in the trailer instantly gave me the impression that the camera was a GoPro mounted on the player’s chest. 
 
 
-[]($image.asset("e878cd1a-05b5-4654-875a-137643defa07.jpg"))
+[]($image.asset("e878cd1a-05b5-4654-875a-137643defa07-large.webp"))
 
 
 Adjustable field of view (FOV) is standard in modern video games. Games on consoles generally default to an FOV of 60. PC players can often increase the FOV up to 90 or above depending on the game. The higher the FOV the more of the scene the player can see at once, however it also causes distortion at the edges, making objects look larger than if they were centred. 
@@ -51,13 +51,13 @@ By using a high FOV and a vignette, UNRECORD gives the impression of using a fis
 Right at the start of the trailer, the player is outside an abandoned looking building. The skybox is completely washed out. You can see the same effect on a real video recorded on a cloudy day. 
 
 
-[]($image.asset("fc2747d7-b68e-48e8-87c2-2108ce5e1141.png"))
+[]($image.asset("fc2747d7-b68e-48e8-87c2-2108ce5e1141-large.webp"))
 
 
 When you compare that with the trailer footage, it is quite similar, and it’s not something you see done well in most video games. UNRECORD absolutely nails this effect. 
 
 
-[]($image.asset("0f703cf2-2588-49d3-a335-bef65ce18b4a.png"))
+[]($image.asset("0f703cf2-2588-49d3-a335-bef65ce18b4a-large.webp"))
 
 
 # The truth comes out

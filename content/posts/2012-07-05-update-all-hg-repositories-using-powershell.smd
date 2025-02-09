@@ -7,7 +7,7 @@
 .layout = "post.shtml",
 ---
 
-[]($image.asset("cover.jpg"))
+[]($image.asset("cover-large.webp"))
 
 # Developer Morning Ritual
 
@@ -21,7 +21,7 @@ For the longest time I was going through each repository using _TortoiseHg Workb
 # Yay, Powershell!
 
 
-[]($image.asset("175c0cce-267d-4fe4-98f0-2ea3b86eef11.jpg"))
+[]($image.asset("175c0cce-267d-4fe4-98f0-2ea3b86eef11-large.webp"))
 
 
 Given that I am working on Windows I decided to use [Powershell](http://en.wikipedia.org/wiki/Windows_PowerShell), which I feel is very powerful and exactly what we (Windows developers) needed in a command line.
