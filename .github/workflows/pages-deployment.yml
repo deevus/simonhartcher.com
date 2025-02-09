@@ -13,9 +13,9 @@ jobs:
           experimental: true # [default: false] enable experimental features
           install: false
           log_level: debug # [default: info] log level
-          mise_toml: |
-            [plugins]
-            zig = "https://github.com/liyu1981/asdf-zig"
+
+      - name: Install mise Zig plugin
+        run: mise plugin add https://github.com/liyu1981/asdf-zig
 
       - name: Install Zig
         run: mise install bun zig@$(mise ls-remote zig | grep master)
