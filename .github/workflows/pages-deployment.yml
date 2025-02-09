@@ -24,7 +24,7 @@ jobs:
         run: mise use bun zig@$(mise ls-remote zig | grep master)
 
       - name: Zig Action Cache
-        uses: Hanaasagi/zig-action-cache@v1
+        uses: Hanaasagi/zig-action-cache@v1.1.5
         with:
           cache-directories: ".zig-cache"
 
