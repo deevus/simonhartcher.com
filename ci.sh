@@ -15,9 +15,6 @@ if [ -z "$GOBIN" ]; then
   echo "GOBIN was not set. Updated to $GOBIN"
 fi
 
-export ZVM_PATH="$HOME/.zvm"
-echo "ZVM_PATH=$ZVM_PATH"
-
 echo "Installing zvm"
 go install -ldflags "-s -w" github.com/tristanisham/zvm@latest
 
