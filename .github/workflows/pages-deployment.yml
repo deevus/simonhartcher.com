@@ -13,8 +13,8 @@ jobs:
           experimental: true # [default: false] enable experimental features
           log_level: debug # [default: info] log level
           tool_versions: |
-            bun stable
-            zig master
+            bun latest
+            zig latest
 
       - name: Build
         run: zig build
