@@ -1,8 +1,7 @@
 {
   "scripts": {
     "sync": "bun src/js/notion2md.ts",
-    "ci": "asdf plugin-add zig https://github.com/asdf-community/asdf-zig.git && asdf install zig latest && asdf reshim zig latest",
-    "postci": "npm run build",
+    "ci": "bash ci.sh",
     "build": "zig build"
   },
   "dependencies": {
