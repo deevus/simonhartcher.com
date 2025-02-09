@@ -15,14 +15,14 @@ if [ -z "$GOBIN" ]; then
   echo "GOBIN was not set. Updated to $GOBIN"
 fi
 
-export ZVM_PATH="$XDG_DATA_HOME/zvm"
+export ZVM_PATH="$HOME/.zvm"
 echo "ZVM_PATH=$ZVM_PATH"
-
-export PATH="$GOBIN:$PATH"
-echo "PATH=$PATH"
 
 echo "Installing zvm"
 go install -ldflags "-s -w" github.com/tristanisham/zvm@latest
+
+echo "Adding zvm bin to PATH"
+export PATH="$ZVM_PATH/bin:$PATH"
 
 # Install Zig
 echo "Installing Zig"
