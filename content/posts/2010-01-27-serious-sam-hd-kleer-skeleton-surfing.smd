@@ -5,9 +5,10 @@
 .tags = [],
 .author = "Simon Hartcher",
 .layout = "post.shtml",
+.aliases = ["serious-sam-hd-kleer-skeleton-surfing.html"],
 ---
 
-[]($image.asset("cover-large.webp"))
+[]($image.asset('cover-large.webp').attrs('cover'))
 
 Something funny I discovered while playing Serious Sam HD: The First Encounter. A bit of a bug I guess.
 

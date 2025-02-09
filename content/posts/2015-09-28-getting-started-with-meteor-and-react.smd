@@ -5,9 +5,10 @@
 .tags = [],
 .author = "Simon Hartcher",
 .layout = "post.shtml",
+.aliases = ["getting-started-with-meteor-and-react.html"],
 ---
 
-[]($image.asset("cover-large.webp"))
+[]($image.asset('cover-large.webp').attrs('cover'))
 
 This article is an extension of [Getting started with Meteor and React](http://sergiotapia.me/2015/09/18/react-and-meteor-match-made-in-heaven/), except that I’ve modified the code to work with ES6.
 

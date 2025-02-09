@@ -3,7 +3,7 @@
 <head id="head">
 </head>
 
-<div id="content">
+<main id="content">
     <div :loop="$page.subpages()">
         <div>
             <a :text="$loop.it.title" href="$loop.it.link()"></a>
@@ -11,4 +11,4 @@
     </div>
 
     <div id="page" :html="$page.content()"></div>
-</div>
+</main>

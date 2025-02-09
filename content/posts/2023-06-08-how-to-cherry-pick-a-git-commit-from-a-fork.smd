@@ -5,9 +5,10 @@
 .tags = ["Git", "GitHub", "Cherry-Pick", "Software Development", "Terminal", "Forks"],
 .author = "Simon Hartcher",
 .layout = "post.shtml",
+.aliases = ["how-to-cherry-pick-a-git-commit-from-a-fork.html"],
 ---
 
-[]($image.asset("cover-large.webp"))
+[]($image.asset('cover-large.webp').attrs('cover'))
 
 ## **Introduction**
 

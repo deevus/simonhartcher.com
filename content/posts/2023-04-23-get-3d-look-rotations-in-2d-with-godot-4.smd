@@ -5,9 +5,10 @@
 .tags = ["Godot", "Game Development", "Shaders", "Arkon"],
 .author = "Simon Hartcher",
 .layout = "post.shtml",
+.aliases = ["get-3d-look-rotations-in-2d-with-godot-4.html"],
 ---
 
-[]($image.asset("cover-large.webp"))
+[]($image.asset('cover-large.webp').attrs('cover'))
 
 While working on a digital conversion of the card game called [Arkon](http://arkongame.com/), I needed a way to be able to animate the flip of a card from facedown to faceup and vice-versa. 
 
@@ -25,7 +26,7 @@ I don’t have a great elevator pitch just yet, so here is a quote from Board Ga
 For my naive first attempt I used an `AnimationPlayer` node to animate the `scale.x` property of the `TextureRect`. 
 
 
-[]($image.asset("d1bcba42-ff18-4537-b1fd-0bd838c0b429-large.webp"))
+[]($image.asset('d1bcba42-ff18-4537-b1fd-0bd838c0b429-large.webp').attrs('cover'))
 
 
 The flip animation works as follows:
@@ -38,7 +39,7 @@ The flip animation works as follows:
 The result of which looks like this:
 
 
-[]($image.asset("fc8b06b3-353a-444d-b8d1-64cb0b04bf26-large.webp"))
+[]($image.asset('fc8b06b3-353a-444d-b8d1-64cb0b04bf26-large.webp').attrs('cover'))
 
 
 It looks okay, I guess. However, it doesn’t look quite right. From the perspective of the player, as the card “rotates” (since this is just a scale in the x axis), it should scale up in the y axis on one side, and down on the other. This is because as the card is flipped, one side is getting closer to you and the other is getting further away. If you’re not sure what I mean with this, it will soon become clear.
@@ -149,7 +150,7 @@ When the Y rotation is greater than 90 degrees, it will use the negative X coord
 Here is the final animation:
 
 
-[]($image.asset("d1c92e85-8bd8-4bb3-a6b3-84881757947a-large.webp"))
+[]($image.asset('d1c92e85-8bd8-4bb3-a6b3-84881757947a-large.webp').attrs('cover'))
 
 
 The only parameters I changed from their default values were as follows:
@@ -158,7 +159,7 @@ The only parameters I changed from their default values were as follows:
 - `cull_back` is set to `false`, since I want to see the back. You might usually want this on since the back of the texture will be rendered backwards, but we fixed that above.
 - `y_rotation` is set in the `AnimationPlayer`, from left to right the values for each key are 0, 90 and 180:
 
-[]($image.asset("80648cc2-da9c-47c0-9818-13b18d49cf90-large.webp"))
+[]($image.asset('80648cc2-da9c-47c0-9818-13b18d49cf90-large.webp').attrs('cover'))
 
 
 Finally, here is the GDScript for the Art node:

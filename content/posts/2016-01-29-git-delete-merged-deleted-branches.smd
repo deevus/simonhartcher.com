@@ -5,9 +5,10 @@
 .tags = [],
 .author = "Simon Hartcher",
 .layout = "post.shtml",
+.aliases = ["git-delete-merged-deleted-branches.html"],
 ---
 
-[]($image.asset("cover-large.webp"))
+[]($image.asset('cover-large.webp').attrs('cover'))
 
 There are many guides out there on how to delete branches from your local git repository that have been merged on the remote. Here I provide a _simple_ alias that doesn’t make your brain bleed. In our workflow we always delete merged feature branches so this works perfectly for us.
 

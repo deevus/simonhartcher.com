@@ -1,7 +1,8 @@
 <extend template="base.shtml">
 <title id="title" :text="$page.title"></title>
 <head id="head">
+    <link rel="canonical" href="$page.link()">
 </head>
-<div id="content">
-    <div id="page" :html="$page.content()"></div>
-</div>
+<main id="content">
+    <article id="page" :html="$page.content()"></article>
+</main>

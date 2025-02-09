@@ -5,9 +5,10 @@
 .tags = [],
 .author = "Simon Hartcher",
 .layout = "post.shtml",
+.aliases = ["update-all-hg-repositories-using-powershell.html"],
 ---
 
-[]($image.asset("cover-large.webp"))
+[]($image.asset('cover-large.webp').attrs('cover'))
 
 # Developer Morning Ritual
 
@@ -21,7 +22,7 @@ For the longest time I was going through each repository using _TortoiseHg Workb
 # Yay, Powershell!
 
 
-[]($image.asset("175c0cce-267d-4fe4-98f0-2ea3b86eef11-large.webp"))
+[]($image.asset('175c0cce-267d-4fe4-98f0-2ea3b86eef11-large.webp').attrs('cover'))
 
 
 Given that I am working on Windows I decided to use [Powershell](http://en.wikipedia.org/wiki/Windows_PowerShell), which I feel is very powerful and exactly what we (Windows developers) needed in a command line.

@@ -5,11 +5,12 @@
 .tags = ["Game Development", "Godot"],
 .author = "Simon Hartcher",
 .layout = "post.shtml",
+.aliases = ["polygon-peril-prototype-video-game-available-to-play-now.html"],
 ---
 
-[]($image.asset("cover-large.webp"))
+[]($image.asset('cover-large.webp').attrs('cover'))
 
-[]($image.asset("fa1b3112-7287-454a-b291-9a8690e2fccb-large.webp"))
+[]($image.asset('fa1b3112-7287-454a-b291-9a8690e2fccb-large.webp').attrs('cover'))
 
 
 In 'Polygon Peril', you will play the awakened spirit of an uploaded human conciousness trying to free humanity from the prison of digital immortality. A joint project between [TKFY](https://tkfy.co/) and Doubleword Labs, Polygon Peril is envisioned as a topdown, bullet-hell, science fiction drama that questions the quest for eternal life.

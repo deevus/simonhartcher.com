@@ -5,9 +5,10 @@
 .tags = ["PowerShell", "SQL Server", "HTML", "Email", "HOWTO"],
 .author = "Simon Hartcher",
 .layout = "post.shtml",
+.aliases = ["howto-query-mssql-and-send-html-email-using-powershell.html"],
 ---
 
-[]($image.asset("cover-large.webp"))
+[]($image.asset('cover-large.webp').attrs('cover'))
 
 Before I start this tutorial I must preface this with a warning: **The amount of coding in this tutorial is so minimal it is almost sexually exciting.** I have found that [Powershell](http://www.microsoft.com/windowsserver2003/technologies/management/powershell/default.mspx) is such a powerful scripting tool that you can accomplish tasks that would take 100’s of lines in a lot less. This tutorial is an amalgamation of several different tutorials I found online when I wanted to have a crack at emailing a report to a client. As it turned out it is now run daily as part of our scheduled tasks.
 
@@ -29,19 +30,19 @@ Test.udl
 You will need to be able to [see all file extensions](http://www.fileinfo.com/help/windows-show-extensions.html) to create the file. Open the file using Windows Explorer and go to the Provider tab. Once there you need to select `Microsoft OLE DB Provider for SQL Server`.
 
 
-[]($image.asset("fb630dfe-c7d4-49f0-822b-95c5a1754ee5-large.webp"))
+[]($image.asset('fb630dfe-c7d4-49f0-822b-95c5a1754ee5-large.webp').attrs('cover'))
 
 
 Once that has been completed we need to go to the Connection tab and enter our server details. If you have entered the correct details (Server Name, User and Password) you should now be able to click the `Select the database on the server` checkbox which will show a dropdown list of available databases. For the purpose of this tutorial I have chosen the AdventureWorks database.
 
 
-[]($image.asset("1785522d-2571-4658-94a8-899dcb40c4f6-large.webp"))
+[]($image.asset('1785522d-2571-4658-94a8-899dcb40c4f6-large.webp').attrs('cover'))
 
 
 Please also note that I have checked `Allow saving password` that will make it so we don’t have to enter it manually later. In my case, since the script is sitting on a work server there is no risk in leaving the password as plain text in the file.
 
 
-[]($image.asset("744306f5-783b-413a-9063-22f153025093-large.webp"))
+[]($image.asset('744306f5-783b-413a-9063-22f153025093-large.webp').attrs('cover'))
 
 
 Once you have completed all of the above, click Ok. You will get a warning about saving the password to which you can just click yes. Obviously in a less secure environment on a production server you may want to consider other options for storing your password, but that is beyond the scope of this tutorial.
@@ -126,7 +127,7 @@ ConvertTo-HTML | Out-File test.html
 This will save the results to a html file which you can freely view in your preferred browser.
 
 
-[]($image.asset("73dd5c75-4827-407d-b1f9-f0200756b4ee-large.webp"))
+[]($image.asset('73dd5c75-4827-407d-b1f9-f0200756b4ee-large.webp').attrs('cover'))
 
 
 As you can see from your html file (or the screenshot provided) it is not the prettiest markup on the internet. However, there are ways to improve the look and feel of the generated html via the **head** parameter of ConvertTo-HTML. The head parameter will essential pass whatever you give it to the <head> tags of the HTML. The head of a HTML markup can be used to shape the look and feel of the body of the document, so this way we can pass it some information to make it look nicer.
@@ -151,7 +152,7 @@ ConvertTo-HTML -head $style | Out-File test.html
 ```
 
 
-[]($image.asset("3984873a-d5c8-492f-a94c-2307fe01d551-large.webp"))
+[]($image.asset('3984873a-d5c8-492f-a94c-2307fe01d551-large.webp').attrs('cover'))
 
 
 **Sending The Email**
@@ -205,7 +206,7 @@ ConvertTo-HTML -head $style #| Out-File test.html
 Then all you need to do is run the script from the Powershell console.
 
 
-[]($image.asset("be26cc6a-05be-4e21-b2ab-a070522b2997-large.webp"))
+[]($image.asset('be26cc6a-05be-4e21-b2ab-a070522b2997-large.webp').attrs('cover'))
 
 
 If all is well, your recipient should receive a nicely formatted email sent using Powershell with data from SQL.

@@ -112,7 +112,7 @@ export class ImageTransformer {
 
     const results = await this.resizeImage(imageFilePath, this.assetPath);
 
-    return `[]($image.asset("${results.large}"))`;
+    return `[]($image.asset('${results.large}').attrs('cover'))`;
   }
 
   resizeImage = async (

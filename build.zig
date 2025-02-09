@@ -8,7 +8,9 @@ pub fn build(b: *std.Build) !void {
         .layouts_dir_path = "layouts",
         .content_dir_path = "content",
         .assets_dir_path = "assets",
-        .static_assets = &.{},
+        .static_assets = &.{
+            "pico.violet.min.css",
+        },
         .build_assets = &.{
             .{
                 .name = "zon",

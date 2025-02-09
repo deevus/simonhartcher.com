@@ -5,9 +5,10 @@
 .tags = [],
 .author = "Simon Hartcher",
 .layout = "post.shtml",
+.aliases = ["university-upending-my-life-and-some-history.html"],
 ---
 
-[]($image.asset("cover-large.webp"))
+[]($image.asset('cover-large.webp').attrs('cover'))
 
 ## When it started 
 

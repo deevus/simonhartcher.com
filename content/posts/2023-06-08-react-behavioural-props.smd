@@ -5,9 +5,10 @@
 .tags = ["React.js", "Web Dev", "Software Development", "Tips"],
 .author = "Simon Hartcher",
 .layout = "post.shtml",
+.aliases = ["react-behavioural-props.html"],
 ---
 
-[]($image.asset("cover-large.webp"))
+[]($image.asset('cover-large.webp').attrs('cover'))
 
 # Introduction
 

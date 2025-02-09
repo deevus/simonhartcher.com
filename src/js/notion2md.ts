@@ -80,17 +80,24 @@ for (const page of response.results as PageObjectResponseWithProperties[]) {
 
   const pageDate = moment(props.Published.date!.start).format("YYYY-MM-DD");
 
-  const postName = `${pageDate}-${title
-    .toLowerCase()
-    .replace(/[^a-z0-9]+/g, "-")}`.replace(/^-|-$/g, "");
+  console.log("Slug", props.Slug);
 
-  const fileName = `${postName}.smd`;
+  const sanitisedTitle = title
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/^-|-$/g, "");
+
+  const slug = sanitisedTitle;
+
+  const fullSlug = `${pageDate}-${sanitisedTitle}`;
+
+  const fileName = `${fullSlug}.smd`;
   const filePath = path.join(CONFIG.postsDir, fileName);
   console.log(`Creating file: ${fileName}`);
 
   referencedFiles.add(filePath);
 
-  const postAssetDir = path.join(CONFIG.postsDir, postName);
+  const postAssetDir = path.join(CONFIG.postsDir, fullSlug);
 
   const imageTransformer = new ImageTransformer(postAssetDir);
 
@@ -114,6 +121,7 @@ for (const page of response.results as PageObjectResponseWithProperties[]) {
 .tags = [${tags.map((tag) => `"${tag}"`).join(", ")}],
 .author = "${author}",
 .layout = "post.shtml",
+.aliases = ["${slug}.html"],
 ---
 
 ${cover ?? ""}
