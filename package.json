@@ -1,8 +1,7 @@
 {
   "scripts": {
     "sync": "bun src/js/notion2md.ts",
-    "ci": "asdf plugin-add zig https://github.com/asdf-community/asdf-zig.git && npm run install-zvm && zvm install master",
-    "install-zvm": "go install -ldflags \"-s -w\" github.com/tristanisham/zvm@latest",
+    "ci": "asdf plugin-add zig https://github.com/asdf-community/asdf-zig.git && asdf install zig latest",
     "postci": "npm run build",
     "build": "zig build"
   },
