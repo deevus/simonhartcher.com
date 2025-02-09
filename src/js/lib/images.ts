@@ -9,7 +9,7 @@ interface ImageSize {
   height: number;
 }
 
-const imageSizes: Record<string, ImageSize | null> = {
+const imageSizes = {
   thumbnail: { width: 300, height: 200 },
   thumbnail2x: { width: 600, height: 400 }, // 2x thumbnail
   thumbnail3x: { width: 900, height: 600 }, // 3x thumbnail
@@ -23,7 +23,9 @@ const imageSizes: Record<string, ImageSize | null> = {
   large2x: { width: 2400, height: 1600 }, // 2x large
   large3x: { width: 3600, height: 2400 }, // 3x large
   original: null,
-};
+} satisfies Record<string, ImageSize | null>;
+
+type ImageResults = Record<keyof typeof imageSizes, string>;
 
 type ImageDetails =
   | {
@@ -121,7 +123,9 @@ async function resizeImage(
   inputImagePath: string,
   outputDir: string,
   baseName: string | undefined = undefined,
-) {
+): Promise<ImageResults> {
+  const results = {} as ImageResults;
+
   try {
     // Ensure the output directory exists
     fs.mkdirSync(outputDir, {
@@ -136,6 +140,8 @@ async function resizeImage(
         outputDir,
         `${inputFileBaseName}-${sizeName}.webp`,
       ); // Save as WebP
+
+      results[sizeName] = outputFilePath;
 
       // Skip if file already exists
       if (fs.existsSync(outputFilePath)) {
@@ -164,4 +170,6 @@ async function resizeImage(
     console.error("Error resizing image:", error);
     throw error; // Re-throw the error to be handled by the caller
   }
+
+  return results;
 }
