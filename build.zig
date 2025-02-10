@@ -10,6 +10,7 @@ pub fn build(b: *std.Build) !void {
         .assets_dir_path = "assets",
         .static_assets = &.{
             "pico.violet.min.css",
+            "styles.css",
         },
         .build_assets = &.{
             .{

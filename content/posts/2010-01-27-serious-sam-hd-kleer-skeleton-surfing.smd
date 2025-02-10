@@ -6,9 +6,11 @@
 .author = "Simon Hartcher",
 .layout = "post.shtml",
 .aliases = ["serious-sam-hd-kleer-skeleton-surfing.html"],
+.custom = {
+  .cover = "cover-large.webp",
+},
 ---
 
-[]($image.asset('cover-large.webp').attrs('cover'))
 
 Something funny I discovered while playing Serious Sam HD: The First Encounter. A bit of a bug I guess.
 

@@ -6,9 +6,11 @@
 .author = "Simon Hartcher",
 .layout = "post.shtml",
 .aliases = ["xbox-media-centre-with-raspberry-pi.html"],
+.custom = {
+  .cover = "cover-large.webp",
+},
 ---
 
-[]($image.asset('cover-large.webp').attrs('cover'))
 
 I have for a long while been interested in obtaining a [Raspberry Pi](http://downloads.element14.com/raspberryPi3.html?COM=raspi-group) to do some experimenting on linux et al. As it turns out I had _mentioned this more than a couple_ of times to my partner, who suggested a Pi as a birthday present to her parents. It might have been 3 months after my birthday that I got the surprise from them, but you can’t really blame them for the delay considering their shortage since release. Nevertheless, it is an awesome present for someone like myself.
 

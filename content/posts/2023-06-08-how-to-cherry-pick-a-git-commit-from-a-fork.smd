@@ -6,9 +6,11 @@
 .author = "Simon Hartcher",
 .layout = "post.shtml",
 .aliases = ["how-to-cherry-pick-a-git-commit-from-a-fork.html"],
+.custom = {
+  .cover = "cover-large.webp",
+},
 ---
 
-[]($image.asset('cover-large.webp').attrs('cover'))
 
 ## **Introduction**
 

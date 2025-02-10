@@ -2,7 +2,8 @@
   "scripts": {
     "sync": "bun src/js/notion2md.ts",
     "ci": "bash ci.sh",
-    "build": "zig build"
+    "build": "zig build",
+    "dev": "npm run build -- -Ddebug serve"
   },
   "dependencies": {
     "@notionhq/client": "^2.2.15",

@@ -6,9 +6,11 @@
 .author = "Simon Hartcher",
 .layout = "post.shtml",
 .aliases = ["migrating-from-styled-components-to-emotion.html"],
+.custom = {
+  .cover = "cover-large.webp",
+},
 ---
 
-[]($image.asset('cover-large.webp').attrs('cover'))
 
 I recently migrated a fairly large project from using Styled Components to Emotion. For this guide, I will focus only on the how, and not the why. Styled Components and Emotion are both capable libraries with their own quirks that you can delve into on your own. I do really love their ability to simplify styling of react components.
 

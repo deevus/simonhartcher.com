@@ -54,15 +54,16 @@ export class ImageTransformer {
     this.referencedFiles = new Set();
   }
 
-  transform = async (
-    block: ListBlockChildrenResponseResult,
-  ) => {
-    const result = await this.processImageBlock((block as ImageBlockObjectResponse).image, {
-      id: block.id,
-    });
+  transform = async (block: ListBlockChildrenResponseResult) => {
+    const result = await this.processImageBlock(
+      (block as ImageBlockObjectResponse).image,
+      {
+        id: block.id,
+      },
+    );
 
-    return result;
-  }
+    return result.markdown;
+  };
 
   processImageBlock = async (
     image: ImageDetails,
@@ -100,20 +101,23 @@ export class ImageTransformer {
     const imageFilename = `${options.id}.${imageExtension}`;
     const imageFilePath = path.join(this.assetPath, imageFilename);
 
-    this.referencedFiles.add(imageFilePath)
+    this.referencedFiles.add(imageFilePath);
 
     if (!fs.existsSync(this.assetPath)) {
       fs.mkdirSync(this.assetPath);
     }
 
     if (!fs.existsSync(imageFilePath)) {
-      await sharp(await imageResponse.arrayBuffer()).toFile(imageFilePath)
+      await sharp(await imageResponse.arrayBuffer()).toFile(imageFilePath);
     }
 
     const results = await this.resizeImage(imageFilePath, this.assetPath);
 
-    return `[]($image.asset('${results.large}').attrs('cover'))`;
-  }
+    return {
+      url: results.large,
+      markdown: `[]($image.asset('${results.large}'))`,
+    };
+  };
 
   resizeImage = async (
     inputImagePath: string,
@@ -138,7 +142,7 @@ export class ImageTransformer {
 
         results[sizeName] = fileName;
 
-        this.referencedFiles.add(outputFilePath)
+        this.referencedFiles.add(outputFilePath);
 
         // Skip if file already exists
         if (fs.existsSync(outputFilePath)) {
@@ -172,5 +176,5 @@ export class ImageTransformer {
     }
 
     return results;
-  }
-};
+  };
+}

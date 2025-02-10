@@ -17,7 +17,7 @@ const existingFiles = new Set(
     fs.readdirSync(CONFIG.postsDir, {
       recursive: true,
     }) as string[]
-  ).map((file) => path.join(CONFIG.postsDir, file))
+  ).map((file) => path.join(CONFIG.postsDir, file)),
 );
 
 const referencedFiles = new Set<string>();
@@ -45,17 +45,6 @@ console.log(`Number of pages: ${response.results.length}`);
 for (const page of response.results as PageObjectResponseWithProperties[]) {
   console.log("Processing page...");
 
-  const cover_image_url = (() => {
-    if (page.cover) {
-      switch (page.cover.type) {
-        case "external":
-          return page.cover.external.url;
-        case "file":
-          return page.cover.file.url;
-      }
-    }
-  })();
-
   const props = page.properties;
 
   const title = props.Name.title[0].plain_text.trim();
@@ -75,8 +64,6 @@ for (const page of response.results as PageObjectResponseWithProperties[]) {
   const tags = props.Tags.multi_select.map((item) => item.name);
 
   console.log(`Tags: ${tags}`);
-
-  const oneImg = cover_image_url ? `![](${cover_image_url})` : "";
 
   const pageDate = moment(props.Published.date!.start).format("YYYY-MM-DD");
 
@@ -122,9 +109,11 @@ for (const page of response.results as PageObjectResponseWithProperties[]) {
 .author = "${author}",
 .layout = "post.shtml",
 .aliases = ["${slug}.html"],
+.custom = {
+  ${cover ? `.cover = "${cover.url}",` : ""}
+},
 ---
 
-${cover ?? ""}
 ${content}
 `;
 
@@ -146,7 +135,7 @@ for (const dir of directories) {
 
 const unusedFiles = difference(
   Array.from(existingFiles),
-  Array.from(referencedFiles)
+  Array.from(referencedFiles),
 );
 
 for (const file of unusedFiles) {
