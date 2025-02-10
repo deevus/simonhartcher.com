@@ -11,7 +11,7 @@
     <meta name="twitter:site" content="@deevus">
     <meta name="twitter:author" content="@deevus">
     <meta name="twitter:description" content="$site.title">
-    <meta name="twitter:title" content="$page.title.suffix(' | Simon Hartcher')">
+    <meta name="twitter:title" content="$page.title.suffix(' | ').suffix($site.title)">
 
     <!-- <meta name="twitter:image" content="$site.host_url.addPath($site.asset('preview.png').link())"> -->
     <meta property="og:type" content="website">
@@ -30,7 +30,7 @@
   <body>
     <nav>
         <ul>
-            <li><strong :text="$site.title"></strong></li>
+            <li id="nav-title"><a href="/"><strong :text="$site.title"></strong></a></li>
         </ul>
         <ul>
             <li><a href="/">Home</a></li>

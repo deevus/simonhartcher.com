@@ -14,3 +14,12 @@ article.blog-post img.cover {
 .blog-post-card {
     text-decoration: none;
 }
+
+#nav-title a {
+    color: initial;
+    text-decoration: none;
+}
+
+#nav-title a:hover {
+    color: initial;
+}
