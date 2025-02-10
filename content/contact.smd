@@ -1,0 +1,8 @@
+---
+.title = "Contact",
+.date = "2025-02-10",
+.author = "Simon Hartcher",
+.draft = false,
+.tags = ["blog", "home"],
+.layout = "page.shtml"
+---
