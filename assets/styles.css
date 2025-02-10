@@ -10,3 +10,7 @@ article.blog-post img.cover {
     border-radius: 8px;
     margin-bottom: 1em;
 }
+
+.blog-post-card {
+    text-decoration: none;
+}
