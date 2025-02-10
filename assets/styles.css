@@ -1,3 +1,7 @@
+body nav {
+    padding-inline: 1em;
+}
+
 article.blog-post img.cover {
     width: 100%;
     max-height: 300px;
