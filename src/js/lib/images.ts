@@ -11,17 +11,10 @@ interface ImageSize {
 
 const imageSizes = {
   thumbnail: { width: 300, height: 200 },
-  thumbnail2x: { width: 600, height: 400 }, // 2x thumbnail
-  thumbnail3x: { width: 900, height: 600 }, // 3x thumbnail
   small: { width: 600, height: 400 },
-  small2x: { width: 1200, height: 800 }, // 2x small
-  small3x: { width: 1800, height: 1200 }, // 3x small
   medium: { width: 900, height: 600 },
-  medium2x: { width: 1800, height: 1200 }, // 2x medium
-  medium3x: { width: 2700, height: 1800 }, // 3x medium
   large: { width: 1200, height: 800 },
-  large2x: { width: 2400, height: 1600 }, // 2x large
-  large3x: { width: 3600, height: 2400 }, // 3x large
+  xlarge: { width: 1800, height: 1200 },
   original: null,
 } satisfies Record<string, ImageSize | null>;
 
@@ -152,7 +145,9 @@ export class ImageTransformer {
 
         const image = sharp(inputImagePath, {
           animated: true,
-        }).webp({ quality: 80 });
+        })
+          .webp({ quality: 80, smartSubsample: true })
+          .withMetadata();
 
         if (size) {
           // Resize the image
@@ -177,4 +172,59 @@ export class ImageTransformer {
 
     return results;
   };
+}
+
+function createImageHTML(
+  imageResults: ImageResults,
+  altText: string,
+  baseSize: keyof typeof imageSizes = "small",
+): string {
+  var baseUrl = imageResults[baseSize];
+
+  if (!baseUrl) {
+    console.warn(
+      `Base size "${baseSize}" not found in imageResults.  Using a fallback.`,
+    );
+    // Find the first available URL as a fallback
+    const firstKey = Object.keys(imageResults)[0] as keyof ImageResults;
+    if (firstKey) {
+      baseUrl = imageResults[firstKey];
+    } else {
+      return `<img src="" alt="${altText}" />`;
+    }
+  }
+
+  let srcset = "";
+  for (const sizeName in imageResults) {
+    if (sizeName === "original") continue; // Skip the original image in srcset
+
+    // Map size names to appropriate x descriptors for retina displays
+    let retinaMultiplier = 1;
+    switch (sizeName) {
+      case "medium":
+      case "large":
+        retinaMultiplier = 2;
+        break;
+      case "xlarge":
+        retinaMultiplier = 3;
+        break;
+      case "small":
+      default:
+        retinaMultiplier = 1;
+    }
+
+    const url = imageResults[sizeName];
+    srcset += `${url} ${retinaMultiplier}x, `;
+  }
+
+  // Remove the trailing comma
+  if (srcset.length > 0) {
+    srcset = srcset.slice(0, -1);
+  }
+
+  // Define sizes attribute (adjust these based on your layout)
+  const sizes = "100vw"; // Simple viewport width sizing
+
+  const html = `<img src="${baseUrl}" alt="${altText}" srcset="${srcset}" sizes="${sizes}" />`;
+  return html;
 }
