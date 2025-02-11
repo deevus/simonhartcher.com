@@ -2,30 +2,27 @@
 <title id="title" :text="$page.title"></title>
 <head id="head">
 </head>
-
 <main id="content">
-    <main id="page" :html="$page.content()"></main>
-
-    <h1>Recent Posts</h1>
-
-    <ctx :loop="$page.subpages()">
-        <ctx :if="$loop.it.layout.eql('post.shtml')">
-            <article>
-                <a href="$loop.it.link()" class="blog-post-card" aria-label="$loop.it.title.prefix('Read ')">
-                    <h5 :text="$loop.it.title"></h5>
-                </a>
-
-                <ctx :if="$loop.it.description.len().gt(0)">
-                    <p :text="$loop.it.description"></p>
-                </ctx>
-
-                <aside>
-                    <small>
-                        Published on <time datetime="$loop.it.date.formatHTTP()" :text="$loop.it.date.format('2 January 2006')"></time>
-                        by <a href="$site.page('about').link()"><strong :text="$loop.it.author"></strong></a>
-                    </small>
-                </aside>
-            </article>
+  <main id="page" :html="$page.content()"></main>
+  <h1>Recent Posts</h1>
+  <ctx :loop="$page.subpages()">
+    <ctx :if="$loop.it.layout.eql('post.shtml')">
+      <article>
+        <a href="$loop.it.link()" class="blog-post-card" aria-label="$loop.it.title.prefix('Read ')">
+          <h5 :text="$loop.it.title"></h5>
+        </a>
+        <ctx :if="$loop.it.description.len().gt(0)">
+          <p :text="$loop.it.description"></p>
         </ctx>
+        <aside>
+          <small>
+            Published on
+            <time datetime="$loop.it.date.formatHTTP()" :text="$loop.it.date.format('2 January 2006')"></time>
+            by
+            <a href="$site.page('about').link()"><strong :text="$loop.it.author"></strong></a>
+          </small>
+        </aside>
+      </article>
     </ctx>
+  </ctx>
 </main>

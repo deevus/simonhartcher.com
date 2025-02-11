@@ -1,3 +1,4 @@
+import { PageObjectResponse } from "@notionhq/client/build/src/api-endpoints";
 import CONFIG from "./config";
 import { ImageTransformer } from "./lib/images";
 import { codeTransformer } from "./lib/transformers";
@@ -7,7 +8,7 @@ import fs from "fs";
 import moment from "moment";
 import { NotionToMarkdown } from "notion-to-md";
 import path from "path";
-import { difference, partial } from "ramda";
+import { difference } from "ramda";
 
 const notionClient = new Client({ auth: CONFIG.notion.authToken });
 const databaseId = CONFIG.notion.databaseId;
@@ -123,6 +124,45 @@ ${content}
   for (const file of imageTransformer.referencedFiles) {
     referencedFiles.add(file);
   }
+}
+
+// process any additional pages
+for (const page of CONFIG.notion.additionalPages) {
+  const filePath = path.join("content", page.importPath);
+  console.log(`Creating file: ${page.importPath}`);
+
+  referencedFiles.add(filePath);
+
+  const notionPage = await notionClient.pages.retrieve({
+    page_id: page.pageId,
+  }) as PageObjectResponse;
+
+  const mdBlocks = await n2md.pageToMarkdown(notionPage.id);
+
+  const content = n2md.toMarkdownString(mdBlocks).parent;
+
+  const imageTransformer = new ImageTransformer(path.join("content", path.basename(filePath, ".smd")));
+
+  const cover = notionPage.cover && await imageTransformer.processImageBlock(notionPage.cover, {
+    id: "cover",
+  });
+
+  const mdContent = `---
+.title = "${page.title}",
+.layout = "page.shtml",
+.author = "${CONFIG.defaultAuthor}",
+.date = "${moment().format("YYYY-MM-DD")}",
+.tags = [],
+.custom = {
+  ${cover ? `.cover = "${cover.url}",` : ""}
+},
+---
+
+${content}
+`;
+
+  fs.writeFileSync(filePath, mdContent);
+  console.log("File written successfully\n");
 }
 
 const directories = new Set<string>();

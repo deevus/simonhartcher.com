@@ -1,35 +1,22 @@
 <extend template="base.shtml">
 <title id="title" :text="$page.title"></title>
 <head id="head">
-    <link rel="canonical" href="$page.link()">
-
-    <script src="https://giscus.app/client.js"
-        data-repo="Doubleword-Labs/simonhartcher.com"
-        data-repo-id="MDEwOlJlcG9zaXRvcnkzODkyNzM4ODk="
-        data-category="Blog"
-        data-category-id="DIC_kwDOFzPZIc4CWURL"
-        data-mapping="title"
-        data-strict="1"
-        data-reactions-enabled="1"
-        data-emit-metadata="1"
-        data-input-position="top"
-        data-theme="dark_dimmed"
-        data-lang="en"
-        data-loading="lazy"
-        crossorigin="anonymous"
-        async>
-    </script>
+  <link rel="canonical" href="$page.link()">
+  <script src="https://giscus.app/client.js" data-repo="Doubleword-Labs/simonhartcher.com" data-repo-id="MDEwOlJlcG9zaXRvcnkzODkyNzM4ODk=" data-category="Blog" data-category-id="DIC_kwDOFzPZIc4CWURL" data-mapping="title" data-strict="1" data-reactions-enabled="1" data-emit-metadata="1" data-input-position="top" data-theme="dark_dimmed" data-lang="en" data-loading="lazy" crossorigin="anonymous" async>
+  </script>
 </head>
 <main id="content">
-    <article id="page" class="blog-post" >
-        <img class="cover" src="$page.custom.get('cover')" alt="Cover image">
-
-        <heading>
-            <h1 id="title" :text="$page.title"></h1>
-        </heading>
-
-        <section id="content" :html="$page.content()"></section>
-    </article>
-
-    <section class="giscus"></section>
+  <article
+    id="page"
+    class="blog-post"
+  >
+    <ctx :if="$page.custom.has('cover')">
+      <img class="cover" src="$page.asset($page.custom.get('cover')).link()" alt="Cover image">
+    </ctx>
+    <heading>
+      <h1 id="title" :text="$page.title"></h1>
+    </heading>
+    <section id="content" :html="$page.content()"></section>
+  </article>
+  <section class="giscus"></section>
 </main>

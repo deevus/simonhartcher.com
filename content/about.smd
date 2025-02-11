@@ -1,8 +1,42 @@
 ---
 .title = "About",
-.date = "2025-02-10",
+.layout = "page.shtml",
 .author = "Simon Hartcher",
-.draft = false,
-.tags = ["blog", "home"],
-.layout = "page.shtml"
+.date = "2025-02-10",
+.tags = [],
+.custom = {
+  .cover = "cover-large.webp",
+},
 ---
+
+
+I am a CTO/software engineer living in Wollongong, Australia. I am currently the CTO at [Bonjoro](https://www.bonjoro.com/).
+
+
+I have almost 15 years experience working on both large and small software projects with small to medium sized teams across many technology stacks.
+
+
+My breadth of experience includes industries such as events, ticketing, sports, statistics, SaaS, customer success, and video marketing. I have a proven track record as a successful manager, leader and engineer and the quality of my work speaks for itself.
+
+
+In my spare time I try to decipher X86 Assembly in an attempt to reverse engineer MS-DOS era PC games. I also game regularly (my gaming setup is at the bottom of this page). My favourite genre is definitely 4-player co-op PvE games such as Vermintide 2, Deep Rock Galactic and Darktide.
+
+
+# **Work Setup**
+
+- [MacBook M1 Pro 16"](https://amzn.to/3wvg1Er)
+- [Samsung 32 inch UHD Monitor (U32J590UQE)](https://amzn.to/3QObjZS)
+- [Ducky Shine Zero](https://amzn.to/3QzvEmg)
+- [Kensington Expert](https://amzn.to/3C7ppRY)
+- [HARIBOL USB Hub](https://amzn.to/3Cq6Bhh)
+- [Lumina 4K Webcam](https://amzn.to/3T69EB9)
+
+# **Play Setup**
+
+- [NCase M1](https://ncases.com/products/m1)
+- [AMD Ryzen 5 3600](https://amzn.to/3bWfvrT)
+- [Radeon 6900XT](https://amzn.to/3zX9Zxe)
+- [LG 34" 3440x1440 144hz UltraWide](https://amzn.to/3bVBU8y)
+- [CoolerMaster NovaTouch](https://amzn.to/3dt70Vz)
+- [Glorious Model O Mouse](https://amzn.to/3Pu8hsN)
+
