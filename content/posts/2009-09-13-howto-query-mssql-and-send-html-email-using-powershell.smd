@@ -32,19 +32,28 @@ Test.udl
 You will need to be able to [see all file extensions](http://www.fileinfo.com/help/windows-show-extensions.html) to create the file. Open the file using Windows Explorer and go to the Provider tab. Once there you need to select `Microsoft OLE DB Provider for SQL Server`.
 
 
-[]($image.asset('fb630dfe-c7d4-49f0-822b-95c5a1754ee5-large.webp'))
+```=html
+<img src="$page.asset('fb630dfe-c7d4-49f0-822b-95c5a1754ee5-small.webp').link()" alt="Image" srcset="$page.asset('fb630dfe-c7d4-49f0-822b-95c5a1754ee5-thumbnail.webp').link() 1x, $page.asset('fb630dfe-c7d4-49f0-822b-95c5a1754ee5-small.webp').link() 1x, $page.asset('fb630dfe-c7d4-49f0-822b-95c5a1754ee5-medium.webp').link() 2x, $page.asset('fb630dfe-c7d4-49f0-822b-95c5a1754ee5-large.webp').link() 2x, $page.asset('fb630dfe-c7d4-49f0-822b-95c5a1754ee5-xlarge.webp').link() 3x," sizes="100vw">
+```
+
 
 
 Once that has been completed we need to go to the Connection tab and enter our server details. If you have entered the correct details (Server Name, User and Password) you should now be able to click the `Select the database on the server` checkbox which will show a dropdown list of available databases. For the purpose of this tutorial I have chosen the AdventureWorks database.
 
 
-[]($image.asset('1785522d-2571-4658-94a8-899dcb40c4f6-large.webp'))
+```=html
+<img src="$page.asset('1785522d-2571-4658-94a8-899dcb40c4f6-small.webp').link()" alt="Image" srcset="$page.asset('1785522d-2571-4658-94a8-899dcb40c4f6-thumbnail.webp').link() 1x, $page.asset('1785522d-2571-4658-94a8-899dcb40c4f6-small.webp').link() 1x, $page.asset('1785522d-2571-4658-94a8-899dcb40c4f6-medium.webp').link() 2x, $page.asset('1785522d-2571-4658-94a8-899dcb40c4f6-large.webp').link() 2x, $page.asset('1785522d-2571-4658-94a8-899dcb40c4f6-xlarge.webp').link() 3x," sizes="100vw">
+```
+
 
 
 Please also note that I have checked `Allow saving password` that will make it so we don’t have to enter it manually later. In my case, since the script is sitting on a work server there is no risk in leaving the password as plain text in the file.
 
 
-[]($image.asset('744306f5-783b-413a-9063-22f153025093-large.webp'))
+```=html
+<img src="$page.asset('744306f5-783b-413a-9063-22f153025093-small.webp').link()" alt="Image" srcset="$page.asset('744306f5-783b-413a-9063-22f153025093-thumbnail.webp').link() 1x, $page.asset('744306f5-783b-413a-9063-22f153025093-small.webp').link() 1x, $page.asset('744306f5-783b-413a-9063-22f153025093-medium.webp').link() 2x, $page.asset('744306f5-783b-413a-9063-22f153025093-large.webp').link() 2x, $page.asset('744306f5-783b-413a-9063-22f153025093-xlarge.webp').link() 3x," sizes="100vw">
+```
+
 
 
 Once you have completed all of the above, click Ok. You will get a warning about saving the password to which you can just click yes. Obviously in a less secure environment on a production server you may want to consider other options for storing your password, but that is beyond the scope of this tutorial.
@@ -129,7 +138,10 @@ ConvertTo-HTML | Out-File test.html
 This will save the results to a html file which you can freely view in your preferred browser.
 
 
-[]($image.asset('73dd5c75-4827-407d-b1f9-f0200756b4ee-large.webp'))
+```=html
+<img src="$page.asset('73dd5c75-4827-407d-b1f9-f0200756b4ee-small.webp').link()" alt="Image" srcset="$page.asset('73dd5c75-4827-407d-b1f9-f0200756b4ee-thumbnail.webp').link() 1x, $page.asset('73dd5c75-4827-407d-b1f9-f0200756b4ee-small.webp').link() 1x, $page.asset('73dd5c75-4827-407d-b1f9-f0200756b4ee-medium.webp').link() 2x, $page.asset('73dd5c75-4827-407d-b1f9-f0200756b4ee-large.webp').link() 2x, $page.asset('73dd5c75-4827-407d-b1f9-f0200756b4ee-xlarge.webp').link() 3x," sizes="100vw">
+```
+
 
 
 As you can see from your html file (or the screenshot provided) it is not the prettiest markup on the internet. However, there are ways to improve the look and feel of the generated html via the **head** parameter of ConvertTo-HTML. The head parameter will essential pass whatever you give it to the <head> tags of the HTML. The head of a HTML markup can be used to shape the look and feel of the body of the document, so this way we can pass it some information to make it look nicer.
@@ -154,7 +166,10 @@ ConvertTo-HTML -head $style | Out-File test.html
 ```
 
 
-[]($image.asset('3984873a-d5c8-492f-a94c-2307fe01d551-large.webp'))
+```=html
+<img src="$page.asset('3984873a-d5c8-492f-a94c-2307fe01d551-small.webp').link()" alt="Image" srcset="$page.asset('3984873a-d5c8-492f-a94c-2307fe01d551-thumbnail.webp').link() 1x, $page.asset('3984873a-d5c8-492f-a94c-2307fe01d551-small.webp').link() 1x, $page.asset('3984873a-d5c8-492f-a94c-2307fe01d551-medium.webp').link() 2x, $page.asset('3984873a-d5c8-492f-a94c-2307fe01d551-large.webp').link() 2x, $page.asset('3984873a-d5c8-492f-a94c-2307fe01d551-xlarge.webp').link() 3x," sizes="100vw">
+```
+
 
 
 **Sending The Email**
@@ -208,7 +223,10 @@ ConvertTo-HTML -head $style #| Out-File test.html
 Then all you need to do is run the script from the Powershell console.
 
 
-[]($image.asset('be26cc6a-05be-4e21-b2ab-a070522b2997-large.webp'))
+```=html
+<img src="$page.asset('be26cc6a-05be-4e21-b2ab-a070522b2997-small.webp').link()" alt="Image" srcset="$page.asset('be26cc6a-05be-4e21-b2ab-a070522b2997-thumbnail.webp').link() 1x, $page.asset('be26cc6a-05be-4e21-b2ab-a070522b2997-small.webp').link() 1x, $page.asset('be26cc6a-05be-4e21-b2ab-a070522b2997-medium.webp').link() 2x, $page.asset('be26cc6a-05be-4e21-b2ab-a070522b2997-large.webp').link() 2x, $page.asset('be26cc6a-05be-4e21-b2ab-a070522b2997-xlarge.webp').link() 3x," sizes="100vw">
+```
+
 
 
 If all is well, your recipient should receive a nicely formatted email sent using Powershell with data from SQL.

@@ -93,7 +93,10 @@ dotnet run
 If all is well you should be able to visit [http://localhost:5000](http://localhost:5000/) and see the following:
 
 
-[]($image.asset('8e0941bb-1b4e-4b4f-a797-aa4d09ef30c3-large.webp'))
+```=html
+<img src="$page.asset('8e0941bb-1b4e-4b4f-a797-aa4d09ef30c3-small.webp').link()" alt="Image" srcset="$page.asset('8e0941bb-1b4e-4b4f-a797-aa4d09ef30c3-thumbnail.webp').link() 1x, $page.asset('8e0941bb-1b4e-4b4f-a797-aa4d09ef30c3-small.webp').link() 1x, $page.asset('8e0941bb-1b4e-4b4f-a797-aa4d09ef30c3-medium.webp').link() 2x, $page.asset('8e0941bb-1b4e-4b4f-a797-aa4d09ef30c3-large.webp').link() 2x, $page.asset('8e0941bb-1b4e-4b4f-a797-aa4d09ef30c3-xlarge.webp').link() 3x," sizes="100vw">
+```
+
 
 
 ASP.NET Core MVC Example Home Page
@@ -452,7 +455,10 @@ What we’re trying to do here is replace the dependencies jquery and bootstrap 
 If we check out our project in the browser we get a console error on the homepage.
 
 
-[]($image.asset('32e284be-8d2a-4f90-b6d0-d75c198f4fe1-large.webp'))
+```=html
+<img src="$page.asset('32e284be-8d2a-4f90-b6d0-d75c198f4fe1-small.webp').link()" alt="Image" srcset="$page.asset('32e284be-8d2a-4f90-b6d0-d75c198f4fe1-thumbnail.webp').link() 1x, $page.asset('32e284be-8d2a-4f90-b6d0-d75c198f4fe1-small.webp').link() 1x, $page.asset('32e284be-8d2a-4f90-b6d0-d75c198f4fe1-medium.webp').link() 2x, $page.asset('32e284be-8d2a-4f90-b6d0-d75c198f4fe1-large.webp').link() 2x, $page.asset('32e284be-8d2a-4f90-b6d0-d75c198f4fe1-xlarge.webp').link() 3x," sizes="100vw">
+```
+
 
 
 jQuery error
@@ -502,7 +508,10 @@ import "bootstrap";
 Woohoo! Clicking the button on the About page works again!
 
 
-[]($image.asset('f60ca765-5214-48b9-9f3b-6b31e4d63a61-large.webp'))
+```=html
+<img src="$page.asset('f60ca765-5214-48b9-9f3b-6b31e4d63a61-small.webp').link()" alt="Image" srcset="$page.asset('f60ca765-5214-48b9-9f3b-6b31e4d63a61-thumbnail.webp').link() 1x, $page.asset('f60ca765-5214-48b9-9f3b-6b31e4d63a61-small.webp').link() 1x, $page.asset('f60ca765-5214-48b9-9f3b-6b31e4d63a61-medium.webp').link() 2x, $page.asset('f60ca765-5214-48b9-9f3b-6b31e4d63a61-large.webp').link() 2x, $page.asset('f60ca765-5214-48b9-9f3b-6b31e4d63a61-xlarge.webp').link() 3x," sizes="100vw">
+```
+
 
 
 Thanks for clicking me

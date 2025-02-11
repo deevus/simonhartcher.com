@@ -12,7 +12,10 @@
 ---
 
 
-[]($image.asset('fa1b3112-7287-454a-b291-9a8690e2fccb-large.webp'))
+```=html
+<img src="$page.asset('fa1b3112-7287-454a-b291-9a8690e2fccb-small.webp').link()" alt="Image" srcset="$page.asset('fa1b3112-7287-454a-b291-9a8690e2fccb-thumbnail.webp').link() 1x, $page.asset('fa1b3112-7287-454a-b291-9a8690e2fccb-small.webp').link() 1x, $page.asset('fa1b3112-7287-454a-b291-9a8690e2fccb-medium.webp').link() 2x, $page.asset('fa1b3112-7287-454a-b291-9a8690e2fccb-large.webp').link() 2x, $page.asset('fa1b3112-7287-454a-b291-9a8690e2fccb-xlarge.webp').link() 3x," sizes="100vw">
+```
+
 
 
 In 'Polygon Peril', you will play the awakened spirit of an uploaded human conciousness trying to free humanity from the prison of digital immortality. A joint project between [TKFY](https://tkfy.co/) and Doubleword Labs, Polygon Peril is envisioned as a topdown, bullet-hell, science fiction drama that questions the quest for eternal life.

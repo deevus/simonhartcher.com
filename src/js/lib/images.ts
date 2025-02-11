@@ -96,9 +96,7 @@ export class ImageTransformer {
 
     this.referencedFiles.add(imageFilePath);
 
-    if (!fs.existsSync(this.assetPath)) {
-      fs.mkdirSync(this.assetPath);
-    }
+    fs.mkdirSync(this.assetPath, { recursive: true });
 
     if (!fs.existsSync(imageFilePath)) {
       await sharp(await imageResponse.arrayBuffer()).toFile(imageFilePath);
@@ -108,7 +106,7 @@ export class ImageTransformer {
 
     return {
       url: results.large,
-      markdown: `[]($image.asset('${results.large}'))`,
+      markdown: "```=html\n" + createImageHTML(results, "Image") + "\n```\n",
     };
   };
 
@@ -181,6 +179,8 @@ function createImageHTML(
 ): string {
   var baseUrl = imageResults[baseSize];
 
+  const imageAsset = (url: string) => `$page.asset('${url}').link()`;
+
   if (!baseUrl) {
     console.warn(
       `Base size "${baseSize}" not found in imageResults.  Using a fallback.`,
@@ -190,7 +190,7 @@ function createImageHTML(
     if (firstKey) {
       baseUrl = imageResults[firstKey];
     } else {
-      return `<img src="" alt="${altText}" />`;
+      return `<img src="" alt="${altText}">`;
     }
   }
 
@@ -214,7 +214,7 @@ function createImageHTML(
     }
 
     const url = imageResults[sizeName];
-    srcset += `${url} ${retinaMultiplier}x, `;
+    srcset += `${imageAsset(url)} ${retinaMultiplier}x, `;
   }
 
   // Remove the trailing comma
@@ -225,6 +225,6 @@ function createImageHTML(
   // Define sizes attribute (adjust these based on your layout)
   const sizes = "100vw"; // Simple viewport width sizing
 
-  const html = `<img src="${baseUrl}" alt="${altText}" srcset="${srcset}" sizes="${sizes}" />`;
+  const html = `<img src="${imageAsset(baseUrl)}" alt="${altText}" srcset="${srcset}" sizes="${sizes}">`;
   return html;
 }

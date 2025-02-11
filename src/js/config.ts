@@ -5,7 +5,9 @@ export interface AdditionalPage {
 }
 
 const CONFIG = {
+  contentDir: "./content",
   postsDir: "./content/posts",
+  assetsDir: "./assets/generated",
   defaultAuthor: "Simon Hartcher",
   notion: {
     authToken: process.env.NOTION_TOKEN!,

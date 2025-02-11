@@ -101,7 +101,10 @@ go build -v
 You should then have a nice new `docker.exe` file in the current directory. You can add this directory to your `PATH` or alternatively run `shim ./docker.exe` if you have shim from scoop installed (`scoop install shim`).
 
 
-[]($image.asset('ac86256d-7540-426d-a103-698c5b1654ac-large.webp'))
+```=html
+<img src="$page.asset('ac86256d-7540-426d-a103-698c5b1654ac-small.webp').link()" alt="Image" srcset="$page.asset('ac86256d-7540-426d-a103-698c5b1654ac-thumbnail.webp').link() 1x, $page.asset('ac86256d-7540-426d-a103-698c5b1654ac-small.webp').link() 1x, $page.asset('ac86256d-7540-426d-a103-698c5b1654ac-medium.webp').link() 2x, $page.asset('ac86256d-7540-426d-a103-698c5b1654ac-large.webp').link() 2x, $page.asset('ac86256d-7540-426d-a103-698c5b1654ac-xlarge.webp').link() 3x," sizes="100vw">
+```
+
 
 
 Silvrback blog image

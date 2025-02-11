@@ -28,7 +28,10 @@ I don’t have a great elevator pitch just yet, so here is a quote from Board Ga
 For my naive first attempt I used an `AnimationPlayer` node to animate the `scale.x` property of the `TextureRect`. 
 
 
-[]($image.asset('d1bcba42-ff18-4537-b1fd-0bd838c0b429-large.webp'))
+```=html
+<img src="$page.asset('d1bcba42-ff18-4537-b1fd-0bd838c0b429-small.webp').link()" alt="Image" srcset="$page.asset('d1bcba42-ff18-4537-b1fd-0bd838c0b429-thumbnail.webp').link() 1x, $page.asset('d1bcba42-ff18-4537-b1fd-0bd838c0b429-small.webp').link() 1x, $page.asset('d1bcba42-ff18-4537-b1fd-0bd838c0b429-medium.webp').link() 2x, $page.asset('d1bcba42-ff18-4537-b1fd-0bd838c0b429-large.webp').link() 2x, $page.asset('d1bcba42-ff18-4537-b1fd-0bd838c0b429-xlarge.webp').link() 3x," sizes="100vw">
+```
+
 
 
 The flip animation works as follows:
@@ -41,7 +44,10 @@ The flip animation works as follows:
 The result of which looks like this:
 
 
-[]($image.asset('fc8b06b3-353a-444d-b8d1-64cb0b04bf26-large.webp'))
+```=html
+<img src="$page.asset('fc8b06b3-353a-444d-b8d1-64cb0b04bf26-small.webp').link()" alt="Image" srcset="$page.asset('fc8b06b3-353a-444d-b8d1-64cb0b04bf26-thumbnail.webp').link() 1x, $page.asset('fc8b06b3-353a-444d-b8d1-64cb0b04bf26-small.webp').link() 1x, $page.asset('fc8b06b3-353a-444d-b8d1-64cb0b04bf26-medium.webp').link() 2x, $page.asset('fc8b06b3-353a-444d-b8d1-64cb0b04bf26-large.webp').link() 2x, $page.asset('fc8b06b3-353a-444d-b8d1-64cb0b04bf26-xlarge.webp').link() 3x," sizes="100vw">
+```
+
 
 
 It looks okay, I guess. However, it doesn’t look quite right. From the perspective of the player, as the card “rotates” (since this is just a scale in the x axis), it should scale up in the y axis on one side, and down on the other. This is because as the card is flipped, one side is getting closer to you and the other is getting further away. If you’re not sure what I mean with this, it will soon become clear.
@@ -152,7 +158,10 @@ When the Y rotation is greater than 90 degrees, it will use the negative X coord
 Here is the final animation:
 
 
-[]($image.asset('d1c92e85-8bd8-4bb3-a6b3-84881757947a-large.webp'))
+```=html
+<img src="$page.asset('d1c92e85-8bd8-4bb3-a6b3-84881757947a-small.webp').link()" alt="Image" srcset="$page.asset('d1c92e85-8bd8-4bb3-a6b3-84881757947a-thumbnail.webp').link() 1x, $page.asset('d1c92e85-8bd8-4bb3-a6b3-84881757947a-small.webp').link() 1x, $page.asset('d1c92e85-8bd8-4bb3-a6b3-84881757947a-medium.webp').link() 2x, $page.asset('d1c92e85-8bd8-4bb3-a6b3-84881757947a-large.webp').link() 2x, $page.asset('d1c92e85-8bd8-4bb3-a6b3-84881757947a-xlarge.webp').link() 3x," sizes="100vw">
+```
+
 
 
 The only parameters I changed from their default values were as follows:
@@ -161,7 +170,10 @@ The only parameters I changed from their default values were as follows:
 - `cull_back` is set to `false`, since I want to see the back. You might usually want this on since the back of the texture will be rendered backwards, but we fixed that above.
 - `y_rotation` is set in the `AnimationPlayer`, from left to right the values for each key are 0, 90 and 180:
 
-[]($image.asset('80648cc2-da9c-47c0-9818-13b18d49cf90-large.webp'))
+```=html
+<img src="$page.asset('80648cc2-da9c-47c0-9818-13b18d49cf90-small.webp').link()" alt="Image" srcset="$page.asset('80648cc2-da9c-47c0-9818-13b18d49cf90-thumbnail.webp').link() 1x, $page.asset('80648cc2-da9c-47c0-9818-13b18d49cf90-small.webp').link() 1x, $page.asset('80648cc2-da9c-47c0-9818-13b18d49cf90-medium.webp').link() 2x, $page.asset('80648cc2-da9c-47c0-9818-13b18d49cf90-large.webp').link() 2x, $page.asset('80648cc2-da9c-47c0-9818-13b18d49cf90-xlarge.webp').link() 3x," sizes="100vw">
+```
+
 
 
 Finally, here is the GDScript for the Art node:

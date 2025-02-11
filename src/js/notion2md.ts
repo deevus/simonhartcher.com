@@ -1,5 +1,5 @@
 import { PageObjectResponse } from "@notionhq/client/build/src/api-endpoints";
-import CONFIG from "./config";
+import config from "./config";
 import { ImageTransformer } from "./lib/images";
 import { codeTransformer } from "./lib/transformers";
 import { PageObjectResponseWithProperties } from "./lib/types";
@@ -10,16 +10,15 @@ import { NotionToMarkdown } from "notion-to-md";
 import path from "path";
 import { difference } from "ramda";
 
-const notionClient = new Client({ auth: CONFIG.notion.authToken });
-const databaseId = CONFIG.notion.databaseId;
+const notionClient = new Client({ auth: config.notion.authToken });
+const databaseId = config.notion.databaseId;
 
-const existingFiles = new Set(
-  (
-    fs.readdirSync(CONFIG.postsDir, {
-      recursive: true,
-    }) as string[]
-  ).map((file) => path.join(CONFIG.postsDir, file)),
-);
+fs.mkdirSync(config.postsDir, { recursive: true });
+fs.mkdirSync(config.assetsDir, { recursive: true });
+
+const existingFiles = new Set<string>();
+fs.readdirSync(config.postsDir, { recursive: true, }).forEach((file) => existingFiles.add(path.join(config.postsDir, file)));
+fs.readdirSync(config.assetsDir, { recursive: true }).forEach((file) => existingFiles.add(path.join(config.assetsDir, file)));
 
 const referencedFiles = new Set<string>();
 
@@ -57,7 +56,7 @@ for (const page of response.results as PageObjectResponseWithProperties[]) {
     continue;
   }
 
-  const author = props.Author.rich_text[0]?.plain_text ?? CONFIG.defaultAuthor;
+  const author = props.Author.rich_text[0]?.plain_text ?? config.defaultAuthor;
 
   const description =
     props.Description?.rich_text.map((item) => item.plain_text).join("") || "";
@@ -80,12 +79,12 @@ for (const page of response.results as PageObjectResponseWithProperties[]) {
   const fullSlug = `${pageDate}-${sanitisedTitle}`;
 
   const fileName = `${fullSlug}.smd`;
-  const filePath = path.join(CONFIG.postsDir, fileName);
+  const filePath = path.join(config.postsDir, fileName);
   console.log(`Creating file: ${fileName}`);
 
   referencedFiles.add(filePath);
 
-  const postAssetDir = path.join(CONFIG.postsDir, fullSlug);
+  const postAssetDir = path.join(config.assetsDir, "posts", fullSlug);
 
   const imageTransformer = new ImageTransformer(postAssetDir);
 
@@ -127,8 +126,8 @@ ${content}
 }
 
 // process any additional pages
-for (const page of CONFIG.notion.additionalPages) {
-  const filePath = path.join("content", page.importPath);
+for (const page of config.notion.additionalPages) {
+  const filePath = path.join(config.contentDir, page.importPath);
   console.log(`Creating file: ${page.importPath}`);
 
   referencedFiles.add(filePath);
@@ -141,7 +140,7 @@ for (const page of CONFIG.notion.additionalPages) {
 
   const content = n2md.toMarkdownString(mdBlocks).parent;
 
-  const imageTransformer = new ImageTransformer(path.join("content", path.basename(filePath, ".smd")));
+  const imageTransformer = new ImageTransformer(path.join(config.assetsDir, path.basename(filePath, ".smd")));
 
   const cover = notionPage.cover && await imageTransformer.processImageBlock(notionPage.cover, {
     id: "cover",
@@ -150,7 +149,7 @@ for (const page of CONFIG.notion.additionalPages) {
   const mdContent = `---
 .title = "${page.title}",
 .layout = "page.shtml",
-.author = "${CONFIG.defaultAuthor}",
+.author = "${config.defaultAuthor}",
 .date = "${moment().format("YYYY-MM-DD")}",
 .tags = [],
 .custom = {

@@ -2,7 +2,7 @@
 .title = "About",
 .layout = "page.shtml",
 .author = "Simon Hartcher",
-.date = "2025-02-10",
+.date = "2025-02-11",
 .tags = [],
 .custom = {
   .cover = "cover-large.webp",
