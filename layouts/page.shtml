@@ -3,6 +3,8 @@
 <head id="head">
 </head>
 <main id="content">
-  <ctx :if="$page.custom.has('cover')"><ctx :html="$page.custom.get('cover')"></ctx></ctx>
+  <ctx :if="$page.custom.has('cover')">
+    <ctx :html="$page.custom.get('cover')"></ctx>
+  </ctx>
   <article id="page" :html="$page.content()"></article>
 </main>
