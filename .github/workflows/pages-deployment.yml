@@ -30,7 +30,7 @@ jobs:
           cache-directories: ".zig-cache"
 
       - name: Build
-        run: bun build
+        run: bun run build
 
       - name: Publish
         uses: cloudflare/pages-action@v1
