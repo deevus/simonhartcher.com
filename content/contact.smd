@@ -1,8 +1,15 @@
 ---
 .title = "Contact",
-.date = "2025-02-10",
+.layout = "page.shtml",
 .author = "Simon Hartcher",
-.draft = false,
-.tags = ["blog", "home"],
-.layout = "page.shtml"
+.date = "2025-02-12",
+.tags = [],
+.custom = {
+  .cover = "<img src='cover-medium.webp' class='cover' alt='Image' srcset='cover-thumbnail.webp 1x, cover-small.webp 1x, cover-medium.webp 2x, cover-large.webp 2x, cover-xlarge.webp 3x,' sizes='100vw'>",
+},
 ---
+
+
+The best way to get in touch with me is to email [[my first name]@simonhartcher.com](mailto:).
+
+

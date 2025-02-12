@@ -18,6 +18,11 @@ const config = {
         pageId: process.env.NOTION_ABOUT_PAGE_ID!,
         importPath: "about.smd",
       },
+      {
+        title: "Contact",
+        pageId: process.env.NOTION_CONTACT_PAGE_ID!,
+        importPath: "contact.smd",
+      }
     ] satisfies AdditionalPage[],
   },
 };

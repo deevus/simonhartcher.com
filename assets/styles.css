@@ -23,3 +23,7 @@ img.cover {
 #nav-title a:hover {
     color: initial;
 }
+
+article p:last-child {
+    margin-bottom: 0;
+}

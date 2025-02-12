@@ -174,7 +174,7 @@ export class ImageTransformer {
 
         if (size) {
           // Resize the image
-          image
+          await image
             .resize(size.width, size.height, {
               fit: sharp.fit.inside, // Maintain aspect ratio, fit within bounds
               withoutEnlargement: true, // Prevent upscaling smaller images
@@ -184,7 +184,7 @@ export class ImageTransformer {
           console.log(`Resized to ${sizeName}: ${outputFilePath}`);
         } else {
           // For the "original" size
-          image.toFile(outputFilePath);
+          await image.toFile(outputFilePath);
           console.log(`Output original size to: ${outputFilePath}`);
         }
       }
