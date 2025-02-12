@@ -7,7 +7,7 @@
 .layout = "post.shtml",
 .aliases = ["migrating-from-styled-components-to-emotion.html"],
 .custom = {
-  .cover = "cover-large.webp",
+  .cover = "<img src='cover-medium.webp' class='cover' alt='Image' srcset='cover-thumbnail.webp 1x, cover-small.webp 1x, cover-medium.webp 2x, cover-large.webp 2x, cover-xlarge.webp 3x,' sizes='100vw'>",
 },
 ---
 

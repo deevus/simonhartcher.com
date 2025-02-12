@@ -10,9 +10,7 @@
     id="page"
     class="blog-post"
   >
-    <ctx :if="$page.custom.has('cover')">
-      <img class="cover" src="$page.asset($page.custom.get('cover')).link()" alt="Cover image">
-    </ctx>
+    <div :html="$page.custom.get('cover')"></div>
     <heading>
       <h1 id="title" :text="$page.title"></h1>
     </heading>

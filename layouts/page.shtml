@@ -3,8 +3,6 @@
 <head id="head">
 </head>
 <main id="content">
-  <ctx :if="$page.custom.has('cover')">
-    <img class="cover" src="$page.asset($page.custom.get('cover')).link()" alt="Cover image">
-  </ctx>
+  <ctx :if="$page.custom.has('cover')"><ctx :html="$page.custom.get('cover')"></ctx></ctx>
   <article id="page" :html="$page.content()"></article>
 </main>

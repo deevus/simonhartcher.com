@@ -7,7 +7,7 @@
 .layout = "post.shtml",
 .aliases = ["update-all-hg-repositories-using-powershell.html"],
 .custom = {
-  .cover = "cover-large.webp",
+  .cover = "<img src='cover-medium.webp' class='cover' alt='Image' srcset='cover-thumbnail.webp 1x, cover-small.webp 1x, cover-medium.webp 2x, cover-large.webp 2x, cover-xlarge.webp 3x,' sizes='100vw'>",
 },
 ---
 
@@ -25,7 +25,7 @@ For the longest time I was going through each repository using _TortoiseHg Workb
 
 
 ```=html
-<img src="$page.asset('175c0cce-267d-4fe4-98f0-2ea3b86eef11-small.webp').link()" alt="Image" srcset="$page.asset('175c0cce-267d-4fe4-98f0-2ea3b86eef11-thumbnail.webp').link() 1x, $page.asset('175c0cce-267d-4fe4-98f0-2ea3b86eef11-small.webp').link() 1x, $page.asset('175c0cce-267d-4fe4-98f0-2ea3b86eef11-medium.webp').link() 2x, $page.asset('175c0cce-267d-4fe4-98f0-2ea3b86eef11-large.webp').link() 2x, $page.asset('175c0cce-267d-4fe4-98f0-2ea3b86eef11-xlarge.webp').link() 3x," sizes="100vw">
+<img src="175c0cce-267d-4fe4-98f0-2ea3b86eef11-medium.webp" class="" alt="Image" srcset="175c0cce-267d-4fe4-98f0-2ea3b86eef11-thumbnail.webp 1x, 175c0cce-267d-4fe4-98f0-2ea3b86eef11-small.webp 1x, 175c0cce-267d-4fe4-98f0-2ea3b86eef11-medium.webp 2x, 175c0cce-267d-4fe4-98f0-2ea3b86eef11-large.webp 2x, 175c0cce-267d-4fe4-98f0-2ea3b86eef11-xlarge.webp 3x," sizes="100vw">
 ```
 
 

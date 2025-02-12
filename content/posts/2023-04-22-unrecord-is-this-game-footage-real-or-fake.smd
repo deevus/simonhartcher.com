@@ -7,7 +7,7 @@
 .layout = "post.shtml",
 .aliases = ["unrecord-is-this-game-footage-real-or-fake.html"],
 .custom = {
-  .cover = "cover-large.webp",
+  .cover = "<img src='cover-medium.webp' class='cover' alt='Image' srcset='cover-thumbnail.webp 1x, cover-small.webp 1x, cover-medium.webp 2x, cover-large.webp 2x, cover-xlarge.webp 3x,' sizes='100vw'>",
 },
 ---
 
@@ -40,7 +40,7 @@ Camera technology has come a long way, but it still isn’t able to handle every
 
 
 ```=html
-<img src="$page.asset('e878cd1a-05b5-4654-875a-137643defa07-small.webp').link()" alt="Image" srcset="$page.asset('e878cd1a-05b5-4654-875a-137643defa07-thumbnail.webp').link() 1x, $page.asset('e878cd1a-05b5-4654-875a-137643defa07-small.webp').link() 1x, $page.asset('e878cd1a-05b5-4654-875a-137643defa07-medium.webp').link() 2x, $page.asset('e878cd1a-05b5-4654-875a-137643defa07-large.webp').link() 2x, $page.asset('e878cd1a-05b5-4654-875a-137643defa07-xlarge.webp').link() 3x," sizes="100vw">
+<img src="e878cd1a-05b5-4654-875a-137643defa07-medium.webp" class="" alt="Image" srcset="e878cd1a-05b5-4654-875a-137643defa07-thumbnail.webp 1x, e878cd1a-05b5-4654-875a-137643defa07-small.webp 1x, e878cd1a-05b5-4654-875a-137643defa07-medium.webp 2x, e878cd1a-05b5-4654-875a-137643defa07-large.webp 2x, e878cd1a-05b5-4654-875a-137643defa07-xlarge.webp 3x," sizes="100vw">
 ```
 
 
@@ -58,7 +58,7 @@ Right at the start of the trailer, the player is outside an abandoned looking bu
 
 
 ```=html
-<img src="$page.asset('fc2747d7-b68e-48e8-87c2-2108ce5e1141-small.webp').link()" alt="Image" srcset="$page.asset('fc2747d7-b68e-48e8-87c2-2108ce5e1141-thumbnail.webp').link() 1x, $page.asset('fc2747d7-b68e-48e8-87c2-2108ce5e1141-small.webp').link() 1x, $page.asset('fc2747d7-b68e-48e8-87c2-2108ce5e1141-medium.webp').link() 2x, $page.asset('fc2747d7-b68e-48e8-87c2-2108ce5e1141-large.webp').link() 2x, $page.asset('fc2747d7-b68e-48e8-87c2-2108ce5e1141-xlarge.webp').link() 3x," sizes="100vw">
+<img src="fc2747d7-b68e-48e8-87c2-2108ce5e1141-medium.webp" class="" alt="Image" srcset="fc2747d7-b68e-48e8-87c2-2108ce5e1141-thumbnail.webp 1x, fc2747d7-b68e-48e8-87c2-2108ce5e1141-small.webp 1x, fc2747d7-b68e-48e8-87c2-2108ce5e1141-medium.webp 2x, fc2747d7-b68e-48e8-87c2-2108ce5e1141-large.webp 2x, fc2747d7-b68e-48e8-87c2-2108ce5e1141-xlarge.webp 3x," sizes="100vw">
 ```
 
 
@@ -67,7 +67,7 @@ When you compare that with the trailer footage, it is quite similar, and it’s 
 
 
 ```=html
-<img src="$page.asset('0f703cf2-2588-49d3-a335-bef65ce18b4a-small.webp').link()" alt="Image" srcset="$page.asset('0f703cf2-2588-49d3-a335-bef65ce18b4a-thumbnail.webp').link() 1x, $page.asset('0f703cf2-2588-49d3-a335-bef65ce18b4a-small.webp').link() 1x, $page.asset('0f703cf2-2588-49d3-a335-bef65ce18b4a-medium.webp').link() 2x, $page.asset('0f703cf2-2588-49d3-a335-bef65ce18b4a-large.webp').link() 2x, $page.asset('0f703cf2-2588-49d3-a335-bef65ce18b4a-xlarge.webp').link() 3x," sizes="100vw">
+<img src="0f703cf2-2588-49d3-a335-bef65ce18b4a-medium.webp" class="" alt="Image" srcset="0f703cf2-2588-49d3-a335-bef65ce18b4a-thumbnail.webp 1x, 0f703cf2-2588-49d3-a335-bef65ce18b4a-small.webp 1x, 0f703cf2-2588-49d3-a335-bef65ce18b4a-medium.webp 2x, 0f703cf2-2588-49d3-a335-bef65ce18b4a-large.webp 2x, 0f703cf2-2588-49d3-a335-bef65ce18b4a-xlarge.webp 3x," sizes="100vw">
 ```
 
 

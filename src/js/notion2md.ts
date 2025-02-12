@@ -9,6 +9,7 @@ import moment from "moment";
 import { NotionToMarkdown } from "notion-to-md";
 import path from "path";
 import { difference } from "ramda";
+import { execSync } from "child_process";
 
 const notionClient = new Client({ auth: config.notion.authToken });
 const databaseId = config.notion.databaseId;
@@ -21,6 +22,8 @@ fs.readdirSync(config.postsDir, { recursive: true, }).forEach((file) => existing
 fs.readdirSync(config.assetsDir, { recursive: true }).forEach((file) => existingFiles.add(path.join(config.assetsDir, file)));
 
 const referencedFiles = new Set<string>();
+referencedFiles.add(path.join(config.assetsDir, "styles.css"));
+referencedFiles.add(path.join(config.assetsDir, "pico.violet.min.css"));
 
 const n2md = new NotionToMarkdown({ notionClient });
 n2md.setCustomTransformer("code", codeTransformer);
@@ -91,6 +94,7 @@ for (const page of response.results as PageObjectResponseWithProperties[]) {
   const cover = page.cover
     ? await imageTransformer.processImageBlock(page.cover, {
         id: "cover",
+        className: "cover",
       })
     : undefined;
 
@@ -110,7 +114,7 @@ for (const page of response.results as PageObjectResponseWithProperties[]) {
 .layout = "post.shtml",
 .aliases = ["${slug}.html"],
 .custom = {
-  ${cover ? `.cover = "${cover.url}",` : ""}
+  ${cover ? `.cover = "${cover.rawHtml.replace(/"/gm, "'")}",` : ""}
 },
 ---
 
@@ -144,6 +148,7 @@ for (const page of config.notion.additionalPages) {
 
   const cover = notionPage.cover && await imageTransformer.processImageBlock(notionPage.cover, {
     id: "cover",
+    className: "cover",
   });
 
   const mdContent = `---
@@ -153,7 +158,7 @@ for (const page of config.notion.additionalPages) {
 .date = "${moment().format("YYYY-MM-DD")}",
 .tags = [],
 .custom = {
-  ${cover ? `.cover = "${cover.url}",` : ""}
+  ${cover ? `.cover = "${cover.rawHtml.replace(/"/gm, "'")}",` : ""}
 },
 ---
 
@@ -162,6 +167,10 @@ ${content}
 
   fs.writeFileSync(filePath, mdContent);
   console.log("File written successfully\n");
+
+  for (const file of imageTransformer.referencedFiles) {
+    referencedFiles.add(file);
+  }
 }
 
 const directories = new Set<string>();
@@ -172,21 +181,49 @@ for (const dir of directories) {
   referencedFiles.add(dir);
 }
 
-const unusedFiles = difference(
+const unusedEntries = difference(
   Array.from(existingFiles),
   Array.from(referencedFiles),
 );
 
-for (const file of unusedFiles) {
-  if (fs.existsSync(file)) {
-    const stat = fs.statSync(file);
+const unusedFiles = unusedEntries.filter((file) => fs.statSync(file).isFile());
+const unusedDirectories = difference(unusedEntries, unusedFiles);
 
-    if (stat.isFile()) {
-      fs.unlinkSync(file);
-      console.log(`Removed unused file: ${file}`);
-    } else if (stat.isDirectory()) {
-      fs.rmdirSync(file, { recursive: true });
-      console.log(`Removed unused directory: ${file}`);
-    }
-  }
+// cleanup unused files
+for (const file of unusedFiles) {
+  fs.unlinkSync(file);
+  console.log(`Removed unused file: ${file}`);
 }
+
+// cleanup empty directories
+for (const dir of unusedDirectories) {
+  if (fs.readdirSync(dir).length) {
+    continue;
+  }
+
+  fs.rmdirSync(dir);
+  console.log(`Removed empty directory: ${dir}`);
+}
+
+// generate a assets.zon file
+console.log("Generating assets.zig file...");
+
+const assetFiles = Array.from(referencedFiles).filter((file) => file.startsWith("assets") && fs.statSync(file).isFile());
+
+const writer = fs.createWriteStream("assets.zig", { flags: "w" });
+writer.write("pub const assets = [_][]const u8{");
+
+for (const file of assetFiles) {
+  console.log(`Adding asset: ${file}`);
+  const relativePath = path.relative("assets", file);
+  writer.write(`${JSON.stringify(relativePath)},`);
+}
+
+writer.write("};");
+writer.close();
+
+// fmt the file using `zig fmt`
+console.log("Formatting assets.zon file...");
+execSync("zig fmt assets.zig");
+
+console.log("Done");

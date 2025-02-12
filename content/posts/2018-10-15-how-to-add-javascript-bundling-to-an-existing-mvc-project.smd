@@ -7,7 +7,7 @@
 .layout = "post.shtml",
 .aliases = ["how-to-add-javascript-bundling-to-an-existing-mvc-project.html"],
 .custom = {
-  .cover = "cover-large.webp",
+  .cover = "<img src='cover-medium.webp' class='cover' alt='Image' srcset='cover-thumbnail.webp 1x, cover-small.webp 1x, cover-medium.webp 2x, cover-large.webp 2x, cover-xlarge.webp 3x,' sizes='100vw'>",
 },
 ---
 
@@ -94,7 +94,7 @@ If all is well you should be able to visit [http://localhost:5000](http://localh
 
 
 ```=html
-<img src="$page.asset('8e0941bb-1b4e-4b4f-a797-aa4d09ef30c3-small.webp').link()" alt="Image" srcset="$page.asset('8e0941bb-1b4e-4b4f-a797-aa4d09ef30c3-thumbnail.webp').link() 1x, $page.asset('8e0941bb-1b4e-4b4f-a797-aa4d09ef30c3-small.webp').link() 1x, $page.asset('8e0941bb-1b4e-4b4f-a797-aa4d09ef30c3-medium.webp').link() 2x, $page.asset('8e0941bb-1b4e-4b4f-a797-aa4d09ef30c3-large.webp').link() 2x, $page.asset('8e0941bb-1b4e-4b4f-a797-aa4d09ef30c3-xlarge.webp').link() 3x," sizes="100vw">
+<img src="8e0941bb-1b4e-4b4f-a797-aa4d09ef30c3-medium.webp" class="" alt="Image" srcset="8e0941bb-1b4e-4b4f-a797-aa4d09ef30c3-thumbnail.webp 1x, 8e0941bb-1b4e-4b4f-a797-aa4d09ef30c3-small.webp 1x, 8e0941bb-1b4e-4b4f-a797-aa4d09ef30c3-medium.webp 2x, 8e0941bb-1b4e-4b4f-a797-aa4d09ef30c3-large.webp 2x, 8e0941bb-1b4e-4b4f-a797-aa4d09ef30c3-xlarge.webp 3x," sizes="100vw">
 ```
 
 
@@ -456,7 +456,7 @@ If we check out our project in the browser we get a console error on the homepag
 
 
 ```=html
-<img src="$page.asset('32e284be-8d2a-4f90-b6d0-d75c198f4fe1-small.webp').link()" alt="Image" srcset="$page.asset('32e284be-8d2a-4f90-b6d0-d75c198f4fe1-thumbnail.webp').link() 1x, $page.asset('32e284be-8d2a-4f90-b6d0-d75c198f4fe1-small.webp').link() 1x, $page.asset('32e284be-8d2a-4f90-b6d0-d75c198f4fe1-medium.webp').link() 2x, $page.asset('32e284be-8d2a-4f90-b6d0-d75c198f4fe1-large.webp').link() 2x, $page.asset('32e284be-8d2a-4f90-b6d0-d75c198f4fe1-xlarge.webp').link() 3x," sizes="100vw">
+<img src="32e284be-8d2a-4f90-b6d0-d75c198f4fe1-medium.webp" class="" alt="Image" srcset="32e284be-8d2a-4f90-b6d0-d75c198f4fe1-thumbnail.webp 1x, 32e284be-8d2a-4f90-b6d0-d75c198f4fe1-small.webp 1x, 32e284be-8d2a-4f90-b6d0-d75c198f4fe1-medium.webp 2x, 32e284be-8d2a-4f90-b6d0-d75c198f4fe1-large.webp 2x, 32e284be-8d2a-4f90-b6d0-d75c198f4fe1-xlarge.webp 3x," sizes="100vw">
 ```
 
 
@@ -509,7 +509,7 @@ Woohoo! Clicking the button on the About page works again!
 
 
 ```=html
-<img src="$page.asset('f60ca765-5214-48b9-9f3b-6b31e4d63a61-small.webp').link()" alt="Image" srcset="$page.asset('f60ca765-5214-48b9-9f3b-6b31e4d63a61-thumbnail.webp').link() 1x, $page.asset('f60ca765-5214-48b9-9f3b-6b31e4d63a61-small.webp').link() 1x, $page.asset('f60ca765-5214-48b9-9f3b-6b31e4d63a61-medium.webp').link() 2x, $page.asset('f60ca765-5214-48b9-9f3b-6b31e4d63a61-large.webp').link() 2x, $page.asset('f60ca765-5214-48b9-9f3b-6b31e4d63a61-xlarge.webp').link() 3x," sizes="100vw">
+<img src="f60ca765-5214-48b9-9f3b-6b31e4d63a61-medium.webp" class="" alt="Image" srcset="f60ca765-5214-48b9-9f3b-6b31e4d63a61-thumbnail.webp 1x, f60ca765-5214-48b9-9f3b-6b31e4d63a61-small.webp 1x, f60ca765-5214-48b9-9f3b-6b31e4d63a61-medium.webp 2x, f60ca765-5214-48b9-9f3b-6b31e4d63a61-large.webp 2x, f60ca765-5214-48b9-9f3b-6b31e4d63a61-xlarge.webp 3x," sizes="100vw">
 ```
 
 

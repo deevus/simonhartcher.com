@@ -4,10 +4,10 @@ export interface AdditionalPage {
   importPath: string;
 }
 
-const CONFIG = {
-  contentDir: "./content",
-  postsDir: "./content/posts",
-  assetsDir: "./assets/generated",
+const config = {
+  contentDir: "content",
+  postsDir: "content/posts",
+  assetsDir: "assets/",
   defaultAuthor: "Simon Hartcher",
   notion: {
     authToken: process.env.NOTION_TOKEN!,
@@ -22,4 +22,4 @@ const CONFIG = {
   },
 };
 
-export default CONFIG;
+export default config;

@@ -7,7 +7,7 @@
 .layout = "post.shtml",
 .aliases = ["get-3d-look-rotations-in-2d-with-godot-4.html"],
 .custom = {
-  .cover = "cover-large.webp",
+  .cover = "<img src='cover-medium.webp' class='cover' alt='Image' srcset='cover-thumbnail.webp 1x, cover-small.webp 1x, cover-medium.webp 2x, cover-large.webp 2x, cover-xlarge.webp 3x,' sizes='100vw'>",
 },
 ---
 
@@ -29,7 +29,7 @@ For my naive first attempt I used an `AnimationPlayer` node to animate the `scal
 
 
 ```=html
-<img src="$page.asset('d1bcba42-ff18-4537-b1fd-0bd838c0b429-small.webp').link()" alt="Image" srcset="$page.asset('d1bcba42-ff18-4537-b1fd-0bd838c0b429-thumbnail.webp').link() 1x, $page.asset('d1bcba42-ff18-4537-b1fd-0bd838c0b429-small.webp').link() 1x, $page.asset('d1bcba42-ff18-4537-b1fd-0bd838c0b429-medium.webp').link() 2x, $page.asset('d1bcba42-ff18-4537-b1fd-0bd838c0b429-large.webp').link() 2x, $page.asset('d1bcba42-ff18-4537-b1fd-0bd838c0b429-xlarge.webp').link() 3x," sizes="100vw">
+<img src="d1bcba42-ff18-4537-b1fd-0bd838c0b429-medium.webp" class="" alt="Image" srcset="d1bcba42-ff18-4537-b1fd-0bd838c0b429-thumbnail.webp 1x, d1bcba42-ff18-4537-b1fd-0bd838c0b429-small.webp 1x, d1bcba42-ff18-4537-b1fd-0bd838c0b429-medium.webp 2x, d1bcba42-ff18-4537-b1fd-0bd838c0b429-large.webp 2x, d1bcba42-ff18-4537-b1fd-0bd838c0b429-xlarge.webp 3x," sizes="100vw">
 ```
 
 
@@ -45,7 +45,7 @@ The result of which looks like this:
 
 
 ```=html
-<img src="$page.asset('fc8b06b3-353a-444d-b8d1-64cb0b04bf26-small.webp').link()" alt="Image" srcset="$page.asset('fc8b06b3-353a-444d-b8d1-64cb0b04bf26-thumbnail.webp').link() 1x, $page.asset('fc8b06b3-353a-444d-b8d1-64cb0b04bf26-small.webp').link() 1x, $page.asset('fc8b06b3-353a-444d-b8d1-64cb0b04bf26-medium.webp').link() 2x, $page.asset('fc8b06b3-353a-444d-b8d1-64cb0b04bf26-large.webp').link() 2x, $page.asset('fc8b06b3-353a-444d-b8d1-64cb0b04bf26-xlarge.webp').link() 3x," sizes="100vw">
+<img src="fc8b06b3-353a-444d-b8d1-64cb0b04bf26-medium.webp" class="" alt="Image" srcset="fc8b06b3-353a-444d-b8d1-64cb0b04bf26-thumbnail.webp 1x, fc8b06b3-353a-444d-b8d1-64cb0b04bf26-small.webp 1x, fc8b06b3-353a-444d-b8d1-64cb0b04bf26-medium.webp 2x, fc8b06b3-353a-444d-b8d1-64cb0b04bf26-large.webp 2x, fc8b06b3-353a-444d-b8d1-64cb0b04bf26-xlarge.webp 3x," sizes="100vw">
 ```
 
 
@@ -159,7 +159,7 @@ Here is the final animation:
 
 
 ```=html
-<img src="$page.asset('d1c92e85-8bd8-4bb3-a6b3-84881757947a-small.webp').link()" alt="Image" srcset="$page.asset('d1c92e85-8bd8-4bb3-a6b3-84881757947a-thumbnail.webp').link() 1x, $page.asset('d1c92e85-8bd8-4bb3-a6b3-84881757947a-small.webp').link() 1x, $page.asset('d1c92e85-8bd8-4bb3-a6b3-84881757947a-medium.webp').link() 2x, $page.asset('d1c92e85-8bd8-4bb3-a6b3-84881757947a-large.webp').link() 2x, $page.asset('d1c92e85-8bd8-4bb3-a6b3-84881757947a-xlarge.webp').link() 3x," sizes="100vw">
+<img src="d1c92e85-8bd8-4bb3-a6b3-84881757947a-medium.webp" class="" alt="Image" srcset="d1c92e85-8bd8-4bb3-a6b3-84881757947a-thumbnail.webp 1x, d1c92e85-8bd8-4bb3-a6b3-84881757947a-small.webp 1x, d1c92e85-8bd8-4bb3-a6b3-84881757947a-medium.webp 2x, d1c92e85-8bd8-4bb3-a6b3-84881757947a-large.webp 2x, d1c92e85-8bd8-4bb3-a6b3-84881757947a-xlarge.webp 3x," sizes="100vw">
 ```
 
 
@@ -171,7 +171,7 @@ The only parameters I changed from their default values were as follows:
 - `y_rotation` is set in the `AnimationPlayer`, from left to right the values for each key are 0, 90 and 180:
 
 ```=html
-<img src="$page.asset('80648cc2-da9c-47c0-9818-13b18d49cf90-small.webp').link()" alt="Image" srcset="$page.asset('80648cc2-da9c-47c0-9818-13b18d49cf90-thumbnail.webp').link() 1x, $page.asset('80648cc2-da9c-47c0-9818-13b18d49cf90-small.webp').link() 1x, $page.asset('80648cc2-da9c-47c0-9818-13b18d49cf90-medium.webp').link() 2x, $page.asset('80648cc2-da9c-47c0-9818-13b18d49cf90-large.webp').link() 2x, $page.asset('80648cc2-da9c-47c0-9818-13b18d49cf90-xlarge.webp').link() 3x," sizes="100vw">
+<img src="80648cc2-da9c-47c0-9818-13b18d49cf90-medium.webp" class="" alt="Image" srcset="80648cc2-da9c-47c0-9818-13b18d49cf90-thumbnail.webp 1x, 80648cc2-da9c-47c0-9818-13b18d49cf90-small.webp 1x, 80648cc2-da9c-47c0-9818-13b18d49cf90-medium.webp 2x, 80648cc2-da9c-47c0-9818-13b18d49cf90-large.webp 2x, 80648cc2-da9c-47c0-9818-13b18d49cf90-xlarge.webp 3x," sizes="100vw">
 ```
 
 

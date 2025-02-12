@@ -7,7 +7,7 @@
 .layout = "post.shtml",
 .aliases = ["how-to-build-the-native-docker-client-on-windows.html"],
 .custom = {
-  .cover = "cover-large.webp",
+  .cover = "<img src='cover-medium.webp' class='cover' alt='Image' srcset='cover-thumbnail.webp 1x, cover-small.webp 1x, cover-medium.webp 2x, cover-large.webp 2x, cover-xlarge.webp 3x,' sizes='100vw'>",
 },
 ---
 
@@ -102,7 +102,7 @@ You should then have a nice new `docker.exe` file in the current directory. You 
 
 
 ```=html
-<img src="$page.asset('ac86256d-7540-426d-a103-698c5b1654ac-small.webp').link()" alt="Image" srcset="$page.asset('ac86256d-7540-426d-a103-698c5b1654ac-thumbnail.webp').link() 1x, $page.asset('ac86256d-7540-426d-a103-698c5b1654ac-small.webp').link() 1x, $page.asset('ac86256d-7540-426d-a103-698c5b1654ac-medium.webp').link() 2x, $page.asset('ac86256d-7540-426d-a103-698c5b1654ac-large.webp').link() 2x, $page.asset('ac86256d-7540-426d-a103-698c5b1654ac-xlarge.webp').link() 3x," sizes="100vw">
+<img src="ac86256d-7540-426d-a103-698c5b1654ac-medium.webp" class="" alt="Image" srcset="ac86256d-7540-426d-a103-698c5b1654ac-thumbnail.webp 1x, ac86256d-7540-426d-a103-698c5b1654ac-small.webp 1x, ac86256d-7540-426d-a103-698c5b1654ac-medium.webp 2x, ac86256d-7540-426d-a103-698c5b1654ac-large.webp 2x, ac86256d-7540-426d-a103-698c5b1654ac-xlarge.webp 3x," sizes="100vw">
 ```
 
 

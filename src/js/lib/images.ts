@@ -36,6 +36,7 @@ type ImageDetails =
 
 interface ProcessImageBlockOptions {
   id: string;
+  className?: string;
 }
 
 export class ImageTransformer {
@@ -62,14 +63,28 @@ export class ImageTransformer {
     image: ImageDetails,
     options: ProcessImageBlockOptions,
   ) => {
+    console.log(`Processing image block: ${options.id}`);
+    
     var imageUrl: string | undefined;
-    switch (image.type) {
-      case "external":
-        imageUrl = image.external.url;
-        break;
-      case "file":
-        imageUrl = image.file.url;
-        break;
+
+    const originalWebpPath = path.join(this.assetPath, `${options.id}-original.webp`);
+
+    console.log("Checking if local file exists: ", originalWebpPath);
+
+    if (fs.existsSync(originalWebpPath)) {
+      imageUrl = `file://${path.join(process.cwd(), originalWebpPath)}`;
+      console.log("Local file exists, using it: ", imageUrl);
+    } else {
+      switch (image.type) {
+        case "external":
+          imageUrl = image.external.url;
+          break;
+        case "file":
+          imageUrl = image.file.url;
+          break;
+      }
+
+      console.log("Local file does not exist, fetching: ", imageUrl);
     }
 
     const imageResponse = await fetch(imageUrl);
@@ -86,6 +101,9 @@ export class ImageTransformer {
       case "image/gif":
         imageExtension = "gif";
         break;
+      case "image/webp":
+        imageExtension = "webp";
+        break;
       default:
         imageExtension = "jpg";
         break;
@@ -94,24 +112,33 @@ export class ImageTransformer {
     const imageFilename = `${options.id}.${imageExtension}`;
     const imageFilePath = path.join(this.assetPath, imageFilename);
 
-    this.referencedFiles.add(imageFilePath);
-
     fs.mkdirSync(this.assetPath, { recursive: true });
 
-    if (!fs.existsSync(imageFilePath)) {
-      await sharp(await imageResponse.arrayBuffer()).toFile(imageFilePath);
+    const imageBuffer = await imageResponse.arrayBuffer();
+    const imageMetadata = await sharp(imageBuffer).metadata();
+
+    const dimensions: ImageSize = {
+      width: imageMetadata.width!,
+      height: imageMetadata.height!,
     }
 
-    const results = await this.resizeImage(imageFilePath, this.assetPath);
+    const results = await this.resizeImage(options.id, imageBuffer, this.assetPath);
+
+    const rawHtml = createImageHTML(results, {
+      altText: "Image",
+      className: options.className,
+    });
 
     return {
       url: results.large,
-      markdown: "```=html\n" + createImageHTML(results, "Image") + "\n```\n",
+      markdown: "```=html\n" + rawHtml + "\n```\n",
+      rawHtml,
     };
   };
 
   resizeImage = async (
-    inputImagePath: string,
+    id: string,
+    input: string | ArrayBuffer,
     outputDir: string,
     baseName: string | undefined = undefined,
   ): Promise<ImageResults> => {
@@ -123,11 +150,9 @@ export class ImageTransformer {
         recursive: true,
       });
 
-      const inputFileBaseName = baseName || path.parse(inputImagePath).name; // Extract filename without extension
-
       for (const sizeName in imageSizes) {
         const size = imageSizes[sizeName];
-        const fileName = `${inputFileBaseName}-${sizeName}.webp`;
+        const fileName = `${id}-${sizeName}.webp`;
 
         const outputFilePath = path.join(outputDir, fileName); // Save as WebP
 
@@ -141,7 +166,7 @@ export class ImageTransformer {
           continue;
         }
 
-        const image = sharp(inputImagePath, {
+        const image = sharp(input, {
           animated: true,
         })
           .webp({ quality: 80, smartSubsample: true })
@@ -174,12 +199,16 @@ export class ImageTransformer {
 
 function createImageHTML(
   imageResults: ImageResults,
-  altText: string,
-  baseSize: keyof typeof imageSizes = "small",
+  options: {
+    altText: string;
+    baseSize?: keyof typeof imageSizes;
+    className?: string;
+  }
 ): string {
+  const baseSize = options.baseSize ?? "medium";
   var baseUrl = imageResults[baseSize];
 
-  const imageAsset = (url: string) => `$page.asset('${url}').link()`;
+  const imageAsset = (url: string) => `${url}`;
 
   if (!baseUrl) {
     console.warn(
@@ -190,7 +219,7 @@ function createImageHTML(
     if (firstKey) {
       baseUrl = imageResults[firstKey];
     } else {
-      return `<img src="" alt="${altText}">`;
+      return `<img src="" alt="${options.altText}" class="${options.className ?? ""}">`;
     }
   }
 
@@ -225,6 +254,6 @@ function createImageHTML(
   // Define sizes attribute (adjust these based on your layout)
   const sizes = "100vw"; // Simple viewport width sizing
 
-  const html = `<img src="${imageAsset(baseUrl)}" alt="${altText}" srcset="${srcset}" sizes="${sizes}">`;
+  const html = `<img src="${imageAsset(baseUrl)}" class="${options.className ?? ""}" alt="${options.altText}" srcset="${srcset}" sizes="${sizes}">`;
   return html;
 }
