@@ -17,11 +17,12 @@ jobs:
           install: false
           log_level: debug # [default: info] log level
 
-      - name: Install mise Zig plugin
-        run: mise plugin add https://github.com/liyu1981/asdf-zig
+      - name: Install bun
+        run: mise use bun
 
-      - name: Install Zig
-        run: mise use bun zig@$(mise ls-remote zig | grep master)
+      - uses: mlugg/setup-zig@v1
+        with:
+          version: 0.14.0-dev.3091+42e48b83b
 
       - name: Zig Action Cache
         uses: Hanaasagi/zig-action-cache@v1.1.5
@@ -29,7 +30,7 @@ jobs:
           cache-directories: ".zig-cache"
 
       - name: Build
-        run: zig build
+        run: bun build
 
       - name: Publish
         uses: cloudflare/pages-action@v1
