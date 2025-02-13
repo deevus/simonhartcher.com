@@ -7,21 +7,29 @@
   <h1>Recent Posts</h1>
   <ctx :loop="$page.subpages()">
     <ctx :if="$loop.it.layout.eql('post.shtml')">
-      <article>
-        <a href="$loop.it.link()" class="blog-post-card" aria-label="$loop.it.title.prefix('Read ')">
-          <h5 :text="$loop.it.title"></h5>
+      <article class="blog-post__card">
+        <a href="$loop.it.link()" class="blog-post__card__cover-thumb__container">
+          <picture>
+            <source srcset="$loop.it.link().suffix('cover-thumbnail.webp').suffix(' 300w,').suffix($loop.it.link().suffix('cover-small.webp').suffix(' 600w,'))" sizes="50vw">
+            <img class="blog-post__card__cover-thumb" src="$loop.it.link().suffix('cover-thumbnail.webp')" alt="Cover image">
+          </picture>
         </a>
-        <ctx :if="$loop.it.description.len().gt(0)">
-          <p :text="$loop.it.description"></p>
-        </ctx>
-        <aside>
-          <small>
-            Published on
-            <time datetime="$loop.it.date.formatHTTP()" :text="$loop.it.date.format('2 January 2006')"></time>
-            by
-            <a href="$site.page('about').link()"><strong :text="$loop.it.author"></strong></a>
-          </small>
-        </aside>
+        <div class="blog-post__card__content">
+          <a href="$loop.it.link()" class="blog-post-card" aria-label="$loop.it.title.prefix('Read ')">
+            <h5 :text="$loop.it.title"></h5>
+          </a>
+          <ctx :if="$loop.it.description.len().gt(0)">
+            <p :text="$loop.it.description"></p>
+          </ctx>
+          <aside>
+            <small>
+              Published on
+              <time datetime="$loop.it.date.formatHTTP()" :text="$loop.it.date.format('2 January 2006')"></time>
+              by
+              <a href="$site.page('about').link()"><strong :text="$loop.it.author"></strong></a>
+            </small>
+          </aside>
+        </div>
       </article>
     </ctx>
   </ctx>
