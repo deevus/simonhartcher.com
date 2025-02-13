@@ -7,7 +7,7 @@
 .layout = "post.shtml",
 .aliases = ["getting-started-with-meteor-and-react.html"],
 .custom = {
-  .cover = "<img src='cover-medium.webp' class='cover' alt='Image' srcset='cover-thumbnail.webp 1x, cover-small.webp 1x, cover-medium.webp 2x, cover-large.webp 2x, cover-xlarge.webp 3x,' sizes='100vw'>",
+  .cover = "<picture><source type='image/webp' srcset='cover-thumbnail.webp 300w, cover-small.webp 600w, cover-medium.webp 900w, cover-large.webp 1200w,' sizes='100vw'><img src='cover-large.webp' alt='Image' class='cover'></picture>",
 },
 ---
 

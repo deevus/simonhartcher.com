@@ -7,7 +7,7 @@
 .layout = "post.shtml",
 .aliases = ["howto-query-mssql-and-send-html-email-using-powershell.html"],
 .custom = {
-  .cover = "<img src='cover-medium.webp' class='cover' alt='Image' srcset='cover-thumbnail.webp 1x, cover-small.webp 1x, cover-medium.webp 2x, cover-large.webp 2x, cover-xlarge.webp 3x,' sizes='100vw'>",
+  .cover = "<picture><source type='image/webp' srcset='cover-thumbnail.webp 300w, cover-small.webp 600w, cover-medium.webp 900w, cover-large.webp 1200w, cover-xlarge.webp 1800w,' sizes='100vw'><img src='cover-xlarge.webp' alt='Image' class='cover'></picture>",
 },
 ---
 
@@ -33,7 +33,7 @@ You will need to be able to [see all file extensions](http://www.fileinfo.com/he
 
 
 ```=html
-<img src="fb630dfe-c7d4-49f0-822b-95c5a1754ee5-medium.webp" class="" alt="Image" srcset="fb630dfe-c7d4-49f0-822b-95c5a1754ee5-thumbnail.webp 1x, fb630dfe-c7d4-49f0-822b-95c5a1754ee5-small.webp 1x, fb630dfe-c7d4-49f0-822b-95c5a1754ee5-medium.webp 2x, fb630dfe-c7d4-49f0-822b-95c5a1754ee5-large.webp 2x, fb630dfe-c7d4-49f0-822b-95c5a1754ee5-xlarge.webp 3x," sizes="100vw">
+<picture><source type="image/webp" srcset="fb630dfe-c7d4-49f0-822b-95c5a1754ee5-thumbnail.webp 300w, fb630dfe-c7d4-49f0-822b-95c5a1754ee5-small.webp 600w," sizes="100vw"><img src="fb630dfe-c7d4-49f0-822b-95c5a1754ee5-small.webp" alt="Image" class=""></picture>
 ```
 
 
@@ -42,7 +42,7 @@ Once that has been completed we need to go to the Connection tab and enter our s
 
 
 ```=html
-<img src="1785522d-2571-4658-94a8-899dcb40c4f6-medium.webp" class="" alt="Image" srcset="1785522d-2571-4658-94a8-899dcb40c4f6-thumbnail.webp 1x, 1785522d-2571-4658-94a8-899dcb40c4f6-small.webp 1x, 1785522d-2571-4658-94a8-899dcb40c4f6-medium.webp 2x, 1785522d-2571-4658-94a8-899dcb40c4f6-large.webp 2x, 1785522d-2571-4658-94a8-899dcb40c4f6-xlarge.webp 3x," sizes="100vw">
+<picture><source type="image/webp" srcset="1785522d-2571-4658-94a8-899dcb40c4f6-thumbnail.webp 300w, 1785522d-2571-4658-94a8-899dcb40c4f6-small.webp 600w," sizes="100vw"><img src="1785522d-2571-4658-94a8-899dcb40c4f6-small.webp" alt="Image" class=""></picture>
 ```
 
 
@@ -51,7 +51,7 @@ Please also note that I have checked `Allow saving password` that will make it s
 
 
 ```=html
-<img src="744306f5-783b-413a-9063-22f153025093-medium.webp" class="" alt="Image" srcset="744306f5-783b-413a-9063-22f153025093-thumbnail.webp 1x, 744306f5-783b-413a-9063-22f153025093-small.webp 1x, 744306f5-783b-413a-9063-22f153025093-medium.webp 2x, 744306f5-783b-413a-9063-22f153025093-large.webp 2x, 744306f5-783b-413a-9063-22f153025093-xlarge.webp 3x," sizes="100vw">
+<picture><source type="image/webp" srcset="744306f5-783b-413a-9063-22f153025093-thumbnail.webp 300w," sizes="100vw"><img src="744306f5-783b-413a-9063-22f153025093-thumbnail.webp" alt="Image" class=""></picture>
 ```
 
 
@@ -139,7 +139,7 @@ This will save the results to a html file which you can freely view in your pref
 
 
 ```=html
-<img src="73dd5c75-4827-407d-b1f9-f0200756b4ee-medium.webp" class="" alt="Image" srcset="73dd5c75-4827-407d-b1f9-f0200756b4ee-thumbnail.webp 1x, 73dd5c75-4827-407d-b1f9-f0200756b4ee-small.webp 1x, 73dd5c75-4827-407d-b1f9-f0200756b4ee-medium.webp 2x, 73dd5c75-4827-407d-b1f9-f0200756b4ee-large.webp 2x, 73dd5c75-4827-407d-b1f9-f0200756b4ee-xlarge.webp 3x," sizes="100vw">
+<picture><source type="image/webp" srcset="73dd5c75-4827-407d-b1f9-f0200756b4ee-thumbnail.webp 300w, 73dd5c75-4827-407d-b1f9-f0200756b4ee-small.webp 600w," sizes="100vw"><img src="73dd5c75-4827-407d-b1f9-f0200756b4ee-small.webp" alt="Image" class=""></picture>
 ```
 
 
@@ -167,7 +167,7 @@ ConvertTo-HTML -head $style | Out-File test.html
 
 
 ```=html
-<img src="3984873a-d5c8-492f-a94c-2307fe01d551-medium.webp" class="" alt="Image" srcset="3984873a-d5c8-492f-a94c-2307fe01d551-thumbnail.webp 1x, 3984873a-d5c8-492f-a94c-2307fe01d551-small.webp 1x, 3984873a-d5c8-492f-a94c-2307fe01d551-medium.webp 2x, 3984873a-d5c8-492f-a94c-2307fe01d551-large.webp 2x, 3984873a-d5c8-492f-a94c-2307fe01d551-xlarge.webp 3x," sizes="100vw">
+<picture><source type="image/webp" srcset="3984873a-d5c8-492f-a94c-2307fe01d551-thumbnail.webp 300w, 3984873a-d5c8-492f-a94c-2307fe01d551-small.webp 600w," sizes="100vw"><img src="3984873a-d5c8-492f-a94c-2307fe01d551-small.webp" alt="Image" class=""></picture>
 ```
 
 
@@ -224,7 +224,7 @@ Then all you need to do is run the script from the Powershell console.
 
 
 ```=html
-<img src="be26cc6a-05be-4e21-b2ab-a070522b2997-medium.webp" class="" alt="Image" srcset="be26cc6a-05be-4e21-b2ab-a070522b2997-thumbnail.webp 1x, be26cc6a-05be-4e21-b2ab-a070522b2997-small.webp 1x, be26cc6a-05be-4e21-b2ab-a070522b2997-medium.webp 2x, be26cc6a-05be-4e21-b2ab-a070522b2997-large.webp 2x, be26cc6a-05be-4e21-b2ab-a070522b2997-xlarge.webp 3x," sizes="100vw">
+<picture><source type="image/webp" srcset="be26cc6a-05be-4e21-b2ab-a070522b2997-thumbnail.webp 300w, be26cc6a-05be-4e21-b2ab-a070522b2997-small.webp 600w," sizes="100vw"><img src="be26cc6a-05be-4e21-b2ab-a070522b2997-small.webp" alt="Image" class=""></picture>
 ```
 
 

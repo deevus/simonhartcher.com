@@ -7,13 +7,13 @@
 .layout = "post.shtml",
 .aliases = ["polygon-peril-prototype-video-game-available-to-play-now.html"],
 .custom = {
-  .cover = "<img src='cover-medium.webp' class='cover' alt='Image' srcset='cover-thumbnail.webp 1x, cover-small.webp 1x, cover-medium.webp 2x, cover-large.webp 2x, cover-xlarge.webp 3x,' sizes='100vw'>",
+  .cover = "<picture><source type='image/webp' srcset='cover-thumbnail.webp 300w, cover-small.webp 600w, cover-medium.webp 900w, cover-large.webp 1200w, cover-xlarge.webp 1800w,' sizes='100vw'><img src='cover-xlarge.webp' alt='Image' class='cover'></picture>",
 },
 ---
 
 
 ```=html
-<img src="fa1b3112-7287-454a-b291-9a8690e2fccb-medium.webp" class="" alt="Image" srcset="fa1b3112-7287-454a-b291-9a8690e2fccb-thumbnail.webp 1x, fa1b3112-7287-454a-b291-9a8690e2fccb-small.webp 1x, fa1b3112-7287-454a-b291-9a8690e2fccb-medium.webp 2x, fa1b3112-7287-454a-b291-9a8690e2fccb-large.webp 2x, fa1b3112-7287-454a-b291-9a8690e2fccb-xlarge.webp 3x," sizes="100vw">
+<picture><source type="image/webp" srcset="fa1b3112-7287-454a-b291-9a8690e2fccb-thumbnail.webp 300w, fa1b3112-7287-454a-b291-9a8690e2fccb-small.webp 600w, fa1b3112-7287-454a-b291-9a8690e2fccb-medium.webp 900w, fa1b3112-7287-454a-b291-9a8690e2fccb-large.webp 1200w, fa1b3112-7287-454a-b291-9a8690e2fccb-xlarge.webp 1800w," sizes="100vw"><img src="fa1b3112-7287-454a-b291-9a8690e2fccb-xlarge.webp" alt="Image" class=""></picture>
 ```
 
 

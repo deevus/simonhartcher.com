@@ -18,21 +18,23 @@ const imageSizes = {
   original: null,
 } satisfies Record<string, ImageSize | null>;
 
-type ImageResults = Record<keyof typeof imageSizes, string>;
+type ImageSizeNames = keyof typeof imageSizes;
+
+type ImageResults = Record<ImageSizeNames, string>;
 
 type ImageDetails =
   | {
-      type: "external";
-      external: {
-        url: string;
-      };
-    }
-  | {
-      type: "file";
-      file: {
-        url: string;
-      };
+    type: "external";
+    external: {
+      url: string;
     };
+  }
+  | {
+    type: "file";
+    file: {
+      url: string;
+    };
+  };
 
 interface ProcessImageBlockOptions {
   id: string;
@@ -64,7 +66,7 @@ export class ImageTransformer {
     options: ProcessImageBlockOptions,
   ) => {
     console.log(`Processing image block: ${options.id}`);
-    
+
     var imageUrl: string | undefined;
 
     const originalWebpPath = path.join(this.assetPath, `${options.id}-original.webp`);
@@ -88,29 +90,6 @@ export class ImageTransformer {
     }
 
     const imageResponse = await fetch(imageUrl);
-    const contentType = imageResponse.headers.get("content-type");
-
-    var imageExtension: string;
-    switch (contentType) {
-      case "image/jpeg":
-        imageExtension = "jpg";
-        break;
-      case "image/png":
-        imageExtension = "png";
-        break;
-      case "image/gif":
-        imageExtension = "gif";
-        break;
-      case "image/webp":
-        imageExtension = "webp";
-        break;
-      default:
-        imageExtension = "jpg";
-        break;
-    }
-
-    const imageFilename = `${options.id}.${imageExtension}`;
-    const imageFilePath = path.join(this.assetPath, imageFilename);
 
     fs.mkdirSync(this.assetPath, { recursive: true });
 
@@ -122,11 +101,22 @@ export class ImageTransformer {
       height: imageMetadata.height!,
     }
 
-    const results = await this.resizeImage(options.id, imageBuffer, this.assetPath);
+    // Ensure the output directory exists
+    fs.mkdirSync(this.assetPath, {
+      recursive: true,
+    });
 
-    const rawHtml = createImageHTML(results, {
+    const results = await this.resizeImage({
+      id: options.id,
+      input: imageBuffer,
+      outputDir: this.assetPath,
+      dimensions,
+    });
+
+    const rawHtml = this.createImageHTML(results, {
       altText: "Image",
       className: options.className,
+      baseSize: this.getClosestSizeName(dimensions),
     });
 
     return {
@@ -136,56 +126,87 @@ export class ImageTransformer {
     };
   };
 
-  resizeImage = async (
+  getClosestSizeName = (dimensions: ImageSize): Exclude<ImageSizeNames, "original"> => {
+    type SizeName = Exclude<ImageSizeNames, "original">;
+
+    var closest: SizeName | undefined = undefined;
+    var minDistance = Infinity;
+
+    for (const sizeName in imageSizes) {
+      if (sizeName == "original") continue;
+      const { width, height } = imageSizes[sizeName as SizeName];
+
+      const distance = Math.sqrt((dimensions.width - width) ** 2 + (dimensions.height - height) ** 2);
+
+      if (distance < minDistance) {
+        minDistance = distance;
+        closest = sizeName as SizeName;
+      }
+    }
+
+    return closest!;
+  }
+
+  getImage = (input: ArrayBuffer) => sharp(input, {
+    animated: true,
+  })
+    .webp({ quality: 80, smartSubsample: true })
+    .withMetadata()
+
+  resizeImage = async (options: {
     id: string,
-    input: string | ArrayBuffer,
     outputDir: string,
-    baseName: string | undefined = undefined,
-  ): Promise<ImageResults> => {
+    input: ArrayBuffer,
+    dimensions: ImageSize,
+  }): Promise<ImageResults> => {
+    const { id, outputDir, input, dimensions } = options;
     const results = {} as ImageResults;
 
+    const closestSizeName = this.getClosestSizeName(dimensions);
+    const closestSize = imageSizes[closestSizeName]!;
+
+    console.log("Closest size name for dimensions: ", closestSizeName, dimensions);
+
     try {
-      // Ensure the output directory exists
-      fs.mkdirSync(outputDir, {
-        recursive: true,
-      });
-
       for (const sizeName in imageSizes) {
-        const size = imageSizes[sizeName];
+        const size = imageSizes[sizeName as keyof typeof imageSizes];
         const fileName = `${id}-${sizeName}.webp`;
-
         const outputFilePath = path.join(outputDir, fileName); // Save as WebP
 
-        results[sizeName] = fileName;
-
-        this.referencedFiles.add(outputFilePath);
-
-        // Skip if file already exists
-        if (fs.existsSync(outputFilePath)) {
-          console.log(`File already exists: ${outputFilePath}`);
-          continue;
-        }
-
-        const image = sharp(input, {
-          animated: true,
-        })
-          .webp({ quality: 80, smartSubsample: true })
-          .withMetadata();
+        let skip = false;
+        let resize: ImageSize | false = false;
 
         if (size) {
-          // Resize the image
-          await image
-            .resize(size.width, size.height, {
-              fit: sharp.fit.inside, // Maintain aspect ratio, fit within bounds
-              withoutEnlargement: true, // Prevent upscaling smaller images
-            })
-            .toFile(outputFilePath);
+          if (size.width > closestSize.width) {
+            console.log(`Skipping ${sizeName} size as it is larger than the closest size: ${closestSizeName}.`);
+            skip = true;
+          } else {
+            console.log(`Resizing to ${sizeName}.`);
+            resize = size;
+          }
+        }
 
-          console.log(`Resized to ${sizeName}: ${outputFilePath}`);
-        } else {
-          // For the "original" size
-          await image.toFile(outputFilePath);
-          console.log(`Output original size to: ${outputFilePath}`);
+        if (!skip) {
+          if (fs.existsSync(outputFilePath)) {
+            console.log(`Image for ${sizeName} already exists.`);
+          } else {
+            // Load the image into Sharp
+            let image = this.getImage(input);
+
+            // Resize the image
+            if (resize) {
+              image = image.resize(resize.width, resize.height, {
+                fit: sharp.fit.inside, // Maintain aspect ratio, fit within bounds
+                withoutEnlargement: true, // Prevent upscaling smaller images
+              });
+            }
+
+            console.log(`Saving ${sizeName} to: ${outputFilePath}.`);
+            await image.toFile(outputFilePath);
+          }
+
+          results[sizeName] = fileName;
+          this.referencedFiles.add(outputFilePath);
         }
       }
     } catch (error) {
@@ -195,65 +216,52 @@ export class ImageTransformer {
 
     return results;
   };
-}
 
-function createImageHTML(
-  imageResults: ImageResults,
-  options: {
-    altText: string;
-    baseSize?: keyof typeof imageSizes;
-    className?: string;
-  }
-): string {
-  const baseSize = options.baseSize ?? "medium";
-  var baseUrl = imageResults[baseSize];
-
-  const imageAsset = (url: string) => `${url}`;
-
-  if (!baseUrl) {
-    console.warn(
-      `Base size "${baseSize}" not found in imageResults.  Using a fallback.`,
-    );
-    // Find the first available URL as a fallback
-    const firstKey = Object.keys(imageResults)[0] as keyof ImageResults;
-    if (firstKey) {
-      baseUrl = imageResults[firstKey];
-    } else {
-      return `<img src="" alt="${options.altText}" class="${options.className ?? ""}">`;
+  createImageHTML = (
+    imageResults: ImageResults,
+    options: {
+      altText: string;
+      baseSize?: keyof typeof imageSizes;
+      className?: string;
     }
-  }
+  ): string => {
+    const baseSize = options.baseSize ?? "medium";
+    var baseUrl = imageResults[baseSize];
 
-  let srcset = "";
-  for (const sizeName in imageResults) {
-    if (sizeName === "original") continue; // Skip the original image in srcset
+    const imageAsset = (url: string) => `${url}`;
 
-    // Map size names to appropriate x descriptors for retina displays
-    let retinaMultiplier = 1;
-    switch (sizeName) {
-      case "medium":
-      case "large":
-        retinaMultiplier = 2;
-        break;
-      case "xlarge":
-        retinaMultiplier = 3;
-        break;
-      case "small":
-      default:
-        retinaMultiplier = 1;
+    if (!baseUrl) {
+      console.warn(
+        `Base size "${baseSize}" not found in imageResults.  Using a fallback.`,
+      );
+      // Find the first available URL as a fallback
+      const firstKey = Object.keys(imageResults)[0] as keyof ImageResults;
+      if (firstKey) {
+        baseUrl = imageResults[firstKey];
+      } else {
+        return `<img src="" alt="${options.altText}" class="${options.className ?? ""}">`;
+      }
     }
 
-    const url = imageResults[sizeName];
-    srcset += `${imageAsset(url)} ${retinaMultiplier}x, `;
-  }
+    let srcset = "";
+    for (const sizeName in imageResults) {
+      if (sizeName === "original") continue; // Skip the original image in srcset
 
-  // Remove the trailing comma
-  if (srcset.length > 0) {
-    srcset = srcset.slice(0, -1);
-  }
+      const width = imageSizes[sizeName as ImageSizeNames]!.width;
+      const url = imageResults[sizeName];
 
-  // Define sizes attribute (adjust these based on your layout)
-  const sizes = "100vw"; // Simple viewport width sizing
+      srcset += `${imageAsset(url)} ${width}w, `;
+    }
 
-  const html = `<img src="${imageAsset(baseUrl)}" class="${options.className ?? ""}" alt="${options.altText}" srcset="${srcset}" sizes="${sizes}">`;
-  return html;
+    // Remove the trailing comma
+    if (srcset.length > 0) {
+      srcset = srcset.slice(0, -1);
+    }
+
+    // Define sizes attribute (adjust these based on your layout)
+    const sizes = "100vw"; // Simple viewport width sizing
+
+    const html = `<picture><source type="image/webp" srcset="${srcset}" sizes="${sizes}"><img src="${imageAsset(baseUrl)}" alt="${options.altText}" class="${options.className ?? ""}"></picture>`;
+    return html;
+  };
 }
