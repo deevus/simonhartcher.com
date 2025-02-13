@@ -4,5 +4,25 @@
 .author = "Simon Hartcher",
 .draft = false,
 .tags = ["blog", "home"],
-.layout = "index.shtml"
+.layout = "index.shtml",
+.alternatives = [
+    {
+        .name = "rss",
+        .type = "application/rss+xml",
+        .layout = "rss.xml",
+        .output = "index.xml",
+    },
+    {
+        .name = "sitemap",
+        .type = "application/xml",
+        .layout = "sitemap.xml",
+        .output = "sitemap.xml",
+    },
+    {
+        .name = "robots",
+        .type = "text/plain",
+        .layout = "robots.txt",
+        .output = "robots.txt",
+    },
+],
 ---

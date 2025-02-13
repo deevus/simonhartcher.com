@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+    <url>
+        <loc :text="$site.host_url"></loc>
+        <lastmod :text="$build.generated.format('2006-01-02')"></lastmod>
+        <priority>1.0</priority>
+        <changefreq>weekly</changefreq>
+    </url>
+    <ctx :loop="$page.subpages()">
+        <url>
+            <loc :text="$site.host_url.addPath($loop.it.link())"></loc>
+            <lastmod :text="$loop.it.date.format('2006-01-02')"></lastmod>
+            <ctx :if="$loop.it.layout.eql('post.shtml')">
+                <priority>0.9</priority>
+                <changefreq>weekly</changefreq>
+            </ctx>
+            <ctx :if="$loop.it.layout.eql('post.shtml').not()">
+                <priority>0.8</priority>
+                <changefreq>weekly</changefreq>
+            </ctx>
+        </url>
+    </ctx>
+</urlset>

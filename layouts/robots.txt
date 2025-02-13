@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: <ctx :text="$site.host_url.addPath('sitemap.xml')"></ctx>

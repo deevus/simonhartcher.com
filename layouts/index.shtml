@@ -10,8 +10,8 @@
       <article class="blog-post__card">
         <a href="$loop.it.link()" class="blog-post__card__cover-thumb__container">
           <picture>
-            <source srcset="$loop.it.link().suffix('cover-thumbnail.webp').suffix(' 300w,').suffix($loop.it.link().suffix('cover-small.webp').suffix(' 600w,'))" sizes="50vw">
-            <img class="blog-post__card__cover-thumb" src="$loop.it.link().suffix('cover-thumbnail.webp')" alt="Cover image">
+            <source srcset="$loop.it.link().addPath('cover-thumbnail.webp').suffix(' 300w,').suffix($loop.it.link().addPath('cover-small.webp').suffix(' 600w,'))" sizes="50vw">
+            <img class="blog-post__card__cover-thumb" src="$loop.it.link().addPath('cover-thumbnail.webp')" alt="Cover image">
           </picture>
         </a>
         <div class="blog-post__card__content">
