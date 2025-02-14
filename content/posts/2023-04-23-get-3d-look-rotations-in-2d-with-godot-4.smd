@@ -7,7 +7,7 @@
 .layout = "post.shtml",
 .aliases = ["get-3d-look-rotations-in-2d-with-godot-4/index.html"],
 .custom = {
-  .cover = "<picture><source type='image/webp' srcset='cover-thumbnail.webp 300w, cover-small.webp 600w, cover-medium.webp 900w,' sizes='100vw'><img src='cover-medium.webp' alt='Image' class='cover'></picture>",
+  .cover = "<picture><source type='image/webp' srcset='/posts/2023-04-23-get-3d-look-rotations-in-2d-with-godot-4/cover-thumbnail.webp 300w, /posts/2023-04-23-get-3d-look-rotations-in-2d-with-godot-4/cover-small.webp 600w, /posts/2023-04-23-get-3d-look-rotations-in-2d-with-godot-4/cover-medium.webp 900w,' sizes='100vw'><img src='/posts/2023-04-23-get-3d-look-rotations-in-2d-with-godot-4/cover-medium.webp' alt='Image' class='cover'></picture>",
 },
 ---
 
@@ -29,7 +29,7 @@ For my naive first attempt I used an `AnimationPlayer` node to animate the `scal
 
 
 ```=html
-<picture><source type="image/webp" srcset="d1bcba42-ff18-4537-b1fd-0bd838c0b429-thumbnail.webp 300w, d1bcba42-ff18-4537-b1fd-0bd838c0b429-small.webp 600w, d1bcba42-ff18-4537-b1fd-0bd838c0b429-medium.webp 900w," sizes="100vw"><img src="d1bcba42-ff18-4537-b1fd-0bd838c0b429-medium.webp" alt="Image" class=""></picture>
+<picture><source type="image/webp" srcset="/posts/2023-04-23-get-3d-look-rotations-in-2d-with-godot-4/d1bcba42-ff18-4537-b1fd-0bd838c0b429-thumbnail.webp 300w, /posts/2023-04-23-get-3d-look-rotations-in-2d-with-godot-4/d1bcba42-ff18-4537-b1fd-0bd838c0b429-small.webp 600w, /posts/2023-04-23-get-3d-look-rotations-in-2d-with-godot-4/d1bcba42-ff18-4537-b1fd-0bd838c0b429-medium.webp 900w," sizes="100vw"><img src="/posts/2023-04-23-get-3d-look-rotations-in-2d-with-godot-4/d1bcba42-ff18-4537-b1fd-0bd838c0b429-medium.webp" alt="Image" class=""></picture>
 ```
 
 
@@ -45,7 +45,7 @@ The result of which looks like this:
 
 
 ```=html
-<picture><source type="image/webp" srcset="fc8b06b3-353a-444d-b8d1-64cb0b04bf26-thumbnail.webp 300w, fc8b06b3-353a-444d-b8d1-64cb0b04bf26-small.webp 600w, fc8b06b3-353a-444d-b8d1-64cb0b04bf26-medium.webp 900w, fc8b06b3-353a-444d-b8d1-64cb0b04bf26-large.webp 1200w," sizes="100vw"><img src="fc8b06b3-353a-444d-b8d1-64cb0b04bf26-large.webp" alt="Image" class=""></picture>
+<picture><source type="image/webp" srcset="/posts/2023-04-23-get-3d-look-rotations-in-2d-with-godot-4/fc8b06b3-353a-444d-b8d1-64cb0b04bf26-thumbnail.webp 300w, /posts/2023-04-23-get-3d-look-rotations-in-2d-with-godot-4/fc8b06b3-353a-444d-b8d1-64cb0b04bf26-small.webp 600w, /posts/2023-04-23-get-3d-look-rotations-in-2d-with-godot-4/fc8b06b3-353a-444d-b8d1-64cb0b04bf26-medium.webp 900w, /posts/2023-04-23-get-3d-look-rotations-in-2d-with-godot-4/fc8b06b3-353a-444d-b8d1-64cb0b04bf26-large.webp 1200w," sizes="100vw"><img src="/posts/2023-04-23-get-3d-look-rotations-in-2d-with-godot-4/fc8b06b3-353a-444d-b8d1-64cb0b04bf26-large.webp" alt="Image" class=""></picture>
 ```
 
 
@@ -159,7 +159,7 @@ Here is the final animation:
 
 
 ```=html
-<picture><source type="image/webp" srcset="d1c92e85-8bd8-4bb3-a6b3-84881757947a-thumbnail.webp 300w, d1c92e85-8bd8-4bb3-a6b3-84881757947a-small.webp 600w, d1c92e85-8bd8-4bb3-a6b3-84881757947a-medium.webp 900w, d1c92e85-8bd8-4bb3-a6b3-84881757947a-large.webp 1200w," sizes="100vw"><img src="d1c92e85-8bd8-4bb3-a6b3-84881757947a-large.webp" alt="Image" class=""></picture>
+<picture><source type="image/webp" srcset="/posts/2023-04-23-get-3d-look-rotations-in-2d-with-godot-4/d1c92e85-8bd8-4bb3-a6b3-84881757947a-thumbnail.webp 300w, /posts/2023-04-23-get-3d-look-rotations-in-2d-with-godot-4/d1c92e85-8bd8-4bb3-a6b3-84881757947a-small.webp 600w, /posts/2023-04-23-get-3d-look-rotations-in-2d-with-godot-4/d1c92e85-8bd8-4bb3-a6b3-84881757947a-medium.webp 900w, /posts/2023-04-23-get-3d-look-rotations-in-2d-with-godot-4/d1c92e85-8bd8-4bb3-a6b3-84881757947a-large.webp 1200w," sizes="100vw"><img src="/posts/2023-04-23-get-3d-look-rotations-in-2d-with-godot-4/d1c92e85-8bd8-4bb3-a6b3-84881757947a-large.webp" alt="Image" class=""></picture>
 ```
 
 
@@ -171,7 +171,7 @@ The only parameters I changed from their default values were as follows:
 - `y_rotation` is set in the `AnimationPlayer`, from left to right the values for each key are 0, 90 and 180:
 
 ```=html
-<picture><source type="image/webp" srcset="80648cc2-da9c-47c0-9818-13b18d49cf90-thumbnail.webp 300w, 80648cc2-da9c-47c0-9818-13b18d49cf90-small.webp 600w, 80648cc2-da9c-47c0-9818-13b18d49cf90-medium.webp 900w," sizes="100vw"><img src="80648cc2-da9c-47c0-9818-13b18d49cf90-medium.webp" alt="Image" class=""></picture>
+<picture><source type="image/webp" srcset="/posts/2023-04-23-get-3d-look-rotations-in-2d-with-godot-4/80648cc2-da9c-47c0-9818-13b18d49cf90-thumbnail.webp 300w, /posts/2023-04-23-get-3d-look-rotations-in-2d-with-godot-4/80648cc2-da9c-47c0-9818-13b18d49cf90-small.webp 600w, /posts/2023-04-23-get-3d-look-rotations-in-2d-with-godot-4/80648cc2-da9c-47c0-9818-13b18d49cf90-medium.webp 900w," sizes="100vw"><img src="/posts/2023-04-23-get-3d-look-rotations-in-2d-with-godot-4/80648cc2-da9c-47c0-9818-13b18d49cf90-medium.webp" alt="Image" class=""></picture>
 ```
 
 

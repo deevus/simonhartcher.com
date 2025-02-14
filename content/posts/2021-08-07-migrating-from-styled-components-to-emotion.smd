@@ -7,7 +7,7 @@
 .layout = "post.shtml",
 .aliases = ["migrating-from-styled-components-to-emotion/index.html"],
 .custom = {
-  .cover = "<picture><source type='image/webp' srcset='cover-thumbnail.webp 300w, cover-small.webp 600w, cover-medium.webp 900w, cover-large.webp 1200w,' sizes='100vw'><img src='cover-large.webp' alt='Image' class='cover'></picture>",
+  .cover = "<picture><source type='image/webp' srcset='/posts/2021-08-07-migrating-from-styled-components-to-emotion/cover-thumbnail.webp 300w, /posts/2021-08-07-migrating-from-styled-components-to-emotion/cover-small.webp 600w, /posts/2021-08-07-migrating-from-styled-components-to-emotion/cover-medium.webp 900w, /posts/2021-08-07-migrating-from-styled-components-to-emotion/cover-large.webp 1200w,' sizes='100vw'><img src='/posts/2021-08-07-migrating-from-styled-components-to-emotion/cover-large.webp' alt='Image' class='cover'></picture>",
 },
 ---
 

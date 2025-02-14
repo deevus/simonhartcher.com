@@ -7,7 +7,7 @@
 .layout = "post.shtml",
 .aliases = ["serious-sam-hd-kleer-skeleton-surfing/index.html"],
 .custom = {
-  .cover = "<picture><source type='image/webp' srcset='cover-thumbnail.webp 300w, cover-small.webp 600w, cover-medium.webp 900w, cover-large.webp 1200w,' sizes='100vw'><img src='cover-large.webp' alt='Image' class='cover'></picture>",
+  .cover = "<picture><source type='image/webp' srcset='/posts/2010-01-27-serious-sam-hd-kleer-skeleton-surfing/cover-thumbnail.webp 300w, /posts/2010-01-27-serious-sam-hd-kleer-skeleton-surfing/cover-small.webp 600w, /posts/2010-01-27-serious-sam-hd-kleer-skeleton-surfing/cover-medium.webp 900w, /posts/2010-01-27-serious-sam-hd-kleer-skeleton-surfing/cover-large.webp 1200w,' sizes='100vw'><img src='/posts/2010-01-27-serious-sam-hd-kleer-skeleton-surfing/cover-large.webp' alt='Image' class='cover'></picture>",
 },
 ---
 

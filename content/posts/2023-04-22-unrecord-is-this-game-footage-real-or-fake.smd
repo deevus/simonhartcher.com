@@ -7,7 +7,7 @@
 .layout = "post.shtml",
 .aliases = ["unrecord-is-this-game-footage-real-or-fake/index.html"],
 .custom = {
-  .cover = "<picture><source type='image/webp' srcset='cover-thumbnail.webp 300w, cover-small.webp 600w, cover-medium.webp 900w, cover-large.webp 1200w, cover-xlarge.webp 1800w,' sizes='100vw'><img src='cover-xlarge.webp' alt='Image' class='cover'></picture>",
+  .cover = "<picture><source type='image/webp' srcset='/posts/2023-04-22-unrecord-is-this-game-footage-real-or-fake/cover-thumbnail.webp 300w, /posts/2023-04-22-unrecord-is-this-game-footage-real-or-fake/cover-small.webp 600w, /posts/2023-04-22-unrecord-is-this-game-footage-real-or-fake/cover-medium.webp 900w, /posts/2023-04-22-unrecord-is-this-game-footage-real-or-fake/cover-large.webp 1200w, /posts/2023-04-22-unrecord-is-this-game-footage-real-or-fake/cover-xlarge.webp 1800w,' sizes='100vw'><img src='/posts/2023-04-22-unrecord-is-this-game-footage-real-or-fake/cover-xlarge.webp' alt='Image' class='cover'></picture>",
 },
 ---
 
@@ -40,7 +40,7 @@ Camera technology has come a long way, but it still isn’t able to handle every
 
 
 ```=html
-<picture><source type="image/webp" srcset="e878cd1a-05b5-4654-875a-137643defa07-thumbnail.webp 300w, e878cd1a-05b5-4654-875a-137643defa07-small.webp 600w, e878cd1a-05b5-4654-875a-137643defa07-medium.webp 900w, e878cd1a-05b5-4654-875a-137643defa07-large.webp 1200w, e878cd1a-05b5-4654-875a-137643defa07-xlarge.webp 1800w," sizes="100vw"><img src="e878cd1a-05b5-4654-875a-137643defa07-xlarge.webp" alt="Image" class=""></picture>
+<picture><source type="image/webp" srcset="/posts/2023-04-22-unrecord-is-this-game-footage-real-or-fake/e878cd1a-05b5-4654-875a-137643defa07-thumbnail.webp 300w, /posts/2023-04-22-unrecord-is-this-game-footage-real-or-fake/e878cd1a-05b5-4654-875a-137643defa07-small.webp 600w, /posts/2023-04-22-unrecord-is-this-game-footage-real-or-fake/e878cd1a-05b5-4654-875a-137643defa07-medium.webp 900w, /posts/2023-04-22-unrecord-is-this-game-footage-real-or-fake/e878cd1a-05b5-4654-875a-137643defa07-large.webp 1200w, /posts/2023-04-22-unrecord-is-this-game-footage-real-or-fake/e878cd1a-05b5-4654-875a-137643defa07-xlarge.webp 1800w," sizes="100vw"><img src="/posts/2023-04-22-unrecord-is-this-game-footage-real-or-fake/e878cd1a-05b5-4654-875a-137643defa07-xlarge.webp" alt="Image" class=""></picture>
 ```
 
 
@@ -58,7 +58,7 @@ Right at the start of the trailer, the player is outside an abandoned looking bu
 
 
 ```=html
-<picture><source type="image/webp" srcset="fc2747d7-b68e-48e8-87c2-2108ce5e1141-thumbnail.webp 300w, fc2747d7-b68e-48e8-87c2-2108ce5e1141-small.webp 600w, fc2747d7-b68e-48e8-87c2-2108ce5e1141-medium.webp 900w, fc2747d7-b68e-48e8-87c2-2108ce5e1141-large.webp 1200w, fc2747d7-b68e-48e8-87c2-2108ce5e1141-xlarge.webp 1800w," sizes="100vw"><img src="fc2747d7-b68e-48e8-87c2-2108ce5e1141-xlarge.webp" alt="Image" class=""></picture>
+<picture><source type="image/webp" srcset="/posts/2023-04-22-unrecord-is-this-game-footage-real-or-fake/fc2747d7-b68e-48e8-87c2-2108ce5e1141-thumbnail.webp 300w, /posts/2023-04-22-unrecord-is-this-game-footage-real-or-fake/fc2747d7-b68e-48e8-87c2-2108ce5e1141-small.webp 600w, /posts/2023-04-22-unrecord-is-this-game-footage-real-or-fake/fc2747d7-b68e-48e8-87c2-2108ce5e1141-medium.webp 900w, /posts/2023-04-22-unrecord-is-this-game-footage-real-or-fake/fc2747d7-b68e-48e8-87c2-2108ce5e1141-large.webp 1200w, /posts/2023-04-22-unrecord-is-this-game-footage-real-or-fake/fc2747d7-b68e-48e8-87c2-2108ce5e1141-xlarge.webp 1800w," sizes="100vw"><img src="/posts/2023-04-22-unrecord-is-this-game-footage-real-or-fake/fc2747d7-b68e-48e8-87c2-2108ce5e1141-xlarge.webp" alt="Image" class=""></picture>
 ```
 
 
@@ -67,7 +67,7 @@ When you compare that with the trailer footage, it is quite similar, and it’s 
 
 
 ```=html
-<picture><source type="image/webp" srcset="0f703cf2-2588-49d3-a335-bef65ce18b4a-thumbnail.webp 300w, 0f703cf2-2588-49d3-a335-bef65ce18b4a-small.webp 600w, 0f703cf2-2588-49d3-a335-bef65ce18b4a-medium.webp 900w, 0f703cf2-2588-49d3-a335-bef65ce18b4a-large.webp 1200w, 0f703cf2-2588-49d3-a335-bef65ce18b4a-xlarge.webp 1800w," sizes="100vw"><img src="0f703cf2-2588-49d3-a335-bef65ce18b4a-xlarge.webp" alt="Image" class=""></picture>
+<picture><source type="image/webp" srcset="/posts/2023-04-22-unrecord-is-this-game-footage-real-or-fake/0f703cf2-2588-49d3-a335-bef65ce18b4a-thumbnail.webp 300w, /posts/2023-04-22-unrecord-is-this-game-footage-real-or-fake/0f703cf2-2588-49d3-a335-bef65ce18b4a-small.webp 600w, /posts/2023-04-22-unrecord-is-this-game-footage-real-or-fake/0f703cf2-2588-49d3-a335-bef65ce18b4a-medium.webp 900w, /posts/2023-04-22-unrecord-is-this-game-footage-real-or-fake/0f703cf2-2588-49d3-a335-bef65ce18b4a-large.webp 1200w, /posts/2023-04-22-unrecord-is-this-game-footage-real-or-fake/0f703cf2-2588-49d3-a335-bef65ce18b4a-xlarge.webp 1800w," sizes="100vw"><img src="/posts/2023-04-22-unrecord-is-this-game-footage-real-or-fake/0f703cf2-2588-49d3-a335-bef65ce18b4a-xlarge.webp" alt="Image" class=""></picture>
 ```
 
 

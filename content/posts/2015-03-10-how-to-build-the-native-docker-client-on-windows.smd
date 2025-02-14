@@ -7,7 +7,7 @@
 .layout = "post.shtml",
 .aliases = ["how-to-build-the-native-docker-client-on-windows/index.html"],
 .custom = {
-  .cover = "<picture><source type='image/webp' srcset='cover-thumbnail.webp 300w, cover-small.webp 600w, cover-medium.webp 900w, cover-large.webp 1200w, cover-xlarge.webp 1800w,' sizes='100vw'><img src='cover-xlarge.webp' alt='Image' class='cover'></picture>",
+  .cover = "<picture><source type='image/webp' srcset='/posts/2015-03-10-how-to-build-the-native-docker-client-on-windows/cover-thumbnail.webp 300w, /posts/2015-03-10-how-to-build-the-native-docker-client-on-windows/cover-small.webp 600w, /posts/2015-03-10-how-to-build-the-native-docker-client-on-windows/cover-medium.webp 900w, /posts/2015-03-10-how-to-build-the-native-docker-client-on-windows/cover-large.webp 1200w, /posts/2015-03-10-how-to-build-the-native-docker-client-on-windows/cover-xlarge.webp 1800w,' sizes='100vw'><img src='/posts/2015-03-10-how-to-build-the-native-docker-client-on-windows/cover-xlarge.webp' alt='Image' class='cover'></picture>",
 },
 ---
 
@@ -102,7 +102,7 @@ You should then have a nice new `docker.exe` file in the current directory. You 
 
 
 ```=html
-<picture><source type="image/webp" srcset="ac86256d-7540-426d-a103-698c5b1654ac-thumbnail.webp 300w, ac86256d-7540-426d-a103-698c5b1654ac-small.webp 600w, ac86256d-7540-426d-a103-698c5b1654ac-medium.webp 900w," sizes="100vw"><img src="ac86256d-7540-426d-a103-698c5b1654ac-medium.webp" alt="Image" class=""></picture>
+<picture><source type="image/webp" srcset="/posts/2015-03-10-how-to-build-the-native-docker-client-on-windows/ac86256d-7540-426d-a103-698c5b1654ac-thumbnail.webp 300w, /posts/2015-03-10-how-to-build-the-native-docker-client-on-windows/ac86256d-7540-426d-a103-698c5b1654ac-small.webp 600w, /posts/2015-03-10-how-to-build-the-native-docker-client-on-windows/ac86256d-7540-426d-a103-698c5b1654ac-medium.webp 900w," sizes="100vw"><img src="/posts/2015-03-10-how-to-build-the-native-docker-client-on-windows/ac86256d-7540-426d-a103-698c5b1654ac-medium.webp" alt="Image" class=""></picture>
 ```
 
 

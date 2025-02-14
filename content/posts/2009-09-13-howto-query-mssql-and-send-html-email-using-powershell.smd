@@ -7,7 +7,7 @@
 .layout = "post.shtml",
 .aliases = ["howto-query-mssql-and-send-html-email-using-powershell/index.html"],
 .custom = {
-  .cover = "<picture><source type='image/webp' srcset='cover-thumbnail.webp 300w, cover-small.webp 600w, cover-medium.webp 900w, cover-large.webp 1200w, cover-xlarge.webp 1800w,' sizes='100vw'><img src='cover-xlarge.webp' alt='Image' class='cover'></picture>",
+  .cover = "<picture><source type='image/webp' srcset='/posts/2009-09-13-howto-query-mssql-and-send-html-email-using-powershell/cover-thumbnail.webp 300w, /posts/2009-09-13-howto-query-mssql-and-send-html-email-using-powershell/cover-small.webp 600w, /posts/2009-09-13-howto-query-mssql-and-send-html-email-using-powershell/cover-medium.webp 900w, /posts/2009-09-13-howto-query-mssql-and-send-html-email-using-powershell/cover-large.webp 1200w, /posts/2009-09-13-howto-query-mssql-and-send-html-email-using-powershell/cover-xlarge.webp 1800w,' sizes='100vw'><img src='/posts/2009-09-13-howto-query-mssql-and-send-html-email-using-powershell/cover-xlarge.webp' alt='Image' class='cover'></picture>",
 },
 ---
 
@@ -33,7 +33,7 @@ You will need to be able to [see all file extensions](http://www.fileinfo.com/he
 
 
 ```=html
-<picture><source type="image/webp" srcset="fb630dfe-c7d4-49f0-822b-95c5a1754ee5-thumbnail.webp 300w, fb630dfe-c7d4-49f0-822b-95c5a1754ee5-small.webp 600w," sizes="100vw"><img src="fb630dfe-c7d4-49f0-822b-95c5a1754ee5-small.webp" alt="Image" class=""></picture>
+<picture><source type="image/webp" srcset="/posts/2009-09-13-howto-query-mssql-and-send-html-email-using-powershell/fb630dfe-c7d4-49f0-822b-95c5a1754ee5-thumbnail.webp 300w, /posts/2009-09-13-howto-query-mssql-and-send-html-email-using-powershell/fb630dfe-c7d4-49f0-822b-95c5a1754ee5-small.webp 600w," sizes="100vw"><img src="/posts/2009-09-13-howto-query-mssql-and-send-html-email-using-powershell/fb630dfe-c7d4-49f0-822b-95c5a1754ee5-small.webp" alt="Image" class=""></picture>
 ```
 
 
@@ -42,7 +42,7 @@ Once that has been completed we need to go to the Connection tab and enter our s
 
 
 ```=html
-<picture><source type="image/webp" srcset="1785522d-2571-4658-94a8-899dcb40c4f6-thumbnail.webp 300w, 1785522d-2571-4658-94a8-899dcb40c4f6-small.webp 600w," sizes="100vw"><img src="1785522d-2571-4658-94a8-899dcb40c4f6-small.webp" alt="Image" class=""></picture>
+<picture><source type="image/webp" srcset="/posts/2009-09-13-howto-query-mssql-and-send-html-email-using-powershell/1785522d-2571-4658-94a8-899dcb40c4f6-thumbnail.webp 300w, /posts/2009-09-13-howto-query-mssql-and-send-html-email-using-powershell/1785522d-2571-4658-94a8-899dcb40c4f6-small.webp 600w," sizes="100vw"><img src="/posts/2009-09-13-howto-query-mssql-and-send-html-email-using-powershell/1785522d-2571-4658-94a8-899dcb40c4f6-small.webp" alt="Image" class=""></picture>
 ```
 
 
@@ -51,7 +51,7 @@ Please also note that I have checked `Allow saving password` that will make it s
 
 
 ```=html
-<picture><source type="image/webp" srcset="744306f5-783b-413a-9063-22f153025093-thumbnail.webp 300w," sizes="100vw"><img src="744306f5-783b-413a-9063-22f153025093-thumbnail.webp" alt="Image" class=""></picture>
+<picture><source type="image/webp" srcset="/posts/2009-09-13-howto-query-mssql-and-send-html-email-using-powershell/744306f5-783b-413a-9063-22f153025093-thumbnail.webp 300w," sizes="100vw"><img src="/posts/2009-09-13-howto-query-mssql-and-send-html-email-using-powershell/744306f5-783b-413a-9063-22f153025093-thumbnail.webp" alt="Image" class=""></picture>
 ```
 
 
@@ -139,7 +139,7 @@ This will save the results to a html file which you can freely view in your pref
 
 
 ```=html
-<picture><source type="image/webp" srcset="73dd5c75-4827-407d-b1f9-f0200756b4ee-thumbnail.webp 300w, 73dd5c75-4827-407d-b1f9-f0200756b4ee-small.webp 600w," sizes="100vw"><img src="73dd5c75-4827-407d-b1f9-f0200756b4ee-small.webp" alt="Image" class=""></picture>
+<picture><source type="image/webp" srcset="/posts/2009-09-13-howto-query-mssql-and-send-html-email-using-powershell/73dd5c75-4827-407d-b1f9-f0200756b4ee-thumbnail.webp 300w, /posts/2009-09-13-howto-query-mssql-and-send-html-email-using-powershell/73dd5c75-4827-407d-b1f9-f0200756b4ee-small.webp 600w," sizes="100vw"><img src="/posts/2009-09-13-howto-query-mssql-and-send-html-email-using-powershell/73dd5c75-4827-407d-b1f9-f0200756b4ee-small.webp" alt="Image" class=""></picture>
 ```
 
 
@@ -167,7 +167,7 @@ ConvertTo-HTML -head $style | Out-File test.html
 
 
 ```=html
-<picture><source type="image/webp" srcset="3984873a-d5c8-492f-a94c-2307fe01d551-thumbnail.webp 300w, 3984873a-d5c8-492f-a94c-2307fe01d551-small.webp 600w," sizes="100vw"><img src="3984873a-d5c8-492f-a94c-2307fe01d551-small.webp" alt="Image" class=""></picture>
+<picture><source type="image/webp" srcset="/posts/2009-09-13-howto-query-mssql-and-send-html-email-using-powershell/3984873a-d5c8-492f-a94c-2307fe01d551-thumbnail.webp 300w, /posts/2009-09-13-howto-query-mssql-and-send-html-email-using-powershell/3984873a-d5c8-492f-a94c-2307fe01d551-small.webp 600w," sizes="100vw"><img src="/posts/2009-09-13-howto-query-mssql-and-send-html-email-using-powershell/3984873a-d5c8-492f-a94c-2307fe01d551-small.webp" alt="Image" class=""></picture>
 ```
 
 
@@ -224,7 +224,7 @@ Then all you need to do is run the script from the Powershell console.
 
 
 ```=html
-<picture><source type="image/webp" srcset="be26cc6a-05be-4e21-b2ab-a070522b2997-thumbnail.webp 300w, be26cc6a-05be-4e21-b2ab-a070522b2997-small.webp 600w," sizes="100vw"><img src="be26cc6a-05be-4e21-b2ab-a070522b2997-small.webp" alt="Image" class=""></picture>
+<picture><source type="image/webp" srcset="/posts/2009-09-13-howto-query-mssql-and-send-html-email-using-powershell/be26cc6a-05be-4e21-b2ab-a070522b2997-thumbnail.webp 300w, /posts/2009-09-13-howto-query-mssql-and-send-html-email-using-powershell/be26cc6a-05be-4e21-b2ab-a070522b2997-small.webp 600w," sizes="100vw"><img src="/posts/2009-09-13-howto-query-mssql-and-send-html-email-using-powershell/be26cc6a-05be-4e21-b2ab-a070522b2997-small.webp" alt="Image" class=""></picture>
 ```
 
 

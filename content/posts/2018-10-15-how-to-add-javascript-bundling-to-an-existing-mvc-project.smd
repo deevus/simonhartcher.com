@@ -7,7 +7,7 @@
 .layout = "post.shtml",
 .aliases = ["how-to-add-javascript-bundling-to-an-existing-mvc-project/index.html"],
 .custom = {
-  .cover = "<picture><source type='image/webp' srcset='cover-thumbnail.webp 300w, cover-small.webp 600w,' sizes='100vw'><img src='cover-small.webp' alt='Image' class='cover'></picture>",
+  .cover = "<picture><source type='image/webp' srcset='/posts/2018-10-15-how-to-add-javascript-bundling-to-an-existing-mvc-project/cover-thumbnail.webp 300w, /posts/2018-10-15-how-to-add-javascript-bundling-to-an-existing-mvc-project/cover-small.webp 600w,' sizes='100vw'><img src='/posts/2018-10-15-how-to-add-javascript-bundling-to-an-existing-mvc-project/cover-small.webp' alt='Image' class='cover'></picture>",
 },
 ---
 
@@ -94,7 +94,7 @@ If all is well you should be able to visit [http://localhost:5000](http://localh
 
 
 ```=html
-<picture><source type="image/webp" srcset="8e0941bb-1b4e-4b4f-a797-aa4d09ef30c3-thumbnail.webp 300w, 8e0941bb-1b4e-4b4f-a797-aa4d09ef30c3-small.webp 600w, 8e0941bb-1b4e-4b4f-a797-aa4d09ef30c3-medium.webp 900w, 8e0941bb-1b4e-4b4f-a797-aa4d09ef30c3-large.webp 1200w, 8e0941bb-1b4e-4b4f-a797-aa4d09ef30c3-xlarge.webp 1800w," sizes="100vw"><img src="8e0941bb-1b4e-4b4f-a797-aa4d09ef30c3-xlarge.webp" alt="Image" class=""></picture>
+<picture><source type="image/webp" srcset="/posts/2018-10-15-how-to-add-javascript-bundling-to-an-existing-mvc-project/8e0941bb-1b4e-4b4f-a797-aa4d09ef30c3-thumbnail.webp 300w, /posts/2018-10-15-how-to-add-javascript-bundling-to-an-existing-mvc-project/8e0941bb-1b4e-4b4f-a797-aa4d09ef30c3-small.webp 600w, /posts/2018-10-15-how-to-add-javascript-bundling-to-an-existing-mvc-project/8e0941bb-1b4e-4b4f-a797-aa4d09ef30c3-medium.webp 900w, /posts/2018-10-15-how-to-add-javascript-bundling-to-an-existing-mvc-project/8e0941bb-1b4e-4b4f-a797-aa4d09ef30c3-large.webp 1200w, /posts/2018-10-15-how-to-add-javascript-bundling-to-an-existing-mvc-project/8e0941bb-1b4e-4b4f-a797-aa4d09ef30c3-xlarge.webp 1800w," sizes="100vw"><img src="/posts/2018-10-15-how-to-add-javascript-bundling-to-an-existing-mvc-project/8e0941bb-1b4e-4b4f-a797-aa4d09ef30c3-xlarge.webp" alt="Image" class=""></picture>
 ```
 
 
@@ -456,7 +456,7 @@ If we check out our project in the browser we get a console error on the homepag
 
 
 ```=html
-<picture><source type="image/webp" srcset="32e284be-8d2a-4f90-b6d0-d75c198f4fe1-thumbnail.webp 300w," sizes="100vw"><img src="32e284be-8d2a-4f90-b6d0-d75c198f4fe1-thumbnail.webp" alt="Image" class=""></picture>
+<picture><source type="image/webp" srcset="/posts/2018-10-15-how-to-add-javascript-bundling-to-an-existing-mvc-project/32e284be-8d2a-4f90-b6d0-d75c198f4fe1-thumbnail.webp 300w," sizes="100vw"><img src="/posts/2018-10-15-how-to-add-javascript-bundling-to-an-existing-mvc-project/32e284be-8d2a-4f90-b6d0-d75c198f4fe1-thumbnail.webp" alt="Image" class=""></picture>
 ```
 
 
@@ -509,7 +509,7 @@ Woohoo! Clicking the button on the About page works again!
 
 
 ```=html
-<picture><source type="image/webp" srcset="f60ca765-5214-48b9-9f3b-6b31e4d63a61-thumbnail.webp 300w, f60ca765-5214-48b9-9f3b-6b31e4d63a61-small.webp 600w, f60ca765-5214-48b9-9f3b-6b31e4d63a61-medium.webp 900w," sizes="100vw"><img src="f60ca765-5214-48b9-9f3b-6b31e4d63a61-medium.webp" alt="Image" class=""></picture>
+<picture><source type="image/webp" srcset="/posts/2018-10-15-how-to-add-javascript-bundling-to-an-existing-mvc-project/f60ca765-5214-48b9-9f3b-6b31e4d63a61-thumbnail.webp 300w, /posts/2018-10-15-how-to-add-javascript-bundling-to-an-existing-mvc-project/f60ca765-5214-48b9-9f3b-6b31e4d63a61-small.webp 600w, /posts/2018-10-15-how-to-add-javascript-bundling-to-an-existing-mvc-project/f60ca765-5214-48b9-9f3b-6b31e4d63a61-medium.webp 900w," sizes="100vw"><img src="/posts/2018-10-15-how-to-add-javascript-bundling-to-an-existing-mvc-project/f60ca765-5214-48b9-9f3b-6b31e4d63a61-medium.webp" alt="Image" class=""></picture>
 ```
 
 

@@ -41,11 +41,11 @@ interface ProcessImageBlockOptions {
 }
 
 export class ImageTransformer {
-  assetPath: string;
+  outDir: string;
   referencedFiles: Set<string>;
 
-  constructor(assetPath: string) {
-    this.assetPath = assetPath;
+  constructor(outDir: string) {
+    this.outDir = outDir;
     this.referencedFiles = new Set();
   }
 
@@ -68,7 +68,7 @@ export class ImageTransformer {
 
     var imageUrl: string | undefined;
 
-    const originalWebpPath = path.join(this.assetPath, `${id}-original.webp`);
+    const originalWebpPath = path.join(this.outDir, `${id}-original.webp`);
 
     console.log("Checking if local file exists: ", originalWebpPath);
 
@@ -90,7 +90,7 @@ export class ImageTransformer {
 
     const imageResponse = await fetch(imageUrl);
 
-    fs.mkdirSync(this.assetPath, { recursive: true });
+    fs.mkdirSync(this.outDir, { recursive: true });
 
     const imageBuffer = await imageResponse.arrayBuffer();
     const imageMetadata = await sharp(imageBuffer).metadata();
@@ -101,14 +101,14 @@ export class ImageTransformer {
     }
 
     // Ensure the output directory exists
-    fs.mkdirSync(this.assetPath, {
+    fs.mkdirSync(this.outDir, {
       recursive: true,
     });
 
     const results = await this.resizeImage({
       id,
       input: imageBuffer,
-      outputDir: this.assetPath,
+      outputDir: this.outDir,
       dimensions,
     });
 
@@ -116,6 +116,7 @@ export class ImageTransformer {
       altText: "Image",
       className: options.className,
       baseSize: this.getClosestSizeName(dimensions),
+      outDir: this.outDir.replace(/^assets\//, ""),
     });
 
     return {
@@ -222,12 +223,13 @@ export class ImageTransformer {
       altText: string;
       baseSize?: keyof typeof imageSizes;
       className?: string;
+      outDir?: string;
     }
   ): string => {
     const baseSize = options.baseSize ?? "medium";
     var baseUrl = imageResults[baseSize];
 
-    const imageAsset = (url: string) => `${url}`;
+    const imageAsset = (url: string) => "/" + path.relative("assets", path.join(options.outDir ?? "", url)).replace(/\\/g, "/");
 
     if (!baseUrl) {
       console.warn(

@@ -7,7 +7,7 @@
 .layout = "post.shtml",
 .aliases = ["university-upending-my-life-and-some-history/index.html"],
 .custom = {
-  .cover = "<picture><source type='image/webp' srcset='cover-thumbnail.webp 300w, cover-small.webp 600w, cover-medium.webp 900w, cover-large.webp 1200w, cover-xlarge.webp 1800w,' sizes='100vw'><img src='cover-xlarge.webp' alt='Image' class='cover'></picture>",
+  .cover = "<picture><source type='image/webp' srcset='/posts/2013-11-17-university-upending-my-life-and-some-history/cover-thumbnail.webp 300w, /posts/2013-11-17-university-upending-my-life-and-some-history/cover-small.webp 600w, /posts/2013-11-17-university-upending-my-life-and-some-history/cover-medium.webp 900w, /posts/2013-11-17-university-upending-my-life-and-some-history/cover-large.webp 1200w, /posts/2013-11-17-university-upending-my-life-and-some-history/cover-xlarge.webp 1800w,' sizes='100vw'><img src='/posts/2013-11-17-university-upending-my-life-and-some-history/cover-xlarge.webp' alt='Image' class='cover'></picture>",
 },
 ---
 
