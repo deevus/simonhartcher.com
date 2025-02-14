@@ -5,7 +5,7 @@
 .tags = ["Bundling", "ES6", "ASP.NET", "DotNet", "JavaScript", "Laravel", "MVC", "Webpack"],
 .author = "Simon Hartcher",
 .layout = "post.shtml",
-.aliases = ["how-to-add-javascript-bundling-to-an-existing-mvc-project.html"],
+.aliases = ["how-to-add-javascript-bundling-to-an-existing-mvc-project/index.html"],
 .custom = {
   .cover = "<picture><source type='image/webp' srcset='cover-thumbnail.webp 300w, cover-small.webp 600w,' sizes='100vw'><img src='cover-small.webp' alt='Image' class='cover'></picture>",
 },

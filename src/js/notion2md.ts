@@ -92,10 +92,12 @@ for (const page of response.results as PageObjectResponseWithProperties[]) {
   const imageTransformer = new ImageTransformer(postAssetDir);
 
   const cover = page.cover
-    ? await imageTransformer.processImageBlock(page.cover, {
-        id: "cover",
-        className: "cover",
-      })
+    ? await imageTransformer.processImageBlock({
+      id: "cover",
+      image: page.cover,
+    }, {
+      className: "cover",
+    })
     : undefined;
 
   n2md.setCustomTransformer("image", imageTransformer.transform);
@@ -112,7 +114,7 @@ for (const page of response.results as PageObjectResponseWithProperties[]) {
 .tags = [${tags.map((tag) => `"${tag}"`).join(", ")}],
 .author = "${author}",
 .layout = "post.shtml",
-.aliases = ["${slug}.html"],
+.aliases = ["${slug}/index.html"],
 .custom = {
   ${cover ? `.cover = "${cover.rawHtml.replace(/"/gm, "'")}",` : ""}
 },
@@ -146,8 +148,10 @@ for (const page of config.notion.additionalPages) {
 
   const imageTransformer = new ImageTransformer(path.join(config.assetsDir, path.basename(filePath, ".smd")));
 
-  const cover = notionPage.cover && await imageTransformer.processImageBlock(notionPage.cover, {
+  const cover = notionPage.cover && await imageTransformer.processImageBlock({
     id: "cover",
+    image: notionPage.cover,
+  }, {
     className: "cover",
   });
 

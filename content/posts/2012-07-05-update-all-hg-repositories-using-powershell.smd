@@ -5,7 +5,7 @@
 .tags = [],
 .author = "Simon Hartcher",
 .layout = "post.shtml",
-.aliases = ["update-all-hg-repositories-using-powershell.html"],
+.aliases = ["update-all-hg-repositories-using-powershell/index.html"],
 .custom = {
   .cover = "<picture><source type='image/webp' srcset='cover-thumbnail.webp 300w, cover-small.webp 600w, cover-medium.webp 900w, cover-large.webp 1200w, cover-xlarge.webp 1800w,' sizes='100vw'><img src='cover-xlarge.webp' alt='Image' class='cover'></picture>",
 },

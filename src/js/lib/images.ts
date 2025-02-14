@@ -37,7 +37,6 @@ type ImageDetails =
   };
 
 interface ProcessImageBlockOptions {
-  id: string;
   className?: string;
 }
 
@@ -51,25 +50,25 @@ export class ImageTransformer {
   }
 
   transform = async (block: ListBlockChildrenResponseResult) => {
-    const result = await this.processImageBlock(
-      (block as ImageBlockObjectResponse).image,
-      {
-        id: block.id,
-      },
-    );
+    const result = await this.processImageBlock(block as ImageBlockObjectResponse);
 
     return result.markdown;
   };
 
   processImageBlock = async (
-    image: ImageDetails,
-    options: ProcessImageBlockOptions,
+    imageBlock: {
+      id: string;
+      image: ImageDetails;
+    },
+    options: ProcessImageBlockOptions = {},
   ) => {
-    console.log(`Processing image block: ${options.id}`);
+    const { id, image } = imageBlock;
+
+    console.log(`Processing image block: ${id}`);
 
     var imageUrl: string | undefined;
 
-    const originalWebpPath = path.join(this.assetPath, `${options.id}-original.webp`);
+    const originalWebpPath = path.join(this.assetPath, `${id}-original.webp`);
 
     console.log("Checking if local file exists: ", originalWebpPath);
 
@@ -107,7 +106,7 @@ export class ImageTransformer {
     });
 
     const results = await this.resizeImage({
-      id: options.id,
+      id,
       input: imageBuffer,
       outputDir: this.assetPath,
       dimensions,
