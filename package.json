@@ -1,7 +1,7 @@
 {
   "scripts": {
     "sync": "bun src/js/notion2md.ts",
-    "ci": "bash ci.sh",
+    "prebuild": "bun build --outfile=assets/styles.min.css --minify assets/styles.css",
     "build": "zig build",
     "dev": "npm run build -- -Ddebug serve",
     "predev": "npx rimraf zig-out"
