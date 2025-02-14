@@ -12,17 +12,19 @@ import {
   TitlePropertyItemObjectResponse,
 } from "@notionhq/client/build/src/api-endpoints";
 
+type RichTextArrayObjectResponse = ParagraphBlockObjectResponse['paragraph'];
+
 export interface Properties {
   Date: DatePropertyItemObjectResponse;
   Published: DatePropertyItemObjectResponse;
   Name: {
     title: RichTextItemResponse[];
   };
-  Description: ParagraphBlockObjectResponse["paragraph"];
+  Description: RichTextArrayObjectResponse;
   Tags: MultiSelectPropertyItemObjectResponse;
   Author: RichTextPropertyItemObjectResponse;
   Tweet: RichTextPropertyItemObjectResponse;
-  Slug: RichTextPropertyItemObjectResponse;
+  Slug: RichTextArrayObjectResponse;
   Featured: CheckboxPropertyItemObjectResponse;
   Public: CheckboxPropertyItemObjectResponse;
 }

@@ -20,6 +20,7 @@
     </title>
     <link rel="stylesheet" href="$site.asset('pico.violet.min.css').link()" type="text/css">
     <link rel="stylesheet" href="$site.asset('styles.css').link()" type="text/css">
+    <link rel="alternate" type="application/rss+xml" title="Simon Hartcher's Blog RSS Feed" href="/index.xml">
     <super>
   </head>
   <body>

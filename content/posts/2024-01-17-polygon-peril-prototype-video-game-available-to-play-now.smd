@@ -5,7 +5,7 @@
 .tags = ["Game Development", "Godot"],
 .author = "Simon Hartcher",
 .layout = "post.shtml",
-.aliases = ["polygon-peril-prototype-video-game-available-to-play-now/index.html"],
+.aliases = ["polygon-peril-prototype/index.html"],
 .custom = {
   .cover = "<picture><source type='image/webp' srcset='/posts/2024-01-17-polygon-peril-prototype-video-game-available-to-play-now/cover-thumbnail.webp 300w, /posts/2024-01-17-polygon-peril-prototype-video-game-available-to-play-now/cover-small.webp 600w, /posts/2024-01-17-polygon-peril-prototype-video-game-available-to-play-now/cover-medium.webp 900w, /posts/2024-01-17-polygon-peril-prototype-video-game-available-to-play-now/cover-large.webp 1200w, /posts/2024-01-17-polygon-peril-prototype-video-game-available-to-play-now/cover-xlarge.webp 1800w,' sizes='100vw'><img src='/posts/2024-01-17-polygon-peril-prototype-video-game-available-to-play-now/cover-xlarge.webp' alt='Image' class='cover'></picture>",
 },

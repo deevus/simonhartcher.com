@@ -5,7 +5,7 @@
 .tags = ["Godot", "Game Development", "Shaders", "Arkon"],
 .author = "Simon Hartcher",
 .layout = "post.shtml",
-.aliases = ["get-3d-look-rotations-in-2d-with-godot-4/index.html"],
+.aliases = ["3d-look-rotations-in-2d-with-godot-4/index.html"],
 .custom = {
   .cover = "<picture><source type='image/webp' srcset='/posts/2023-04-23-get-3d-look-rotations-in-2d-with-godot-4/cover-thumbnail.webp 300w, /posts/2023-04-23-get-3d-look-rotations-in-2d-with-godot-4/cover-small.webp 600w, /posts/2023-04-23-get-3d-look-rotations-in-2d-with-godot-4/cover-medium.webp 900w,' sizes='100vw'><img src='/posts/2023-04-23-get-3d-look-rotations-in-2d-with-godot-4/cover-medium.webp' alt='Image' class='cover'></picture>",
 },

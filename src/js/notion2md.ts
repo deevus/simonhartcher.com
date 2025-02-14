@@ -77,7 +77,7 @@ for (const page of response.results as PageObjectResponseWithProperties[]) {
     .replace(/[^a-z0-9]+/g, "-")
     .replace(/^-|-$/g, "");
 
-  const slug = sanitisedTitle;
+  const slug = props.Slug.rich_text[0]?.plain_text ?? sanitisedTitle;
 
   const fullSlug = `${pageDate}-${sanitisedTitle}`;
 
