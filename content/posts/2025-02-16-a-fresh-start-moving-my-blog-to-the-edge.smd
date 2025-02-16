@@ -1,0 +1,52 @@
+---
+.date = "2025-02-16",
+.title = "A Fresh Start: Moving My Blog to the Edge",
+.description = "Blazingly fast and hosted for free on the edge",
+.tags = ["Tech", "Zine"],
+.author = "Simon Hartcher",
+.layout = "post.shtml",
+.aliases = ["a-fresh-start-moving-my-blog-to-the-edge/index.html"],
+.custom = {
+  .cover = "<picture><source type='image/webp' srcset='/posts/2025-02-16-a-fresh-start-moving-my-blog-to-the-edge/cover-thumbnail.webp 300w, /posts/2025-02-16-a-fresh-start-moving-my-blog-to-the-edge/cover-small.webp 600w, /posts/2025-02-16-a-fresh-start-moving-my-blog-to-the-edge/cover-medium.webp 900w, /posts/2025-02-16-a-fresh-start-moving-my-blog-to-the-edge/cover-large.webp 1200w, /posts/2025-02-16-a-fresh-start-moving-my-blog-to-the-edge/cover-xlarge.webp 1800w,' sizes='100vw'><img src='/posts/2025-02-16-a-fresh-start-moving-my-blog-to-the-edge/cover-xlarge.webp' alt='Image' class='cover'></picture>",
+},
+---
+
+
+This blog hasn’t had much love in the last few years. I always tell myself that I’ll blog more, but my neurodivergent brain stops me from carving out the time to write more. 
+
+
+Yet, that is what people tell you. Whether it is writing, journaling or blogging. “Do it every day!”
+
+
+I struggle with that. I’ve tried journaling. I gave the [Bullet Journal method](https://bulletjournal.com/pages/book) a crack. It worked for a while, but eventually I fell off the wagon and never got back on. 
+
+
+I have a [Sidekick Notepad](https://cottonbureau.com/p/XT9MRF/journal/sidekick-notepad#/16404980/black-paper-12x7) on my desk at home, and another still in it’s plastic wrapping. I might have used half a dozen pages of it. Recently it’s just been functioning as a wrist rest. 
+
+
+## First, there was next.js
+
+
+So here we are. It’s already February in 2025, and I’ve re-written my blog again. My previous attempt was using [next.js](https://nextjs.org/) with the posts being pulled from [Notion](http://notion.so/). That worked fine for a while, but I had a few issues with it. 
+
+1. It needed to “run” 24/7 to function correctly.
+2. Next’s image processing pipeline only works via API. And it is pretty heavy too. You can’t run it on a 1GB server.
+3. It would occasionally crash from “too much traffic”. The site is basically static.
+4. Making changes to the website was complicated.
+5. It was costing me $10 a month through [Fly](https://fly.io/)
+
+## Enter, Zine. 
+
+
+[Zine](https://fly.io/) is a static site generator like many others before it. However what appealed to me is that it is written in [Zig](https://ziglang.org/), which has been my language of choice for a few years now. (I’m even doing some professional Zig these days. [You can hire me](https://simonhartcher.com/contact))
+
+
+It uses a super-set of markdown called [SuperMD](https://zine-ssg.io/docs/supermd/). As mentioned, my blog posts were getting pulled from Notion, and with [notion-to-md](https://github.com/souvikinator/notion-to-md), this can continue! 
+
+
+I used [Bun](https://bun.sh/) (a tool written in Zig, by the way!) to write a script to transform the Notion posts into SuperMD. `notion-to-md` has hooks for each of the markdown directives, so overriding those to leverage SuperMD was easy. 
+
+
+With that and a few days of coding, here we are! The CSS is mostly [Pico.css](https://picocss.com/) with some custom styles thrown in. And the hosting is [Cloudflare Pages](https://pages.cloudflare.com/). I don’t know why their free tier is so amazing, but I’m not complaining! 
+
+
